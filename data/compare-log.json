@@ -55,5 +55,27 @@
   "gaps": [
    "related"
   ]
+ },
+ {
+  "date": "2026-11-10",
+  "url": "https://blog.dejavu.moe/",
+  "gaps": [
+   "breadcrumbs"
+  ]
+ },
+ {
+  "date": "2026-11-10",
+  "url": "https://www.renhuali.cn/",
+  "gaps": [
+   "breadcrumbs"
+  ]
+ },
+ {
+  "date": "2026-11-10",
+  "url": "https://blog.est.im/",
+  "gaps": [
+   "related",
+   "series"
+  ]
  }
 ]

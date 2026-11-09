@@ -109,5 +109,38 @@
   ],
   "source": "博客大联盟",
   "added": "2026-11-10"
+ },
+ {
+  "name": "Dejavu's Blog",
+  "url": "https://blog.dejavu.moe/",
+  "tags": [
+   "博客",
+   "生活",
+   "技术"
+  ],
+  "source": "博客大联盟",
+  "added": "2026-11-10"
+ },
+ {
+  "name": "华立博客",
+  "url": "https://www.renhuali.cn/",
+  "tags": [
+   "生活",
+   "技术",
+   "编程"
+  ],
+  "source": "博客大联盟",
+  "added": "2026-11-10"
+ },
+ {
+  "name": "Est's Blog",
+  "url": "https://blog.est.im/",
+  "tags": [
+   "编程",
+   "技术",
+   "网络"
+  ],
+  "source": "博客大联盟",
+  "added": "2026-11-10"
  }
 ]

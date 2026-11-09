@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-11-10 07:20
+- 对比：Dejavu's Blog（blog.dejavu.moe）、华立博客（renhuali.cn）、Est's Blog（blog.est.im）
+- 发现：三轮 compare_pick 的 gaps 分别为 breadcrumbs、breadcrumbs、related+series，均已否决（面包屑与 nav/分标签重复；related 与文末「上一篇/下一篇」重复；series 要等真有同主题成组文章）
+- 判断：无值得做且 ≤60 行的改动，本轮不动页面
+- 改动：无站点改动，仅把三个对比站写入 data/neighbors.json 并重跑 neighbors.py（14 条）
+- 验证：check_site PASS（17 项）
+- commit：本条记录所在提交（data: 记录本轮对比与三个邻居）
+
+---
+
 ## 2026-11-10 06:20
 - 对比：gengyue's webpage（gy.run）
 - 发现：compare_pick 报 gaps=[footnotes]；另两次取到 breadcrumbs（已否决项）与 related（与文末「上一篇/下一篇」重复，不做）

@@ -4,6 +4,13 @@
 
 ---
 
+## 2026-11-10 03:20
+- 对比：51chifuns blog（51chifun.cc.cd）
+- 判断：对方文章页有整组分享按钮；本站不上第三方脚本，只取“复制本文链接”一个动作，http 下用 execCommand 兜底
+- 改动：posts/ 三篇与 lab/port-check.html 各在文末笔记行后加 .article__share + .copy 按钮；site.css +9 行；site.js +29 行
+- 验证：check_site PASS（含内部链接、无第三方资源）
+- commit：9619447
+
 ## 2026-11-10 02:40 · 回滚面包屑
 - 对比：减三和弦的博客（blog.bdim.moe）
 - 判断：面包屑与「笔记/实验」分标签、kicker 的分类重复；本站只有两级，不需要第三层

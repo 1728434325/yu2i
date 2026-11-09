@@ -68,4 +68,16 @@
   "source": "博客大联盟",
   "added": "2026-11-10"
  }
+ ,
+ {
+  "name": "51chifuns blog",
+  "url": "https://51chifun.cc.cd",
+  "tags": [
+   "博客",
+   "技术",
+   "Typecho"
+  ],
+  "source": "博客大联盟",
+  "added": "2026-11-10"
+ }
 ]

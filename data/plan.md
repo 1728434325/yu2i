@@ -8,4 +8,4 @@
 ---
 
 - [!] 文章页加面包屑——参考 减三和弦的博客，但本站只有两级（nav + 分标签已表达），面包屑重复“笔记/方法”，反而多一层噪声。已移除（commit 见 changelog）。教训：导航类改动先问“是否和现有层级重复”。
-- [~] 文章页文末加「复制链接」——参考 51chifuns blog 的分享按钮。本站不引入第三方分享脚本，用原生复制（execCommand 兜底），按钮复用已有 .copy 样式，放文末笔记行与 footer 之间右对齐。改 posts/ 三篇、lab/port-check.html、assets/site.css、assets/site.js。
+- [x] 文章页文末加「复制链接」——参考 51chifuns blog 的分享按钮。本站不引入第三方分享脚本，用原生复制（execCommand 兜底），按钮复用已有 .copy 样式，放文末笔记行与 footer 之间右对齐。改 posts/ 三篇、lab/port-check.html、assets/site.css、assets/site.js。

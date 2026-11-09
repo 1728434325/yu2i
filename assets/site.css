@@ -713,6 +713,35 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--muted);
   line-height: 1.9;
 }
+/* 脚注：正文上标编号 + 文末注释，原生锚点，不依赖脚本 */
+.prose .fn-ref { font-size: .68em; line-height: 0; vertical-align: super; }
+.prose .fn-ref a { font-family: var(--mono); border-bottom: 0; padding: 0 .1em; }
+.prose .fn-ref a:hover { border-bottom: 1px solid currentColor; }
+.footnotes {
+  margin: 2.1rem 0 1.8rem;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  counter-reset: fn;
+  font-size: .78rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.footnotes li {
+  counter-increment: fn;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  align-items: start;
+}
+.footnotes li::before {
+  content: counter(fn);
+  font-family: var(--mono);
+  font-size: .66rem;
+  color: var(--ink-2);
+  padding-top: .3em;
+}
+.footnotes li:target { color: var(--ink); }
+.footnotes .fn-back { font-family: var(--mono); font-size: .66rem; border-bottom: 0; margin-left: .4rem; }
 .prose table { width: 100%; border-collapse: collapse; font-size: .86rem; margin: 0 0 1.6rem; }
 .prose th, .prose td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--rule); }
 .prose th { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 400; }

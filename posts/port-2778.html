@@ -63,7 +63,7 @@ $ curl -s https://ifconfig.me
       <p>出口 IP 和解析结果一致，第一层没问题。</p>
 
       <h2>第二层：本机能不能监听</h2>
-      <p>这台机器的登录用户不是 root，<code>ip_unprivileged_port_start</code> 是默认的 1024。直接试绑定：</p>
+      <p>这台机器的登录用户不是 root，<code>ip_unprivileged_port_start</code> 是默认的 1024<sup class="fn-ref"><a id="fnref-1" href="#fn-1">1</a></sup>。直接试绑定：</p>
       <pre><code>$ python3 - &lt;&lt;'EOF'
 import socket
 s = socket.socket()
@@ -105,6 +105,9 @@ $ curl -s -o /dev/null -w '%{http_code}\n' http://yu2i.site/
       <h2>这次排查教给我的</h2>
       <p>把链路拆成层，每层单独验证，不要在“整体不通”这个层面猜。域名、监听、映射，三层各有一个 cheap 的检查命令；三个结果摆在一起，答案自己就出来了。</p>
       <p>另外一条：<code>000</code> 和 <code>404</code> 是完全不同的病。前者是网络层，后者是应用层。看到超时就去看端口，看到 404 才去看路由。</p>
+      <ol class="footnotes">
+        <li id="fn-1">内核文档把 <code>ip_unprivileged_port_start</code> 定义为“非特权进程能绑定的最低端口号”，默认 1024：<a href="https://docs.kernel.org/networking/ip-sysctl.html">docs.kernel.org/networking/ip-sysctl.html</a>。把它改成 0 需要 root，这台机器没有，所以只能绕道容器。<a class="fn-back" href="#fnref-1" aria-label="回到正文">↩</a></li>
+      </ol>
 
       <hr>
       <p class="note">这个站的服务器实现见<a href="/posts/static-first.html">上一篇</a>提到的 <code>server.py</code>；它现在正经受着同样的 2778。</p>

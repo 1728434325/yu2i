@@ -87,8 +87,11 @@
       <p>这些代价都能接受，因为量小。量一旦变大，结论就会反过来——那时候我会去装框架，而不是硬扛。</p>
 
       <h2>具体数字</h2>
-      <p>整站体积（不含文章里的文字）：HTML 约 20 KB，CSS 15 KB，JS 2.2 KB，图标 0.3 KB。首屏一次请求四个文件，没有第三方域名。服务器端 gzip 之后传输量不到 12 KB。</p>
+      <p>整站体积（不含文章里的文字）：首页 HTML 约 11 KB，CSS 约 32 KB，JS 约 6 KB，图标 0.26 KB。首屏一次请求四个文件，没有第三方域名。服务器端 gzip 之后 HTML 约 3.8 KB、CSS 约 6.8 KB，JS 目前是原样下发的 6 KB——那颗压缩开关还没补上，首屏合计约 20 KB<sup class="fn-ref"><a id="fnref-1" href="#fn-1">1</a></sup>。</p>
       <p>这个数字不是炫耀。它只说明一件事：在这个规模上，框架能带来的收益，小于它带来的复杂度。</p>
+      <ol class="footnotes">
+        <li id="fn-1">实测取 2026-11-10 的数值：<code>wc -c</code> 与 <code>gzip -c … | wc -c</code> 逐个体检，不是估算。数字会随功能漂移——CSS 从最初 15 KB 长到 32 KB，涨出来的部分就是目录、复制链接、回到顶部这些逐条加进来的。<a class="fn-back" href="#fnref-1" aria-label="回到正文">↩</a></li>
+      </ol>
 
       <hr>
       <p class="note">下一篇：<a href="/posts/port-2778.html">80 不通，2778 通</a>——这个站上线时遇到的第一件真事。</p>

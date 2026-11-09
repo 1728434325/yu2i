@@ -4,6 +4,15 @@
 
 ---
 
+## 2026-11-10 04:20
+- 对比：codeqihan的博客（www.codeqihan.com）
+- 发现：compare_pick 报 gaps=[breadcrumbs]（已否决项）；核对时发现自家的 toc 信号是 autocomplete 误匹配，三篇长文其实没有目录
+- 判断：目录只列正文 h2、不重复 nav 与分标签，属新增信息而非层级噪声
+- 改动：site.js +43 行（.prose 内 h2 ≥3 时插入 nav.toc，滚动高亮 is-active）；site.css +10 行（左侧细线、等宽序号、移动端去序号）
+- 验证：check_site PASS（html/css/js/内链/无三方资源全项）
+- commit：f801f67
+
+
 ## 2026-11-10 03:20
 - 对比：51chifuns blog（51chifun.cc.cd）
 - 判断：对方文章页有整组分享按钮；本站不上第三方脚本，只取“复制本文链接”一个动作，http 下用 execCommand 兜底

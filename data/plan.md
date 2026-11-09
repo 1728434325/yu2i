@@ -9,3 +9,4 @@
 
 - [!] 文章页加面包屑——参考 减三和弦的博客，但本站只有两级（nav + 分标签已表达），面包屑重复“笔记/方法”，反而多一层噪声。已移除（commit 见 changelog）。教训：导航类改动先问“是否和现有层级重复”。
 - [x] 文章页文末加「复制链接」——参考 51chifuns blog 的分享按钮。本站不引入第三方分享脚本，用原生复制（execCommand 兜底），按钮复用已有 .copy 样式，放文末笔记行与 footer 之间右对齐。改 posts/ 三篇、lab/port-check.html、assets/site.css、assets/site.js。
+- [x] 文章页自动目录——参考 codeqihan的博客 文章页的 toc。compare_pick 报的 toc 信号其实是 autocomplete 误匹配，本站并没有目录。做法：site.js 检测 .prose 内 h2 ≥3 时生成 nav.toc（原生元素、无外链），滚动高亮当前小节；site.css 新增 10 行（左侧细线、等宽序号、移动端去序号）。不新增导航层级。

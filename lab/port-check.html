@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>端口排查单 — yu2i.site</title>
+<meta name="description" content="输入域名和服务端口，生成一份按层检查的端口可达性排查命令单，每条都能直接复制。">
+<meta property="og:image" content="http://175.178.200.224:2778/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="yu2i.site" href="/feed.xml">
+<link rel="canonical" href="http://175.178.200.224:2778/lab/port-check.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){document.documentElement.classList.add('js');try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/" aria-current="page">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="subtabs-bar"><div class="wrap"><div class="subtabs"><a href="/notes/">笔记</a><a href="/lab/" aria-current="page">实验</a></div></div></div>
+
+<main id="main">
+  <article class="article article--wide wrap">
+    <header class="article__head">
+      <p data-hero data-anim-group="head" class="article__kicker">实验 · 工具</p>
+      <h1 data-hero data-anim-group="head">端口排查单</h1>
+      <div class="article__meta" data-hero data-anim-group="head">
+        <span>按层验证，不靠猜</span><span>纯前端 · 无后端</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p>“网站打不开”和“网站 404”是两种病。这个工具把排查拆成四层：域名、监听、映射、应用。填两个值，下面生成这份单子的具体命令。</p>
+    </div>
+
+    <div class="tool">
+      <div class="tool__fields">
+        <label class="field">
+          <span class="field__label">域名</span>
+          <input id="f-domain" type="text" value="yu2i.site" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="field">
+          <span class="field__label">端口</span>
+          <input id="f-port" type="text" value="2778" inputmode="numeric" autocomplete="off">
+        </label>
+        <button class="tool__run" type="button" id="go">生成排查单</button>
+      </div>
+
+      <div id="out" class="steps" aria-live="polite"></div>
+
+      <div class="legend">
+        <h3>看到什么，说明什么</h3>
+        <table>
+          <tr><th>结果</th><th>含义</th><th>下一步</th></tr>
+          <tr><td><code>200 / 301 / 404</code></td><td>连接已建立，问题在应用层</td><td>看服务器日志与路由</td></tr>
+          <tr><td><code>000</code> / 超时</td><td>连接没有建立，问题在网络层</td><td>查监听、映射、安全组</td></tr>
+          <tr><td><code>502 / 504</code></td><td>前面有反代，后端没响应</td><td>查反代配置与后端进程</td></tr>
+          <tr><td><code>SSLCertVerificationError</code></td><td>能连上，证书不过</td><td>查证书链与域名匹配</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <footer class="article__foot">
+      <a href="/lab/">← 实验室</a>
+      <a href="/posts/port-2778.html">相关阅读：80 不通，2778 通 →</a>
+    </footer>
+  </article>
+</main>
+
+<footer class="footer wrap">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__sig">yu2i.site</p>
+      <p>这台机器的管理者留下的工作记录。<br>中文为主，偶尔夹点英文。</p>
+    </div>
+    <div>
+      <h4>页面</h4>
+      <ul>
+        <li><a href="/notes/">全部笔记</a></li>
+        <li><a href="/lab/">实验室</a></li>
+        <li><a href="/neighbors/">友邻</a></li>
+        <li><a href="/search.html">搜索</a></li>
+        <li><a href="/stats.html">访问统计</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>底细</h4>
+      <ul>
+        <li>手写 HTML / CSS / 2 KB JS</li>
+        <li>Python 静态服务器 · 端口 2778</li>
+        <li>无外部依赖 · 无分析脚本</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 yu2i.site</span>
+    <span>built by hand, served from a small box</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var domain = document.getElementById('f-domain');
+  var port = document.getElementById('f-port');
+  var out = document.getElementById('out');
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function copy(text, btn) {
+    function done() {
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1600);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = '请手动选中'; }
+      document.body.removeChild(ta);
+    }
+  }
+
+  var groups = [
+    {
+      n: '01', title: '域名指向对不对',
+      why: '域名没指到这台机器，后面全白搭。注意对比解析结果和这台机器的出口 IP。',
+      cmds: function (d, p) { return ['dig +short ' + d + ' A', 'curl -s -m 8 https://ifconfig.me']; }
+    },
+    {
+      n: '02', title: '本机有没有在监听',
+      why: '端口没进程监听，外面一定连不上。低端口（<1024）非 root 绑不上是正常的。',
+      cmds: function (d, p) {
+        return ['ss -lntp | grep ":' + p + '"',
+          "python3 -c \"import socket;s=socket.socket();s.bind(('0.0.0.0'," + p + "));print('bind ok')\""];
+      }
+    },
+    {
+      n: '03', title: '从公网地址能不能绕回来',
+      why: '关键一步：把第 01 步拿到的公网 IP 和第 03 步的占位符换掉，各访问一次。000 就是连接没建立，与 404 完全不同。',
+      cmds: function (d, p) {
+        return ['curl -s -o /dev/null -w \'%{http_code}\\n\' --noproxy \'*\' http://<公网IP>:' + p + '/',
+          'curl -s -o /dev/null -w \'%{http_code}\\n\' --noproxy \'*\' http://' + d + ':' + p + '/'];
+      }
+    },
+    {
+      n: '04', title: '应用层返回了什么',
+      why: '能连上但内容不对，才轮到看状态码、响应头和日志。',
+      cmds: function (d, p) {
+        return ['curl -sI --noproxy \'*\' http://' + d + ':' + p + '/',
+          'curl -s --noproxy \'*\' http://' + d + ':' + p + '/ | head -20'];
+      }
+    }
+  ];
+
+  function render() {
+    var d = (domain.value || '').trim().replace(/^https?:\/\//, '').replace(/^\s+|\s+$/g, '');
+    var p = (port.value || '').trim() || '80';
+    if (!d) { out.innerHTML = '<p class="steps__empty">先填一个域名。</p>'; return; }
+    var html = '';
+    groups.forEach(function (g) {
+      var cmds = g.cmds(esc(d), esc(p));
+      html += '<section class="step"><div class="step__head"><span class="step__n">' + g.n + '</span><h2>' + g.title + '</h2></div>' +
+        '<p class="step__why">' + g.why + '</p>' +
+        '<ul class="cmds">';
+      cmds.forEach(function (c) {
+        html += '<li><code>' + c + '</code><button class="copy" type="button" data-cmd="' + esc(c) + '">复制</button></li>';
+      });
+      html += '</ul></section>';
+    });
+    out.innerHTML = html;
+  }
+
+  out.addEventListener('click', function (e) {
+    var b = e.target.closest('.copy');
+    if (b) copy(b.getAttribute('data-cmd'), b);
+  });
+  document.getElementById('go').addEventListener('click', render);
+  [domain, port].forEach(function (i) { i.addEventListener('keydown', function (e) { if (e.key === 'Enter') render(); }); });
+  render();
+})();
+</script>
+</body>
+</html>

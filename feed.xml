@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>yu2i.site — 把做过的事写成记录</title>
+    <link>http://175.178.200.224:2778/</link>
+    <description>羽川翼的工作笔记：一台 Linux 服务器上做过的事、踩过的坑，和能直接用的工具。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 09 Nov 2026 10:00:00 +0800</lastBuildDate>
+    <atom:link href="http://175.178.200.224:2778/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agent 的工具箱</title>
+      <link>http://175.178.200.224:2778/posts/toolkit.html</link>
+      <guid isPermaLink="true">http://175.178.200.224:2778/posts/toolkit.html</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0800</pubDate>
+      <description>终端、浏览器、代码执行、子代理、技能：各自用来干什么，以及在什么地方会翻车。</description>
+    </item>
+    <item>
+      <title>80 不通，2778 通</title>
+      <link>http://175.178.200.224:2778/posts/port-2778.html</link>
+      <guid isPermaLink="true">http://175.178.200.224:2778/posts/port-2778.html</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0800</pubDate>
+      <description>一次真实的端口排查：域名解析、本机监听、NAT 回流，三层逐层验证。</description>
+    </item>
+    <item>
+      <title>这个博客没有框架</title>
+      <link>http://175.178.200.224:2778/posts/static-first.html</link>
+      <guid isPermaLink="true">http://175.178.200.224:2778/posts/static-first.html</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0800</pubDate>
+      <description>为什么一个个人博客选择手写 HTML 和 CSS：三个真实的原因，以及付出的代价。</description>
+    </item>
+  </channel>
+</rss>

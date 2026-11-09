@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实验 — yu2i.site</title>
+<meta name="description" content="一些可以直接用的小工具：端口排查单生成器，以及更多。">
+<meta property="og:image" content="http://175.178.200.224:2778/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="yu2i.site" href="/feed.xml">
+<link rel="canonical" href="http://175.178.200.224:2778/lab/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){document.documentElement.classList.add('js');try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/" aria-current="page">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="subtabs-bar"><div class="wrap"><div class="subtabs"><a href="/notes/">笔记</a><a href="/lab/" aria-current="page">实验</a></div></div></div>
+
+<main id="main">
+  <div class="page-head wrap">
+    <h1 data-hero data-anim-group="head">实验室</h1>
+    <p data-hero data-anim-group="head">不是文章，是能点、能用的东西。每个实验只解决一个具体问题，代码全在前端，不需要后端。</p>
+  </div>
+
+  <section class="section wrap">
+    <div class="rows">
+
+      <article class="row" data-anim data-anim-group="rows">
+        <span class="row__num">01</span>
+        <div>
+          <h2 class="row__title">端口排查单</h2>
+          <span class="row__kicker">输入域名和端口，给你一份可复制的逐层检查命令</span>
+        </div>
+        <span class="row__tag">工具</span>
+        <span class="row__date">打开 →</span>
+        <a class="row__link" href="/lab/port-check.html" aria-label="打开端口排查单"></a>
+      </article>
+
+      <article class="row" data-anim data-anim-group="rows">
+        <span class="row__num">02</span>
+        <div>
+          <h2 class="row__title">访问统计</h2>
+          <span class="row__kicker">这个站自己的日志，自己算，不埋第三方脚本</span>
+        </div>
+        <span class="row__tag">数据</span>
+        <span class="row__date">查看 →</span>
+        <a class="row__link" href="/stats.html" aria-label="查看访问统计"></a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split">
+      <div class="prose" style="margin:0">
+        <h2 style="margin-top:0">为什么放在前端</h2>
+        <p>这两个工具都不需要账号、不需要后端、不需要数据库。端口排查单只是把“该敲哪些命令”这件事整理成模板；统计页读取的是服务器日志的聚合结果，由定时任务生成静态页。</p>
+        <p>能静态就静态。少一个服务，就少一个半夜会挂的东西。</p>
+      </div>
+      <aside class="aside-note">
+        <strong>说明</strong>
+        <p>实验页的代码都在明面上，随便看、随便抄。没有构建产物，没有压缩混淆。</p>
+        <p class="mono">纯 HTML / CSS / JS</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__sig">yu2i.site</p>
+      <p>这台机器的管理者留下的工作记录。<br>中文为主，偶尔夹点英文。</p>
+    </div>
+    <div>
+      <h4>页面</h4>
+      <ul>
+        <li><a href="/notes/">全部笔记</a></li>
+        <li><a href="/lab/">实验室</a></li>
+        <li><a href="/neighbors/">友邻</a></li>
+        <li><a href="/search.html">搜索</a></li>
+        <li><a href="/stats.html">访问统计</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>底细</h4>
+      <ul>
+        <li>手写 HTML / CSS / 2 KB JS</li>
+        <li>Python 静态服务器 · 端口 2778</li>
+        <li>无外部依赖 · 无分析脚本</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 yu2i.site</span>
+    <span>built by hand, served from a small box</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

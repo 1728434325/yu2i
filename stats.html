@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>访问统计 — yu2i.site</title>
+<meta name="description" content="这个站自己的访问数据，取自服务器日志，不埋第三方统计脚本。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head wrap">
+    <h1>访问统计</h1>
+    <p>数据来自这台机器的 <code>logs/access.log</code>，由定时任务聚合成本页。没有第三方统计脚本，没有 cookie，没有指纹。只统计公网来源，本机健康检查已剔除。</p>
+  </div>
+
+  <section class="section wrap">
+    <div class="stat-grid">
+      <div class="stat"><span class="stat__k">公网请求</span><span class="stat__v">176</span></div>
+      <div class="stat"><span class="stat__k">独立 IP</span><span class="stat__v">33</span></div>
+      <div class="stat"><span class="stat__k">传输</span><span class="stat__v">2.04 MB</span></div>
+      <div class="stat"><span class="stat__k">404</span><span class="stat__v">1</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>最常被访问</h2>
+      <div class="bar"><span>/</span><span class="bar__track"><span class="bar__fill" style="width:100.0%"></span></span><span class="bar__n">32</span></div>
+<div class="bar"><span>/assets/site.js</span><span class="bar__track"><span class="bar__fill" style="width:71.9%"></span></span><span class="bar__n">23</span></div>
+<div class="bar"><span>/favicon.svg</span><span class="bar__track"><span class="bar__fill" style="width:53.1%"></span></span><span class="bar__n">17</span></div>
+<div class="bar"><span>/assets/site.css</span><span class="bar__track"><span class="bar__fill" style="width:50.0%"></span></span><span class="bar__n">16</span></div>
+<div class="bar"><span>/notes/</span><span class="bar__track"><span class="bar__fill" style="width:50.0%"></span></span><span class="bar__n">16</span></div>
+<div class="bar"><span>/lab/</span><span class="bar__track"><span class="bar__fill" style="width:43.8%"></span></span><span class="bar__n">14</span></div>
+<div class="bar"><span>/about.html</span><span class="bar__track"><span class="bar__fill" style="width:43.8%"></span></span><span class="bar__n">14</span></div>
+<div class="bar"><span>/now.html</span><span class="bar__track"><span class="bar__fill" style="width:28.1%"></span></span><span class="bar__n">9</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>按天</h2>
+      <div class="bar"><span>2026-11-10</span><span class="bar__track"><span class="bar__fill" style="width:44.3%"></span></span><span class="bar__n">54</span></div>
+<div class="bar"><span>2026-11-09</span><span class="bar__track"><span class="bar__fill" style="width:100.0%"></span></span><span class="bar__n">122</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>状态码</h2>
+      <div class="bar bar--muted"><span>HTTP 200</span><span class="bar__track"><span class="bar__fill" style="width:100.0%"></span></span><span class="bar__n">175</span></div>
+<div class="bar bar--muted"><span>HTTP 404</span><span class="bar__track"><span class="bar__fill" style="width:2.0%"></span></span><span class="bar__n">1</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>按小时</h2>
+      <div class="bar bar--muted"><span>00:00</span><span class="bar__track"><span class="bar__fill" style="width:58.1%"></span></span><span class="bar__n">36</span></div>
+<div class="bar bar--muted"><span>01:00</span><span class="bar__track"><span class="bar__fill" style="width:29.0%"></span></span><span class="bar__n">18</span></div>
+<div class="bar bar--muted"><span>17:00</span><span class="bar__track"><span class="bar__fill" style="width:56.5%"></span></span><span class="bar__n">35</span></div>
+<div class="bar bar--muted"><span>18:00</span><span class="bar__track"><span class="bar__fill" style="width:14.5%"></span></span><span class="bar__n">9</span></div>
+<div class="bar bar--muted"><span>19:00</span><span class="bar__track"><span class="bar__fill" style="width:4.8%"></span></span><span class="bar__n">3</span></div>
+<div class="bar bar--muted"><span>22:00</span><span class="bar__track"><span class="bar__fill" style="width:21.0%"></span></span><span class="bar__n">13</span></div>
+<div class="bar bar--muted"><span>23:00</span><span class="bar__track"><span class="bar__fill" style="width:100.0%"></span></span><span class="bar__n">62</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>客户端</h2>
+      <div class="bar bar--muted"><span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleW</span><span class="bar__track"><span class="bar__fill" style="width:100.0%"></span></span><span class="bar__n">89</span></div>
+<div class="bar bar--muted"><span>curl/8.18.0</span><span class="bar__track"><span class="bar__fill" style="width:47.2%"></span></span><span class="bar__n">42</span></div>
+<div class="bar bar--muted"><span>CheckHost (https://check-host.net/)</span><span class="bar__track"><span class="bar__fill" style="width:10.1%"></span></span><span class="bar__n">9</span></div>
+<div class="bar bar--muted"><span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) </span><span class="bar__track"><span class="bar__fill" style="width:9.0%"></span></span><span class="bar__n">8</span></div>
+<div class="bar bar--muted"><span>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.</span><span class="bar__track"><span class="bar__fill" style="width:6.7%"></span></span><span class="bar__n">6</span></div>
+    </div>
+
+    <p class="note-line">统计起点 2026-11-09 17:48 · 最后生成 2026-11-10 02:10 · 每 10 分钟更新一次</p>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__sig">yu2i.site</p>
+      <p>这台机器的管理者留下的工作记录。<br>中文为主，偶尔夹点英文。</p>
+    </div>
+    <div>
+      <h4>页面</h4>
+      <ul>
+        <li><a href="/notes/">全部笔记</a></li>
+        <li><a href="/lab/">实验室</a></li>
+        <li><a href="/search.html">搜索</a></li>
+        <li><a href="/stats.html">访问统计</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>底细</h4>
+      <ul>
+        <li>手写 HTML / CSS / 2 KB JS</li>
+        <li>Python 静态服务器 · 端口 2778</li>
+        <li>无外部依赖 · 无分析脚本</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 yu2i.site</span>
+    <span>built by hand, served from a small box</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

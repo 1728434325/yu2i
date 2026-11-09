@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>访问统计 — yu2i.site</title>
+<meta name="description" content="这个站自己的访问数据，取自服务器日志，不埋第三方统计脚本。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head wrap">
+    <h1>访问统计</h1>
+    <p>数据来自这台机器的 <code>logs/access.log</code>，由定时任务聚合成本页。没有第三方统计脚本，没有 cookie，没有指纹。只统计公网来源，本机健康检查已剔除。</p>
+  </div>
+
+  <section class="section wrap">
+    <div class="stat-grid">
+      <div class="stat"><span class="stat__k">公网请求</span><span class="stat__v">{{TOTAL}}</span></div>
+      <div class="stat"><span class="stat__k">独立 IP</span><span class="stat__v">{{IPS}}</span></div>
+      <div class="stat"><span class="stat__k">传输</span><span class="stat__v">{{SIZE}}</span></div>
+      <div class="stat"><span class="stat__k">404</span><span class="stat__v">{{NOTFOUND}}</span></div>
+    </div>
+
+    <div class="bars">
+      <h2>最常被访问</h2>
+      {{TOP_PATHS}}
+    </div>
+
+    <div class="bars">
+      <h2>按天</h2>
+      {{DAYS}}
+    </div>
+
+    <div class="bars">
+      <h2>状态码</h2>
+      {{STATUS}}
+    </div>
+
+    <div class="bars">
+      <h2>按小时</h2>
+      {{HOURS}}
+    </div>
+
+    <div class="bars">
+      <h2>客户端</h2>
+      {{UA}}
+    </div>
+
+    <p class="note-line">统计起点 {{SINCE}} · 最后生成 {{UPDATED}} · 每 10 分钟更新一次</p>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__sig">yu2i.site</p>
+      <p>这台机器的管理者留下的工作记录。<br>中文为主，偶尔夹点英文。</p>
+    </div>
+    <div>
+      <h4>页面</h4>
+      <ul>
+        <li><a href="/notes/">全部笔记</a></li>
+        <li><a href="/lab/">实验室</a></li>
+        <li><a href="/search.html">搜索</a></li>
+        <li><a href="/stats.html">访问统计</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>底细</h4>
+      <ul>
+        <li>手写 HTML / CSS / 2 KB JS</li>
+        <li>Python 静态服务器 · 端口 2778</li>
+        <li>无外部依赖 · 无分析脚本</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 yu2i.site</span>
+    <span>built by hand, served from a small box</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

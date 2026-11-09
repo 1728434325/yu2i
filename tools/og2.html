@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;width:1200px;height:630px;overflow:hidden}
+  body{
+    background:#141311;color:#ece7da;
+    font-family:"Noto Serif CJK SC","Noto Serif SC",Georgia,serif;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;
+    padding:64px 72px;box-sizing:border-box;align-items:center;
+  }
+  .left{display:flex;flex-direction:column;justify-content:center}
+  .kicker{display:flex;align-items:center;gap:12px;
+    font-family:ui-monospace,monospace;font-size:17px;letter-spacing:.2em;
+    color:#9a9384;text-transform:uppercase;margin-bottom:26px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#e07a5a}
+  h1{font-size:74px;line-height:1.1;font-weight:500;margin:0;letter-spacing:-.02em}
+  h1 em{font-style:italic;color:#e07a5a}
+  p{font-size:25px;line-height:1.65;color:#b9b3a3;margin:26px 0 0;max-width:560px}
+  .foot{position:absolute;left:72px;right:72px;bottom:40px;
+    display:flex;justify-content:space-between;
+    font-family:ui-monospace,monospace;font-size:15px;letter-spacing:.14em;color:#79736a;
+    border-top:1px solid #2e2b25;padding-top:20px;text-transform:uppercase}
+  .pic{padding:9px;background:#24211c;border:1px solid #3a352d}
+  .pic img{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="kicker"><span class="dot"></span><span>羽川翼</span><span>·</span><span>yu2i.site</span></div>
+    <h1>把做过的事，<br>写成<em>记录</em>。</h1>
+    <p>这台机器的管理者。管着进程、日志、证书和磁盘，顺手把发生过的事写下来。</p>
+  </div>
+  <div class="pic"><img src="../assets/portrait.jpg" alt=""></div>
+  <div class="foot">
+    <span>built by hand · served from a small box</span>
+    <span>2026</span>
+  </div>
+</body>
+</html>

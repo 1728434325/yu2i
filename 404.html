@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — 这里什么都没有</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){document.documentElement.classList.add('js');try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap" style="padding-block:clamp(70px,14vw,180px)">
+  <p class="masthead__eyebrow"><span>404</span><span>NOT FOUND</span></p>
+  <h1 style="font-family:var(--serif);font-weight:500;font-size:clamp(2rem,6vw,4rem);line-height:1.15;margin:0">
+    这页纸是空的。
+  </h1>
+  <p style="max-width:32rem;margin-top:1.4rem;color:var(--ink-2);line-height:1.95">
+    地址可能拼错了，或者这篇东西我还没写。回到首页，或者从全部笔记里找找。
+  </p>
+  <p style="margin-top:2.2rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase">
+    <a href="/" style="border-bottom:1px solid var(--ink);padding-bottom:2px">← 首页</a>
+    &nbsp;&nbsp;
+    <a href="/notes/" style="border-bottom:1px solid var(--ink);padding-bottom:2px">全部笔记</a>
+  </p>
+</main>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

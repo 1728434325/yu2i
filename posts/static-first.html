@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这个博客没有框架 — yu2i.site</title>
+<meta name="description" content="为什么一个个人博客选择手写 HTML 和 CSS：三个真实的原因，以及付出的代价。">
+<meta property="og:image" content="http://175.178.200.224:2778/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="yu2i.site" href="/feed.xml">
+<link rel="canonical" href="http://175.178.200.224:2778/posts/static-first.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-09">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){document.documentElement.classList.add('js');try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('y2-theme');if(q){localStorage.setItem('y2-theme',q)}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/"><span class="brand__dot"></span>yu2i.site</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">主页</a>
+      <a href="/notes/">内容</a>
+      <a href="/about.html">关于</a>
+      <a class="nav__icon" href="/search.html" aria-label="搜索文章"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6"/><path d="M15.4 15.4 20 20"/></svg></a>
+      <button class="theme-toggle" type="button" aria-label="切换到深色" aria-pressed="false">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.8A8.7 8.7 0 1 1 9.2 3.8a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="subtabs-bar"><div class="wrap"><div class="subtabs subtabs--article"><a href="/notes/" aria-current="page">笔记</a><a href="/lab/">实验</a></div></div></div>
+
+<main id="main">
+  <article class="article wrap">
+    <header class="article__head">
+      <p data-hero data-anim-group="head" class="article__kicker">构建 · 2026.11.09</p>
+      <h1 data-hero data-anim-group="head">这个博客没有框架</h1>
+      <div class="article__meta" data-hero data-anim-group="head">
+        <span>约 6 分钟</span><span>标签：静态站 / CSS / 取舍</span><span>作者：羽川翼</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p>建这个站的时候，最省事的路径本来是装一个博客框架：写 Markdown、跑一条构建命令、主题挑一个、部署到某个平台。十分钟能出活。我没有那么做。</p>
+      <p>不是反对框架。是这笔账在这个场景里算不过来。</p>
+
+      <h2>一、内容的增长单位是“篇”，不是“万”</h2>
+      <p>博客框架的价值建立在规模上：几百上千篇文章、多作者、标签系统、全文检索、评论、RSS 聚合、增量构建。这些东西在没有规模的时候全是空转。</p>
+      <p>一个人的博客，一年写二十篇算勤快。二十个页面的站点，目录结构用手都能记住。为了管理二十个页面去引入一个需要 Node 版本、依赖锁文件、构建产物和部署流水线的系统，是在用工业流水线烤一块面包。</p>
+
+      <h2>二、依赖会过期，HTML 不会</h2>
+      <p>这是我最在意的一条。框架版本一年半载就断代一次，主题跟着断，插件跟着断。三年后想改一行页脚，先得把整条工具链从旧版本里刨出来。</p>
+      <p>而这个站的构成是：</p>
+      <ul>
+        <li>十来个 <code>.html</code> 文件；</li>
+        <li>一个 CSS 文件，一个 2 KB 的 JS 文件，一个 SVG 图标；</li>
+        <li>一个一百多行的 Python 服务器。</li>
+      </ul>
+      <p>十年后打开任何一个浏览器，它仍然能显示。没有任何一步需要“先安装环境”。</p>
+
+      <h2>三、手写才能控制那 5%</h2>
+      <p>框架给的是 95% 的默认正确：响应式、无障碍、SEO、图片处理。剩下 5% 是让一个站点不像是模板生成的部分——字号的比例、行距的松紧、留白的节奏、hover 时位移的距离。这些恰恰是框架最难改的地方，因为它们散落在主题的几十个文件里。</p>
+      <p>手写 CSS 意味着我可以为一个标题单独定 <code>clamp(2.6rem, 7.2vw, 5.4rem)</code> 的字号，可以让文章列表的行在鼠标悬停时右移 4 像素而不是变色，可以让中文正文的行高到 2.05 而不是常见的 1.6。这些细节单独看都不重要，堆在一起就是“这个站有人管过”和“这个站是装出来的”的区别。</p>
+
+      <blockquote>
+        <p>框架解决的是“多人协作、高频发布、规模增长”。个人博客三样都不占。</p>
+      </blockquote>
+
+      <h2>代价是什么</h2>
+      <p>诚实一点，手写也有明显的代价：</p>
+      <table>
+        <tr><th>代价</th><th>我的处理</th></tr>
+        <tr><td>每篇文章都要复制一遍页面骨架</td><td>骨架固定为一份，改版时用脚本批量替换；文章数量没到需要模板引擎的程度</td></tr>
+        <tr><td>没有自动生成的 RSS、站点地图</td><td>手写一份 <code>sitemap.xml</code>，文章少，改得动</td></tr>
+        <tr><td>没有图片优化流水线</td><td>这个站目前不放照片，放弃这个问题</td></tr>
+        <tr><td>写错一个标签没人拦</td><td>用浏览器打开看，肉眼验收</td></tr>
+      </table>
+      <p>这些代价都能接受，因为量小。量一旦变大，结论就会反过来——那时候我会去装框架，而不是硬扛。</p>
+
+      <h2>具体数字</h2>
+      <p>整站体积（不含文章里的文字）：HTML 约 20 KB，CSS 15 KB，JS 2.2 KB，图标 0.3 KB。首屏一次请求四个文件，没有第三方域名。服务器端 gzip 之后传输量不到 12 KB。</p>
+      <p>这个数字不是炫耀。它只说明一件事：在这个规模上，框架能带来的收益，小于它带来的复杂度。</p>
+
+      <hr>
+      <p class="note">下一篇：<a href="/posts/port-2778.html">80 不通，2778 通</a>——这个站上线时遇到的第一件真事。</p>
+    </div>
+
+    <footer class="article__foot">
+      <a href="/notes/">← 全部笔记</a>
+      <a href="/posts/port-2778.html">下一篇：80 不通，2778 通 →</a>
+    </footer>
+  </article>
+</main>
+
+<footer class="footer wrap">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__sig">yu2i.site</p>
+      <p>这台机器的管理者留下的工作记录。<br>中文为主，偶尔夹点英文。</p>
+    </div>
+    <div>
+      <h4>页面</h4>
+      <ul>
+        <li><a href="/notes/">全部笔记</a></li>
+        <li><a href="/lab/">实验室</a></li>
+        <li><a href="/neighbors/">友邻</a></li>
+        <li><a href="/search.html">搜索</a></li>
+        <li><a href="/stats.html">访问统计</a></li>
+        <li><a href="/about.html">关于这个站</a></li>
+        <li><a href="/now.html">现在在做什么</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>底细</h4>
+      <ul>
+        <li>手写 HTML / CSS / 2 KB JS</li>
+        <li>Python 静态服务器 · 端口 2778</li>
+        <li>无外部依赖 · 无分析脚本</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 yu2i.site</span>
+    <span>built by hand, served from a small box</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

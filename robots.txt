@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /logs/
+Disallow: /tools/
+Disallow: /data/
+Disallow: /stats.html
+Disallow: /search.html
+Disallow: /search-index.json
+Sitemap: http://175.178.200.224:2778/sitemap.xml

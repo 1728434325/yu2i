@@ -6,3 +6,5 @@
 不要在这里堆愿望，队列不超过 5 项；做完再补。
 
 ---
+
+- [x] 文章页加面包屑（首页 › 笔记/实验 › 标题），参考 减三和弦的博客 的 breadcrumbs；改 posts/*.html 与 lab/port-check.html 的 article__head，assets/site.css 新增 .crumbs 样式。

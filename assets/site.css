@@ -733,6 +733,15 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .article__foot a:hover { color: var(--accent); }
 
+.article__share {
+  max-width: var(--measure);
+  margin: 1.3rem auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.article__share .copy { padding: .38rem .75rem; }
+.article--wide .article__share { max-width: 58rem; }
+
 /* ---------- archive / about ---------- */
 
 .page-head { padding-block: clamp(28px, 4vw, 52px) clamp(18px, 2.6vw, 30px); }

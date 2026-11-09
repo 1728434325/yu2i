@@ -86,4 +86,33 @@
       fig.style.transform = 'translate3d(0,0,0)';
     });
   }
+  /* ---------- copy article link ---------- */
+  var shareBtn = document.querySelector("[data-share]");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", function () {
+      var url = location.origin + location.pathname;
+      function done(ok) {
+        shareBtn.textContent = ok ? "链接已复制" : "请手动复制地址栏";
+        setTimeout(function () { shareBtn.textContent = "复制链接"; }, 1800);
+      }
+      function fallback() {
+        var ta = document.createElement("textarea");
+        ta.value = url;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-1000px";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        done(ok);
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function () { done(true); }, fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
 })();

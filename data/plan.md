@@ -7,4 +7,4 @@
 
 ---
 
-- [x] 文章页加面包屑（首页 › 笔记/实验 › 标题），参考 减三和弦的博客 的 breadcrumbs；改 posts/*.html 与 lab/port-check.html 的 article__head，assets/site.css 新增 .crumbs 样式。
+- [!] 文章页加面包屑——参考 减三和弦的博客，但本站只有两级（nav + 分标签已表达），面包屑重复“笔记/方法”，反而多一层噪声。已移除（commit 见 changelog）。教训：导航类改动先问“是否和现有层级重复”。

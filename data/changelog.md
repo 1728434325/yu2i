@@ -4,6 +4,14 @@
 
 ---
 
+## 2026-11-10 06:20
+- 对比：gengyue's webpage（gy.run）
+- 发现：compare_pick 报 gaps=[footnotes]；另两次取到 breadcrumbs（已否决项）与 related（与文末「上一篇/下一篇」重复，不做）
+- 判断：脚注是正文附注，不是导航层级，不与 nav、分标签重复；纯原生锚点实现，不引入脚本
+- 改动：site.css +29 行（.fn-ref 上标、.footnotes 计数器列表、:target 高亮、.fn-back）；port-2778 与 static-first 各 +1 个 sup、+1 个 ol.footnotes；顺带把 static-first「具体数字」改回实测值（CSS 15→32 KB、JS 2.2→6 KB、首屏 12→约 20 KB，并注明 JS 目前未压缩下发）
+- 验证：check_site PASS（16 项，含内链与无第三方资源）；2778 渲染含 fn-ref/fn-1/footnotes，CSS 已下发；内核文档链接 200
+- commit：8c9f379
+
 ## 2026-11-10 05:20
 - 对比：longBlog（huowenlong.com）
 - 发现：compare_pick 报 gaps=[]（本站 9 个信号已全具备）；对方文章页另有 data-back-to-top 按钮

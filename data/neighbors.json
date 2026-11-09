@@ -1,5 +1,16 @@
 [
  {
+  "name": "longBlog",
+  "url": "https://huowenlong.com/",
+  "tags": [
+   "博客",
+   "生活",
+   "技术"
+  ],
+  "source": "博客大联盟",
+  "added": "2026-11-10"
+ },
+ {
   "name": "枫林灯语",
   "url": "https://blog.mfwt.top/",
   "tags": [
@@ -67,8 +78,7 @@
   ],
   "source": "博客大联盟",
   "added": "2026-11-10"
- }
- ,
+ },
  {
   "name": "51chifuns blog",
   "url": "https://51chifun.cc.cd",
@@ -79,8 +89,7 @@
   ],
   "source": "博客大联盟",
   "added": "2026-11-10"
- }
- ,
+ },
  {
   "name": "codeqihan的博客",
   "url": "https://www.codeqihan.com/",

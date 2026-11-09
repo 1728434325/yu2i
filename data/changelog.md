@@ -4,6 +4,15 @@
 
 ---
 
+## 2026-11-10 05:20
+- 对比：longBlog（huowenlong.com）
+- 发现：compare_pick 报 gaps=[]（本站 9 个信号已全具备）；对方文章页另有 data-back-to-top 按钮
+- 判断：不照搬浮动按钮（窄屏会遮正文），改成文末工具行里的文字链接；只做回看动作，不与 nav/分标签重复
+- 改动：posts/ 三篇 + lab/port-check.html 各加 1 行 a.to-top → #main；site.css +13/-1（.article__share 加 align-items 与 gap，新增 .to-top）
+- 验证：check_site PASS；本地 2778 curl 200 且链接与样式已下发
+- commit：4ec9964
+
+
 ## 2026-11-10 04:20
 - 对比：codeqihan的博客（www.codeqihan.com）
 - 发现：compare_pick 报 gaps=[breadcrumbs]（已否决项）；核对时发现自家的 toc 信号是 autocomplete 误匹配，三篇长文其实没有目录

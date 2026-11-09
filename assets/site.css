@@ -737,13 +737,24 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: var(--measure);
   margin: 1.3rem auto 0;
   display: flex;
+  align-items: center;
+  gap: .9rem;
   justify-content: flex-end;
 }
 .article__share .copy { padding: .38rem .75rem; }
+.to-top {
+  font-family: var(--mono);
+  font-size: .66rem;
+  letter-spacing: .1em;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+.to-top:hover { color: var(--ink); border-color: var(--rule); }
 .article--wide .article__share { max-width: 58rem; }
 
 /* ---------- archive / about ---------- */
-
 .page-head { padding-block: clamp(28px, 4vw, 52px) clamp(18px, 2.6vw, 30px); }
 .page-head h1 {
   font-family: var(--serif);

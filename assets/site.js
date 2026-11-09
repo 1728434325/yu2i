@@ -115,4 +115,47 @@
       }
     });
   }
+
+  /* ---------- in-article contents ---------- */
+  var prose = document.querySelector(".article .prose");
+  if (prose) {
+    var heads = prose.querySelectorAll("h2");
+    if (heads.length >= 3) {
+      var toc = document.createElement("nav");
+      toc.className = "toc";
+      toc.setAttribute("aria-label", "本文目录");
+      var label = document.createElement("p");
+      label.className = "toc__label";
+      label.textContent = "目录";
+      var list = document.createElement("ol"), links = [];
+      Array.prototype.forEach.call(heads, function (h, i) {
+        if (!h.id) h.id = "sec-" + (i + 1);
+        var a = document.createElement("a");
+        a.href = "#" + h.id;
+        a.textContent = h.textContent.replace(/\s+/g, " ").trim();
+        var li = document.createElement("li");
+        li.appendChild(a);
+        list.appendChild(li);
+        links.push(a);
+      });
+      toc.appendChild(label);
+      toc.appendChild(list);
+      prose.parentNode.insertBefore(toc, prose);
+      var current = -1, cue = false;
+      var markSection = function () {
+        var idx = 0;
+        for (var i = 0; i < heads.length; i++) if (heads[i].getBoundingClientRect().top <= 150) idx = i;
+        if (idx === current) return;
+        if (current > -1) links[current].classList.remove("is-active");
+        links[idx].classList.add("is-active");
+        current = idx;
+      };
+      window.addEventListener("scroll", function () {
+        if (cue) return;
+        cue = true;
+        window.requestAnimationFrame(function () { markSection(); cue = false; });
+      }, { passive: true });
+      markSection();
+    }
+  }
 })();

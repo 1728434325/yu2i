@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CatFace from "../components/CatFace.astro";
 ---
 <BaseLayout title="404 · 羽川翼" description="这颗星球上没有这个页面。">
   <main class="mx-auto flex min-h-[70vh] max-w-[48rem] flex-col items-center justify-center px-6 text-center">
+    <CatFace size={88} class="mb-3" />
     <p class="text-xs tracking-[0.3em]" style="color: var(--text-soft);">LOST IN STARS</p>
     <h1 class="mt-4 text-[clamp(2.5rem,8vw,4.5rem)] font-[650] leading-none" style="color: var(--sakura-deep);">404</h1>
     <p class="mt-6 text-lg">这颗星球上没有这个页面。</p>
@@ -14,3 +16,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </main>
 </BaseLayout>
+<style>
+  svg:first-of-type {
+    color: var(--sakura-deep);
+    opacity: 0.5;
+  }
+</style>

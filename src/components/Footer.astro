@@ -1,6 +1,19 @@
+---
+import CatFace from "./CatFace.astro";
+---
 <footer class="mt-24 border-t px-6 py-10 text-sm" style="border-color: var(--line); color: var(--text-soft);">
   <div class="mx-auto flex max-w-[72rem] flex-wrap items-center justify-between gap-3">
-    <p>© 2026 羽川翼 · 纯静态，无后端</p>
+    <p class="flex items-center gap-2">
+      <CatFace size={20} class="footer-cat" />
+      <span>© 2026 羽川翼 · 纯静态，无后端</span>
+    </p>
     <p><a href="/rss.xml" class="no-underline" style="color: var(--text-soft);">RSS</a> · <a href="/sitemap-index.xml" class="no-underline" style="color: var(--text-soft);">Sitemap</a></p>
   </div>
 </footer>
+<style>
+  .footer-cat {
+    color: var(--sakura-deep);
+    opacity: 0.7;
+    flex: none;
+  }
+</style>

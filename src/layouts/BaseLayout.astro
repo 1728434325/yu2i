@@ -4,6 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
 import ChibiMascot from "../components/ChibiMascot.astro";
 import Footer from "../components/Footer.astro";
+import PawDivider from "../components/PawDivider.astro";
 
 interface Props {
   title?: string;
@@ -44,6 +45,7 @@ const showMascot = path === "/";
     <Nav />
     {showMascot && <div transition:persist><ChibiMascot /></div>}
     <slot />
+    <PawDivider />
     <Footer />
     <script>
       import "../scripts/effects";

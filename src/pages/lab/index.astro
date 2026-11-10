@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="实验室 · 羽川翼" description="一些能直接用的小工具。">
+  <main data-pagefind-body class="mx-auto max-w-[72rem] px-6 py-16">
+    <h1 class="text-3xl font-[650]">实验室</h1>
+    <p class="mt-2 text-sm" style="color: var(--text-soft);">能跑的东西才放在这里。</p>
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      <article class="rounded-[var(--r-lg)] border p-6" style="border-color: var(--line); background: var(--surface-solid);">
+        <h2 class="font-semibold">端口可达性排查单</h2>
+        <p class="mt-3 text-sm" style="color: var(--text-soft);">输入域名和端口，生成一张能贴进工单的结果表。浏览器直接发起请求，不经过服务器。</p>
+        <a href="/lab/port-check/" class="mt-4 inline-block text-sm no-underline" style="color: var(--sakura-deep);">打开 →</a>
+      </article>
+    </div>
+  </main>
+</BaseLayout>

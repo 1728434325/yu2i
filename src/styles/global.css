@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* typography 插件跟随站点配色 */
+.prose {
+  --tw-prose-body: var(--text);
+  --tw-prose-headings: var(--text);
+  --tw-prose-links: var(--sakura-deep);
+  --tw-prose-bold: var(--text);
+  --tw-prose-counters: var(--text-soft);
+  --tw-prose-bullets: var(--sakura);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--text-soft);
+  --tw-prose-quote-borders: var(--sakura);
+  --tw-prose-code: var(--text);
+  --tw-prose-pre-bg: var(--bg-alt);
+  --tw-prose-pre-code: var(--text);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+}
+
+/* Tailwind 4：用 class 控制暗色，而不是只看系统 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #fbf7f2;
+  --bg-alt: #f5eef7;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #ffffff;
+  --text: #2a2733;
+  --text-soft: #5f5a6b;
+  --line: #e7dde6;
+  --sakura: #f2a0bb;
+  --sakura-deep: #b5426c;
+  --btn-primary: linear-gradient(120deg, #a63a63, #6c4fa6);
+  --btn-primary-text: #ffffff;
+  --sky: #6c9be8;
+  --violet: #9b7be0;
+  --gold: #e8b96a;
+  --focus: #b5426c;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-full: 999px;
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.dark {
+  --bg: #080b16;
+  --bg-alt: #0e1226;
+  --surface: rgba(18, 23, 42, 0.66);
+  --surface-solid: #121728;
+  --text: #e9eaf6;
+  --text-soft: #a6abc8;
+  --line: #232a46;
+  --sakura: #f7b7d0;
+  --sakura-deep: #f3a8c4;
+  --btn-primary: linear-gradient(120deg, #f2a8c6, #c6a8ff);
+  --btn-primary-text: #171022;
+  --sky: #8fb8ff;
+  --violet: #c3a6ff;
+  --gold: #f2ce8a;
+  --focus: #f3a8c4;
+}
+
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: transparent;
+  color: var(--text);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 特效层：背景画布在最底下，正文在其上 */
+.fx-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+#fx-stars,
+#fx-sakura {
+  position: absolute;
+  inset: 0;
+}
+#fx-trail {
+  z-index: 70;
+}
+#fx-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 160, 187, 0.32), transparent 68%);
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+  pointer-events: none;
+}
+#fx-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--sakura-deep), var(--violet));
+  pointer-events: none;
+}
+
+body > header,
+body > main,
+body > footer,
+body > .site-main {
+  position: relative;
+  z-index: 1;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+.fx-off .fx-layer,
+.fx-off #fx-glow,
+.fx-off #fx-progress {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .fx-layer,
+  #fx-glow,
+  #fx-trail {
+    display: none;
+  }
+}
+
+a {
+  color: var(--sakura-deep);
+  text-underline-offset: 0.2em;
+}
+
+/* 主按钮：渐变底 + 高对比文字（白/深两套） */
+.btn-primary {
+  background: var(--btn-primary);
+  color: var(--btn-primary-text);
+  border: 1px solid transparent;
+}
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Pagefind UI 跟随站点配色 */
+#search {
+  --pagefind-ui-primary: var(--sakura-deep);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--surface-solid);
+  --pagefind-ui-border: var(--line);
+  --pagefind-ui-tag: var(--bg-alt);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 14px;
+  --pagefind-ui-font: inherit;
+}

@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate, postHref, sortPosts } from "../utils/content";
+
+const posts = sortPosts(await getCollection("posts"));
+const byYear = posts.reduce<Record<number, typeof posts>>((acc, post) => {
+  const y = post.data.published.getFullYear();
+  (acc[y] ??= []).push(post);
+  return acc;
+}, {});
+const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+---
+<BaseLayout title="归档 · 羽川翼" description="按时间排列的全部文章。">
+  <main class="mx-auto max-w-[48rem] px-6 py-16">
+    <h1 class="text-3xl font-[650]">归档</h1>
+    <p class="mt-2 text-sm" style="color: var(--text-soft);">{posts.length} 篇 · {years.length} 个年份</p>
+    {years.map((year) => (
+      <section class="mt-12">
+        <h2 class="text-xl font-semibold" style="color: var(--sakura-deep);">{year}</h2>
+        <ul class="mt-4 space-y-3">
+          {byYear[year].map((post) => (
+            <li class="flex items-baseline gap-4 border-b pb-3" style="border-color: var(--line);">
+              <span class="w-16 shrink-0 text-xs tabular-nums" style="color: var(--text-soft);">{formatDate(post.data.published).slice(5)}</span>
+              <a href={postHref(post)} class="no-underline" style="color: var(--text);">{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+</BaseLayout>

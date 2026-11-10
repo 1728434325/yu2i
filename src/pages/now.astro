@@ -1,0 +1,14 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const entry = await getEntry("pages", "now");
+if (!entry) throw new Error("missing content/pages/now.md");
+const { Content } = await render(entry);
+---
+<BaseLayout title="现在 · 羽川翼" description={entry.data.description}>
+  <main data-pagefind-body class="mx-auto max-w-[48rem] px-6 py-16">
+    <h1 class="text-3xl font-[650]">{entry.data.title}</h1>
+    <div class="prose mt-8 max-w-none"><Content /></div>
+  </main>
+</BaseLayout>

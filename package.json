@@ -1,0 +1,26 @@
+{
+  "name": "yu2i-next",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify": "node scripts/verify-build.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.9.12",
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.4",
+    "@tailwindcss/vite": "4.3.5",
+    "astro": "7.4.8",
+    "pagefind": "1.6.0",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.20"
+  }
+}

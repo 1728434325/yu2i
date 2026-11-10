@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="404 · 羽川翼" description="这颗星球上没有这个页面。">
+  <main class="mx-auto flex min-h-[70vh] max-w-[48rem] flex-col items-center justify-center px-6 text-center">
+    <p class="text-xs tracking-[0.3em]" style="color: var(--text-soft);">LOST IN STARS</p>
+    <h1 class="mt-4 text-[clamp(2.5rem,8vw,4.5rem)] font-[650] leading-none" style="color: var(--sakura-deep);">404</h1>
+    <p class="mt-6 text-lg">这颗星球上没有这个页面。</p>
+    <p class="mt-2 text-sm" style="color: var(--text-soft);">可能是链接旧了，也可能是我把它搬走了。</p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3 text-sm">
+      <a href="/" class="rounded-full border px-5 py-2 no-underline" style="border-color: var(--line); color: var(--text); background: var(--surface);">回首页</a>
+      <a href="/posts/" class="rounded-full border px-5 py-2 no-underline" style="border-color: var(--line); color: var(--text); background: var(--surface);">看文章</a>
+      <a href="/archive/" class="rounded-full border px-5 py-2 no-underline" style="border-color: var(--line); color: var(--text); background: var(--surface);">去归档</a>
+    </div>
+  </main>
+</BaseLayout>

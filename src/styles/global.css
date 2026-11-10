@@ -208,3 +208,98 @@ a {
   --pagefind-ui-border-radius: 14px;
   --pagefind-ui-font: inherit;
 }
+
+/* 首页 hero 3D 画布 */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-canvas.fx-hero--off {
+  display: none;
+}
+
+/* 看板娘（静态壳，无模型） */
+.live2d {
+  position: fixed;
+  right: 24px;
+  bottom: 16px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.live2d__figure {
+  width: clamp(104px, 12vw, 168px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface-solid);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.live2d__figure:hover {
+  transform: translateY(-2px);
+}
+.live2d__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.live2d__bubble {
+  max-width: 220px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-solid);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+.live2d__bubble.is-on {
+  opacity: 1;
+  transform: none;
+}
+.live2d__close,
+.live2d__open {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.live2d__open {
+  display: none;
+}
+.live2d.is-hidden .live2d__figure,
+.live2d.is-hidden .live2d__bubble,
+.live2d.is-hidden .live2d__close {
+  display: none;
+}
+.live2d.is-hidden .live2d__open {
+  display: block;
+}
+@media (max-width: 1023px) {
+  .live2d {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live2d__bubble,
+  .live2d__figure {
+    transition: none;
+  }
+}

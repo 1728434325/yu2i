@@ -1,0 +1,48 @@
+<div id="live2d" class="live2d" transition:persist aria-hidden="false">
+  <div class="live2d__bubble" id="live2d-bubble" role="status" aria-live="polite"></div>
+  <button class="live2d__close" id="live2d-close" type="button" aria-label="隐藏看板娘">×</button>
+  <button class="live2d__open" id="live2d-open" type="button" aria-label="显示看板娘">看板娘</button>
+  <button class="live2d__figure" id="live2d-figure" type="button" aria-label="和看板娘打招呼">
+    <img src="/images/chibi.jpg" alt="" width="240" height="240" loading="lazy" />
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("live2d");
+    if (!root) return;
+    var bubble = document.getElementById("live2d-bubble");
+    var lines = [
+      "修好了，别担心。",
+      "这次也是同一个原因。",
+      "磁盘还够用，但别太放心。",
+      "记得备份，我只是随口一说。",
+      "日志我看过了，问题不在那儿。",
+    ];
+    var last = -1;
+    function say() {
+      var i = Math.floor(Math.random() * lines.length);
+      if (i === last) i = (i + 1) % lines.length;
+      last = i;
+      bubble.textContent = lines[i];
+      bubble.classList.add("is-on");
+      clearTimeout(say.t);
+      say.t = setTimeout(function () {
+        bubble.classList.remove("is-on");
+      }, 2800);
+    }
+    document.getElementById("live2d-figure").addEventListener("click", say);
+    var KEY = "yu2i-live2d-hidden";
+    function setHidden(h) {
+      root.classList.toggle("is-hidden", h);
+      try { localStorage.setItem(KEY, h ? "1" : "0"); } catch (e) {}
+    }
+    try { if (localStorage.getItem(KEY) === "1") root.classList.add("is-hidden"); } catch (e) {}
+    document.getElementById("live2d-close").addEventListener("click", function () { setHidden(true); });
+    document.getElementById("live2d-open").addEventListener("click", function () { setHidden(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setHidden(true);
+    });
+    setTimeout(say, 4500);
+  })();
+</script>

@@ -17,7 +17,8 @@ function tier(): Quality {
   return effectsConfig.quality;
 }
 
-const q: Quality = tier();
+let q: Quality = tier();
+if (new URLSearchParams(location.search).get("fx") === "off") q = "off";
 const dpr = Math.min(devicePixelRatio || 1, q === "high" ? 1.5 : 1);
 
 let stopped = false;
@@ -211,6 +212,36 @@ function startCursor() {
   }
 }
 
+/* ---------- 首页 3D（可选，动态 import） ---------- */
+function mountThree(): (() => void) | null {
+  const canvas = document.getElementById("fx-hero") as HTMLCanvasElement | null;
+  if (!canvas || !effectsConfig.three.enabled || q === "off" || coarseQuery.matches) return null;
+  const probe = document.createElement("canvas");
+  const gl = probe.getContext("webgl2") || probe.getContext("webgl");
+  if (!gl) {
+    canvas.classList.add("fx-hero--off");
+    return null;
+  }
+  let disposed = false;
+  let handle: { dispose: () => void } | null = null;
+  import("../effects/three/hero-scene")
+    .then((m) => {
+      if (disposed) return;
+      handle = m.mountHeroScene(canvas, {
+        stars: effectsConfig.three.stars,
+        planet: effectsConfig.three.planet,
+        ring: effectsConfig.three.ring,
+        maxFps: q === "high" ? 45 : 30,
+      });
+    })
+    .catch(() => canvas.classList.add("fx-hero--off"));
+  return () => {
+    disposed = true;
+    handle?.dispose();
+    handle = null;
+  };
+}
+
 /* ---------- 页面级：渐入、进度、磁吸 ---------- */
 function mountPage() {
   pageCleanup?.();
@@ -218,6 +249,8 @@ function mountPage() {
   pageRaf.clear();
 
   const cleanups: Array<() => void> = [];
+  const threeCleanup = mountThree();
+  if (threeCleanup) cleanups.push(threeCleanup);
 
   if (effectsConfig.scroll.reveal && q !== "off") {
     const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");

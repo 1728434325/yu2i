@@ -130,8 +130,10 @@
     width: clamp(150px, 42vw, 200px);
   }
   .live2d__bubble {
-    max-width: 190px;
+    width: 160px;
+    max-width: 160px;
     font-size: 12px;
+    bottom: 16px;
   }
 }
 

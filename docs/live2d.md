@@ -167,7 +167,15 @@ modelPath: "/live2d/models/<name>/<name>.model3.json",
 - 能力：眨眼、视线跟随鼠标、待机台词、点击摸摸头、气泡、折叠/展开（`localStorage` 记忆）
 - 透明：PNG 自带 alpha；组件内 Canvas/图片层不填背景，角色以外真正透明
 - 点击穿透：宿主 `pointer-events: none`，只有按钮和命中区 `auto`
-- 桌面端靠右下（`--ziling-left: calc(100vw - 280px)`），避免气泡压正文；移动端保持左下，宽 144
+- 只在首页与 404 显示：阅读页（文章/关于/归档/搜索）不挂载，避免气泡遮正文
+- 桌面端靠右下（`--ziling-left: calc(100vw - 280px)`），移动端保持左下，宽 144
 - 来源：用户提供的 `moudle.zip`，本地资源，无外部依赖；未附带独立许可证文件，按用户自有素材处理
 
 切换回 Live2D 时，以上三条命令即可，不需要改动页面其它部分。
+
+
+## 11. 关于页头像
+
+- 资源：`public/images/about-avatar.gif`（原 GIF 358×356 / 12 帧 / 820 KB → 优化为 240×240 / 12 帧 / 278 KB）
+- 用法：`src/pages/about.astro` 顶部，`rounded-full` 裁圆，`object-fit: cover`
+- 旧的无用 `avatar.jpg` 已移除

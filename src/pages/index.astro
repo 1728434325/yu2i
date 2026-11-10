@@ -40,12 +40,19 @@ const recent = posts.slice(0, 5);
             <a href="/search/" data-magnetic class="btn-ghost rounded-full px-6 py-2.5 text-sm no-underline">搜索</a>
           </div>
         </div>
-        <div class="relative mx-auto w-full min-w-0 max-w-[26rem]">
+        <div class="relative mx-auto w-full min-w-0 max-w-[30rem]">
           <div class="absolute -inset-6 rounded-[2rem] blur-2xl" style="background: color-mix(in srgb, var(--sakura) 25%, transparent);" aria-hidden="true"></div>
-          <figure class="relative overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line); background: var(--surface);">
-            <img src="/images/portrait.jpg" alt="羽川翼的半身像" width="800" height="1000" class="aspect-[4/5] w-full max-w-full object-cover" loading="eager" />
-          </figure>
-          <img src="/images/chibi.jpg" alt="" width="120" height="120" class="absolute -bottom-6 -left-6 h-24 w-24 rotate-[-6deg] rounded-2xl border object-cover shadow-lg" style="border-color: var(--line);" aria-hidden="true" />
+          <div class="relative grid grid-cols-[1.3fr_1fr] gap-3">
+            <figure class="relative m-0 row-span-2 h-full overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
+              <img src="/images/gallery/poster.webp" alt="羽川翼，红色月亮与几何色块" width="900" height="1350" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
+            </figure>
+            <figure class="relative m-0 overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
+              <img src="/images/gallery/wisteria.webp" alt="紫藤花下的羽川翼与白猫" width="760" height="1140" class="aspect-square w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="relative m-0 overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
+              <img src="/images/gallery/watercolor.webp" alt="水彩风的羽川翼与黑猫" width="760" height="1140" class="aspect-square w-full object-cover" loading="lazy" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>

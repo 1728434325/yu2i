@@ -90,7 +90,31 @@
 }
 @media (max-width: 1023px) {
   .chibi {
-    display: none;
+    left: auto;
+    right: 10px;
+    bottom: max(6px, env(safe-area-inset-bottom, 0px));
+  }
+  .chibi__figure {
+    width: 92px;
+  }
+  .chibi__bubble {
+    left: auto;
+    right: 0;
+    bottom: calc(100% + 6px);
+    width: 168px;
+    max-width: 168px;
+    font-size: 12px;
+    border-radius: 14px 14px 14px 4px;
+  }
+  .chibi__close {
+    top: -10px;
+    right: -10px;
+    padding: 8px 10px;
+  }
+  .chibi.is-hidden .chibi__open {
+    left: auto;
+    right: 10px;
+    bottom: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

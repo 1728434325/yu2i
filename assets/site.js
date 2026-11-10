@@ -116,6 +116,7 @@
     });
   }
 
+
   /* ---------- in-article contents ---------- */
   var prose = document.querySelector(".article .prose");
   if (prose) {
@@ -158,4 +159,14 @@
       markSection();
     }
   }
+  /* ---------- reading time: measured from the body, not hand-typed ---------- */
+  var rtSlot = prose && document.querySelector(".article__meta [data-readtime]");
+  if (rtSlot) {
+    var rtText = prose.textContent || "";
+    var rtCjk = (rtText.match(/[\u4e00-\u9fff]/g) || []).length;
+    var rtWords = (rtText.match(/[A-Za-z]+/g) || []).length;
+    var rtMin = Math.max(1, Math.round(rtCjk / 300 + rtWords / 180));
+    rtSlot.textContent = "\u7ea6 " + rtMin + " \u5206\u949f";
+  }
+
 })();

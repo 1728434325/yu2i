@@ -1,7 +1,8 @@
 # Live2D 看板娘：配置、替换与限制
 
-> 当前状态：**代码与组件已就绪，仓库内没有 Live2D 模型**。`modelPath` 为空时走静态立绘回退（`/images/chibi.jpg`），不创建 WebGL 上下文、不加载 Pixi。
-> 这不是“用 PNG 冒充 Live2D”——模型是单独的一层资源，需要你自己导入并确认授权。
+> 当前状态：已接入 **Live2D 官方示例模型 Haru**（`public/live2d/models/Haru/`），Cubism Core 5.1.0 本地托管。
+> 模型来源：`Live2D/CubismWebSamples`（官方仓库）。依据 Live2D《无偿提供素材使用授权协议》与《示例数据利用条件》，一般用户/年营收 <1000 万日元的实体可商用或非商用使用，需保留著作权标示；角色设计不得修改。本站已在关于页标注。
+> `modelPath` 置空时自动回到静态立绘，不创建 WebGL 上下文、不加载 Pixi。
 
 ---
 
@@ -127,15 +128,16 @@ modelPath: "/live2d/models/<name>/<name>.model3.json",
 
 ## 8. 已验证 / 未验证
 
-**已验证（CDP 实测，桌面 1440、无模型配置）**
+**已验证（CDP + 服务端日志）**
 
 - `data-mode=fallback`，Canvas `display:none`、背景 `rgba(0,0,0,0)`、`pointer-events:none`
 - 点击命中区弹出气泡台词；切到 `/posts/` 后 `#live2d` 仍只有 1 个，未重复创建
 - 隐藏后 `localStorage` 写入 `1`
 - 控制台无 error；无模型时 `pixi` 零请求
 - 故意配置不存在的模型路径：加载失败 → 回退，页面无异常，无 console error
+- 接入 Haru 后：Core 5.1.0 初始化完成、moc3/两张纹理/idle 与 m15 动作全部 200、无回退告警
 
-**未验证（因为仓库里没有模型）**
+**未完成视觉验收（无头浏览器软件渲染会崩，需真实浏览器确认）**
 
 - 真实模型的透明边缘、动作、表情、视线跟随
 - 模型在移动端的性能与裁切

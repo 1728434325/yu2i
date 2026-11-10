@@ -80,7 +80,7 @@ export class Live2DController {
       this.cleanups.push(() => document.removeEventListener("visibilitychange", onHidden));
     } catch (err) {
       // 模型加载失败不影响博客：保留静态回退并把错误留在控制台
-      console.warn("[live2d] model load failed, fallback to static:", err);
+      console.warn("[live2d] model load failed, fallback to static:", (err as Error)?.stack ?? err);
       this.el.root.dataset.mode = "fallback";
     }
   }

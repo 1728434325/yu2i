@@ -43,7 +43,11 @@ export async function createRenderer(
   await ensureCubismCore(cfg.corePath);
 
   const PIXI = await import("pixi.js");
+  // CSP 下 Pixi 6 的 shader 生成会用 new Function；用官方 shim 换成不依赖 eval 的实现
+  const { install } = await import("@pixi/unsafe-eval");
+  install(PIXI as unknown as Parameters<typeof install>[0]);
   const { Live2DModel } = await import("pixi-live2d-display/cubism4");
+  Live2DModel.registerTicker(PIXI.Ticker);
 
   const height = Math.round(width * 1.35);
   canvas.width = 0; // 让 PIXI 自己按 resolution 设置
@@ -76,7 +80,6 @@ export async function createRenderer(
     const s = fit * lastScale;
     model.scale.set(s);
     model.position.set(cfg.offsetX, h - cfg.offsetY);
-    app.stage.updateTransform?.();
   };
   layout();
 

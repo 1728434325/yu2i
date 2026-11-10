@@ -23,7 +23,7 @@ export interface Live2DConfig {
 export const live2dConfig: Live2DConfig = {
   enabled: true,
   // 放模型时改成 "/live2d/models/hiyori/hiyori.model3.json"
-  modelPath: "",
+  modelPath: "/live2d/models/Haru/Haru.model3.json",
   corePath: "/live2d/core/live2dcubismcore.min.js",
   position: "bottom-left",
   desktopScale: 1,

@@ -1,5 +1,11 @@
 # ARCHITECTURE.md — 全站重设计技术架构
 
+> **2026-11-10 决策变更：路线改为 C（自建 Astro 前端，选择性复用 Fuwari 能力）。**
+> 实际落地栈：Astro **7.4.8** + Tailwind **4.3.5**（`@tailwindcss/vite`）+ **ClientRouter** + Pagefind 1.6 + `@astrojs/sitemap` 3.7 + `@astrojs/rss` 4.0。
+> 不再使用 Swup、OverlayScrollbars、Fuwari 的 Layout/组件；Fuwari 仅作为内容模型与插件思路的参考（MIT）。
+> 理由：全站视觉重写本来就要替换 Layout/页面/导航，Fuwari 的 Swup 与 Astro 5 锁定反而成为负担；C 让 Astro 7、Tailwind 4、ClientRouter 原生转场、Content Layer 全部可用。
+> 以下 B 路线章节保留作为对比记录，实施以本节为准。
+
 > 调研日期 2026-11-10。所有版本、星标、许可证均为当日实测（GitHub API / npm / 本地 clone / 线上站点实测）。
 > 本文件只描述架构，不含代码改动。开发需另行批准。
 

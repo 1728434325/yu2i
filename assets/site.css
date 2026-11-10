@@ -1086,11 +1086,11 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---------- in-article contents ---------- */
-.toc { max-width: var(--measure); margin: 1.5rem auto 0; margin-left: calc(50% - var(--measure) / 2 - 1.1rem); padding-left: 1rem; border-left: 2px solid var(--rule); }
+.toc { max-width: var(--measure); margin: 1.5rem auto 0; padding-left: 1rem; transform: translateX(-1.1rem); border-left: 2px solid var(--rule); }
 .toc__label { margin: 0 0 .45rem; font-family: var(--mono); font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 .toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; display: grid; gap: .2rem; font-size: .9rem; line-height: 1.6; }
 .toc li { counter-increment: toc; }
 .toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: .66rem; color: var(--muted); margin-right: .55rem; }
 .toc a { color: var(--ink-2); text-decoration: none; }
 .toc a:hover, .toc a.is-active { color: var(--accent); }
-@media (max-width: 640px) { .toc { margin-left: 0; } .toc li::before { display: none; } }
+@media (max-width: 640px) { .toc { transform: none; } .toc li::before { display: none; } }

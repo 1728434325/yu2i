@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-11-10 08:20
+- 对比：李想博客（lixiang.blog）；另两次 compare_pick 抽到 刘航宇博客（ee.ac.cn，gaps 均为已否决项）与 大大的小蜗牛（eallion.com，breadcrumbs 已否决）
+- 发现：对方文章页有 reading-time；核对本站，meta 里的「约 N 分钟」是手写常量，而上一轮刚改过 static-first 正文，数字已不跟正文走（三篇实测：汉字 704 / 940 / 1003，英文词 124 / 44 / 12）
+- 判断：这不是新增导航层级，只是把同一处数字换成可验算的派生值；按 300 字/分钟（中文长文常用）+ 180 词/分钟，三篇都是「约 3 分钟」，原值 5/6/7 偏高
+- 改动：assets/site.js +11 行（取 .prose 的 textContent 计汉字与英文词，覆盖 [data-readtime]）；posts/ 三篇时长 span 加 data-readtime，静态兜底值同步为同规则算出的 3 分钟
+- 验证：node --check PASS；node 独立复算三篇均 3 分钟、与兜底一致；check_site 17 项 PASS；/posts/ 三篇 200
+- commit：31e7edf
+
+---
+
 ## 2026-11-10 07:20
 - 对比：Dejavu's Blog（blog.dejavu.moe）、华立博客（renhuali.cn）、Est's Blog（blog.est.im）
 - 发现：三轮 compare_pick 的 gaps 分别为 breadcrumbs、breadcrumbs、related+series，均已否决（面包屑与 nav/分标签重复；related 与文末「上一篇/下一篇」重复；series 要等真有同主题成组文章）

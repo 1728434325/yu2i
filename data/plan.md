@@ -13,3 +13,4 @@
 - [x] 文章页文末「回到顶部」——参考 longBlog（huowenlong.com）文章页的 data-back-to-top。本站不放浮动按钮（窄屏会挡正文），放在 .article__share 工具行、复制链接左侧：`↑ 回到顶部` 指向 #main，复用已有 smooth scroll（reduced-motion 下自动关闭）。改 posts/ 三篇、lab/port-check.html、assets/site.css。
 - [x] 文章页脚注：正文行内 sup.fn-ref 编号 + 文末 ol.footnotes 注释（原生锚点、无脚本；:target 高亮落点），参考 gengyue's webpage 的 footnotes。不改导航层级。先用于 port-2778 的内核 sysctl 说明、static-first 的体积实测，并把该段漂移的数字改回实测值。改 posts/ 两篇 + assets/site.css。
 - [!] 文章「系列/合集」索引——compare_pick 报 series 缺口（Est's Blog 有系列页）。本站只有 3 篇文章、主题各不相同，硬加系列 meta 等于给不存在的东西造目录，属于为对比而加噪声。等真的写到成组的文章（≥3 篇同主题）再说。
+- [x] 阅读时长按正文实测重算——参考 李想博客（lixiang.blog）文章页的 reading time。本站 meta 里的「约 N 分钟」是手写常量，正文一改就漂（上一轮刚改过 static-first 正文）。做法：三篇文章的时长 span 加 `data-readtime`，site.js 用正文汉字 300 字/分钟 + 英文 180 词/分钟算「约 N 分钟」覆盖；无 JS 时保留同规则算出的静态值。改 assets/site.js + posts/ 三篇，不新增层级、不重复分类词。commit 31e7edf。

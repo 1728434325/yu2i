@@ -1,0 +1,36 @@
+---
+/**
+ * 紫铃看板娘（纯 JS Web Component，无 Live2D 依赖）。
+ * 来源：用户提供的 moudle.zip；本地资源、无网络请求。
+ * 后续换成 Live2D 时，替换本组件即可，接口保持在 BaseLayout 一处。
+ */
+interface Props {
+  name?: string;
+  size?: number;
+  mobileSize?: number;
+  motion?: boolean;
+  gaze?: boolean;
+  idleTalk?: boolean;
+}
+
+const {
+  name = "紫铃",
+  size = 240,
+  mobileSize = 144,
+  motion = true,
+  gaze = true,
+  idleTalk = true,
+} = Astro.props;
+const assets = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/ziling/`;
+---
+<ziling-mascot
+  name={name}
+  size={size}
+  mobile-size={mobileSize}
+  motion={motion ? "on" : "off"}
+  gaze={gaze ? "on" : "off"}
+  idle-talk={idleTalk ? "on" : "off"}
+  asset-base={assets}
+  data-pagefind-ignore
+></ziling-mascot>
+<script is:inline src={`${assets}ziling.js`}></script>

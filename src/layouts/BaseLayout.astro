@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
-import Live2DWidget from "../components/Live2DWidget.astro";
+import ZilingMascot from "../components/ZilingMascot.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -38,7 +38,7 @@ const { title = "羽川翼 · yu2i", description = "一个人与一台服务器�
     <canvas id="fx-trail" class="fx-layer" transition:persist aria-hidden="true"></canvas>
     <div id="fx-progress" aria-hidden="true"></div>
     <Nav />
-    <Live2DWidget />
+    <div transition:persist class="ziling-host"><ZilingMascot /></div>
     <slot />
     <Footer />
     <script>

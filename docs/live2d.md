@@ -1,6 +1,10 @@
 # Live2D 看板娘：配置、替换与限制
 
-> 当前状态：已接入 **Live2D 官方示例模型 Haru**（`public/live2d/models/Haru/`），Cubism Core 5.1.0 本地托管。
+> 当前状态：**页面使用紫铃（纯 JS Web Component，用户提供的 moudle.zip）**；Live2D 管线（Haru 模型 + Pixi + Cubism Core）已完整实现但**暂停**，资源移到 `vendor/live2d/`，等换成正式模型时再切回。
+> 切换方法：把 `vendor/live2d/*` 移回 `public/live2d/`，在 `BaseLayout.astro` 把 `<ZilingMascot />` 换回 `<Live2DWidget />`，并把 `src/config/live2d.ts` 的 `modelPath` 指向模型。
+> 紫铃为纯 JS、本地 PNG、无网络请求；Live2D 部分仍保留全部代码与文档，后续切换不需要重写。
+
+> 原始记录（Live2D 接入）：已接入 **Live2D 官方示例模型 Haru**（`public/live2d/models/Haru/`），Cubism Core 5.1.0 本地托管。
 > 模型来源：`Live2D/CubismWebSamples`（官方仓库）。依据 Live2D《无偿提供素材使用授权协议》与《示例数据利用条件》，一般用户/年营收 <1000 万日元的实体可商用或非商用使用，需保留著作权标示；角色设计不得修改。本站已在关于页标注。
 > `modelPath` 置空时自动回到静态立绘，不创建 WebGL 上下文、不加载 Pixi。
 
@@ -152,3 +156,18 @@ modelPath: "/live2d/models/<name>/<name>.model3.json",
 3. 矩形命中区无法做到“只点角色像素才响应”。
 4. 移动端默认关闭模型，只保留静态回退。
 5. 视线跟随调用 `model.focus()`，不同模型/版本的可用性不一致，失败时静默降级。
+
+
+---
+
+## 10. 紫铃（当前使用的临时看板娘）
+
+- 文件：`public/ziling/ziling.js` + `public/ziling/character-base.png`（1024×1536，带 alpha）
+- 组件：`src/components/ZilingMascot.astro`，自定义元素 `<ziling-mascot>`，`transition:persist` 跨页常驻
+- 能力：眨眼、视线跟随鼠标、待机台词、点击摸摸头、气泡、折叠/展开（`localStorage` 记忆）
+- 透明：PNG 自带 alpha；组件内 Canvas/图片层不填背景，角色以外真正透明
+- 点击穿透：宿主 `pointer-events: none`，只有按钮和命中区 `auto`
+- 桌面端靠右下（`--ziling-left: calc(100vw - 280px)`），避免气泡压正文；移动端保持左下，宽 144
+- 来源：用户提供的 `moudle.zip`，本地资源，无外部依赖；未附带独立许可证文件，按用户自有素材处理
+
+切换回 Live2D 时，以上三条命令即可，不需要改动页面其它部分。

@@ -1,0 +1,99 @@
+/* Q 版看板娘：贴左下，透明 PNG/WebP，除按钮外不拦截点击 */
+.chibi {
+  position: fixed;
+  left: 16px;
+  bottom: 8px;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  user-select: none;
+}
+.chibi__figure {
+  width: clamp(130px, 14vw, 190px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.chibi__figure:hover {
+  transform: translateY(-2px);
+}
+.chibi__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.16));
+}
+.chibi__bubble {
+  position: absolute;
+  left: calc(100% - 6px);
+  bottom: 42px;
+  width: 210px;
+  max-width: 210px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 4px 14px;
+  background: color-mix(in srgb, var(--surface-solid) 94%, transparent);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+.chibi__bubble.is-on {
+  opacity: 1;
+  transform: none;
+}
+.chibi__close,
+.chibi__open {
+  pointer-events: auto;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 9px;
+  cursor: pointer;
+}
+.chibi__close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+}
+.chibi__open {
+  display: none;
+}
+.chibi.is-hidden .chibi__figure,
+.chibi.is-hidden .chibi__bubble,
+.chibi.is-hidden .chibi__close {
+  display: none;
+}
+.chibi.is-hidden .chibi__open {
+  display: block;
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+}
+.chibi.is-talking .chibi__figure {
+  animation: chibi-bob 0.45s var(--ease-out) 2;
+}
+@keyframes chibi-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@media (max-width: 1023px) {
+  .chibi {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chibi__bubble { transition: none; }
+  .chibi.is-talking .chibi__figure { animation: none; }
+}

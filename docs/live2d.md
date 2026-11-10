@@ -179,3 +179,12 @@ modelPath: "/live2d/models/<name>/<name>.model3.json",
 - 资源：`public/images/about-avatar.gif`（原 GIF 358×356 / 12 帧 / 820 KB → 优化为 240×240 / 12 帧 / 278 KB）
 - 用法：`src/pages/about.astro` 顶部，`rounded-full` 裁圆，`object-fit: cover`
 - 旧的无用 `avatar.jpg` 已移除
+
+
+## 12. Q 版形象（当前使用）
+
+- 资源：`public/images/chibi-mascot.webp`（512×551，带 alpha，41 KB）；源图由用户提供
+- 处理：去掉原图烘焙的灰白棋盘格（按低饱和高亮背景做全局蒙版 + 中值/收边/羽化），深浅两套主题下都无白边
+- 组件：`src/components/ChibiMascot.astro` + `src/styles/chibi.css`
+- 行为：点击说台词、气泡淡入淡出、隐藏状态存 `localStorage`、`Esc` 关闭、`prefers-reduced-motion` 关闭弹跳
+- 位置：桌面贴左下，只在首页出现；移动端隐藏（避免遮挡 Hero 图集）

@@ -221,17 +221,3 @@ a {
 .hero-canvas.fx-hero--off {
   display: none;
 }
-
-/* 紫铃：桌面端贴左下并下移，避开正文按钮与右侧图集；移动端隐藏，避免遮挡图集 */
-@media (min-width: 1024px) {
-  ziling-mascot {
-    --ziling-left: 16px;
-    --ziling-bottom: -48px;
-    --ziling-width: 220px;
-  }
-}
-@media (max-width: 1023px) {
-  .ziling-host {
-    display: none;
-  }
-}

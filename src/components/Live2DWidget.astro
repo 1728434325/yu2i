@@ -1,0 +1,50 @@
+---
+import "../styles/live2d.css";
+import { live2dConfig } from "../config/live2d";
+const mobileAttr = live2dConfig.mobileEnabled ? "on" : "off";
+---
+<div id="live2d" class="live2d" data-mode="pending" data-position="bottom-left" data-mobile={mobileAttr} transition:persist>
+  <div class="live2d__bubble" id="live2d-bubble" role="status" aria-live="polite" aria-hidden="true"></div>
+  <div class="live2d__stage">
+    <canvas id="live2d-canvas" aria-hidden="true"></canvas>
+    <img id="live2d-fallback" class="live2d__fallback" src="/images/chibi.jpg" alt="" width="240" height="240" loading="lazy" aria-hidden="true" />
+    <button id="live2d-hit" class="live2d__hit" type="button" aria-label="和看板娘互动"></button>
+  </div>
+  <div class="live2d__ui">
+    <button id="live2d-close" class="live2d__btn" type="button" aria-label="隐藏看板娘">×</button>
+    <button id="live2d-open" class="live2d__btn live2d__open" type="button" aria-label="显示看板娘">看板娘</button>
+  </div>
+</div>
+
+<script>
+  import { live2dConfig } from "../config/live2d";
+  import { mountLive2D, getLive2DController } from "../live2d/controller";
+
+  function boot() {
+    const root = document.getElementById("live2d") as HTMLElement | null;
+    if (!root) return;
+    const canvas = document.getElementById("live2d-canvas") as HTMLCanvasElement;
+    const hit = document.getElementById("live2d-hit") as HTMLElement;
+    const bubble = document.getElementById("live2d-bubble") as HTMLElement;
+
+    try {
+      if (localStorage.getItem("yu2i-live2d-hidden") === "1") root.classList.add("is-hidden");
+    } catch {}
+
+    const controller = mountLive2D(live2dConfig, { root, canvas, hit, bubble });
+
+    document.getElementById("live2d-close")?.addEventListener("click", () => controller?.hide());
+    document.getElementById("live2d-open")?.addEventListener("click", () => controller?.show());
+    document.addEventListener("astro:page-load", () => {
+      // 页面内容换了，控制器与 Canvas 不动（persist）
+      getLive2DController();
+    });
+    addEventListener("pagehide", () => controller?.destroy(), { once: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
+  } else {
+    boot();
+  }
+</script>

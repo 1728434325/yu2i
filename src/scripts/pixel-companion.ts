@@ -34,6 +34,7 @@ function mountCompanion() {
   let hovered = false;
   let toolsTimer = 0;
   let suppressClickUntil = 0;
+  let pageLoaded = document.readyState === "complete";
   let drag: { id: number; start: Point; origin: Point; moved: boolean } | undefined;
   let bounds = { minX: 8, minY: 8, maxX: 100, maxY: 100 };
   const form = (): Form => document.documentElement.classList.contains("dark") ? "dark" : "light";
@@ -73,6 +74,7 @@ function mountCompanion() {
   const render = () => {
     const selected = form();
     const sheet = sheets[selected];
+    root.hidden = !pageLoaded || !sheet.complete || sheet.naturalWidth === 0;
     const action = drag ? "jump" : state.action;
     const row = action === "walk" ? walkRows[state.facing] : rows[action];
     const blink = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 0];
@@ -167,7 +169,7 @@ function mountCompanion() {
     state.target = { x, y };
     faceTarget(state.target);
   };
-  const canPlay = () => !signal.aborted && !state.paused && !state.hidden && !document.hidden && !drag && !hovered;
+  const canPlay = () => !root.hidden && !signal.aborted && !state.paused && !state.hidden && !document.hidden && !drag && !hovered;
   const tick = (now: number) => {
     frameRequest = 0;
     if (!canPlay()) return;
@@ -340,6 +342,7 @@ function mountCompanion() {
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
   document.addEventListener("yu2i:theme-change", themeChanged, { signal });
   document.addEventListener("visibilitychange", () => { hovered = false; startLoop(); }, { signal });
+  if (!pageLoaded) addEventListener("load", () => { pageLoaded = true; startLoop(); }, { once: true, signal });
   addEventListener("resize", resize, { signal });
   visualViewport?.addEventListener("resize", resize, { signal });
   addEventListener("blur", () => {
@@ -351,7 +354,7 @@ function mountCompanion() {
     hovered = false; updateControls(); startLoop();
   }, { signal });
   for (const [selected, sheet] of Object.entries(sheets)) {
-    sheet.addEventListener("load", () => { lastSprite = ""; render(); }, { signal });
+    sheet.addEventListener("load", () => { lastSprite = ""; startLoop(); }, { signal });
     sheet.src = `/images/hanekawa/pixel-${selected === "light" ? "day" : "night"}-roaming.png`;
   }
   cleanup = () => {

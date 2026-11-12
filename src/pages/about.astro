@@ -3,7 +3,6 @@ import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AboutAvatar from "../components/AboutAvatar.astro";
 import PixelControls from "../components/PixelControls.astro";
-import Wardrobe from "../components/Wardrobe.astro";
 
 const entry = await getEntry("pages", "about");
 if (!entry) throw new Error("missing content/pages/about.md");
@@ -22,6 +21,5 @@ const { Content } = await render(entry);
     <div class="prose mt-8 max-w-none">
       <Content />
     </div>
-    <Wardrobe />
   </main>
 </BaseLayout>

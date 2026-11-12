@@ -1,0 +1,33 @@
+.hero-title-line { display: flex; align-items: flex-start; gap: 10px; width: fit-content; max-width: 100%; }
+.hero-reaction-wrap { position: relative; flex: 0 0 74px; width: 74px; margin-top: 4px; line-height: 1; }
+.hero-reaction { position: relative; display: grid; width: 74px; height: 80px; padding: 0; border: 0; border-radius: 4px; background: transparent; cursor: pointer; touch-action: manipulation; }
+.hero-reaction-poster, .hero-reaction-canvas { grid-area: 1 / 1; display: block; width: 100%; height: 100%; object-fit: contain; }
+.hero-reaction-canvas { opacity: 0; }
+.hero-reaction-poster { transition: transform 160ms ease-out; }
+.hero-reaction:hover .hero-reaction-poster { transform: translateY(-2px); }
+.hero-reaction[data-playing="true"] .hero-reaction-poster { opacity: 0; }
+.hero-reaction[data-playing="true"] .hero-reaction-canvas { opacity: 1; }
+.hero-reaction-play { position: absolute; right: 0; bottom: 0; width: 17px; height: 17px; padding: 3px; border-radius: 50%; color: var(--accent); background: var(--bg); fill: currentColor; }
+.hero-reaction[data-playing="true"] .hero-reaction-play { opacity: 0; }
+.hero-reaction-feedback { position: absolute; top: calc(100% + 4px); right: 0; width: max-content; max-width: 230px; color: var(--accent); font-size: 11px; line-height: 1.6; }
+.click-paws { position: fixed; inset: 0; z-index: 999; overflow: hidden; pointer-events: none; contain: layout paint; }
+.click-paw { position: absolute; display: block; width: 38px; height: 40px; margin: -20px 0 0 -19px; color: var(--accent); opacity: 0; pointer-events: none; }
+.click-paw svg { display: block; width: 100%; height: 100%; fill: currentColor; }
+@media (max-width: 1023px) {
+  .hero-reaction-wrap { flex-basis: 66px; width: 66px; margin-top: 0; }
+  .hero-reaction { width: 66px; height: 72px; }
+}
+@media (max-width: 639px) {
+  .hero-title-line { gap: 8px; }
+  .hero-reaction-wrap { flex-basis: 62px; width: 62px; margin-top: 1px; }
+  .hero-reaction { width: 62px; height: 66px; }
+  .hero-reaction-play { width: 15px; height: 15px; }
+}
+@media (max-width: 359px) {
+  .hero-reaction-wrap { flex-basis: 53px; width: 53px; }
+  .hero-reaction { width: 53px; height: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-reaction-poster { transition: none; }
+  .hero-reaction:hover .hero-reaction-poster { transform: none; }
+}

@@ -1,0 +1,107 @@
+{
+  "mode": "built-in image_gen",
+  "sourceDirectory": "tmp (the folder referred to as tem)",
+  "originalsPreserved": true,
+  "prompts": [
+    {
+      "key": "gift-body-day",
+      "input": "D:/yu2I/tmp/ChatGPT 圖片 2026年11月11日 下午02_43_01-4.png",
+      "prompt": "Use case: background-extraction. Edit target: supplied six full-body Hanekawa Tsubasa outfits atlas. Remove only the fuzzy brown/gray/black backgrounds and diffuse halos between and around the six cutout characters. Make every empty area genuinely fully transparent alpha=0, with opaque character interiors and clean anti-aliased silhouette edges. Keep the original artwork, faces, hairstyles, outfits, accessories, expressions, scale and exact placement of all six characters. DO NOT redesign or redraw them or change expressions. Preserve the original landscape canvas and precise 3 COLUMNS by 2 ROWS layout, six equal 512x512 cells, same arrangement, every subject inside its current cell. Keep outlines and highlights, including dark hair and white hair. No shadow under cutouts, no backdrop, checkerboard, vignette, matte noise or red outline. No text or watermark. Production transparent PNG sticker atlas to be cropped into the six original stickers. This is only transparent-background cleanup of provided artwork, not new characters.",
+      "output": "design/variety/gift-body-day.png"
+    },
+    {
+      "key": "gift-body-night",
+      "input": "D:/yu2I/tmp/ChatGPT 圖片 2026年11月11日 下午02_42_59-3.png",
+      "prompt": "Use case: background-extraction. Edit target: supplied six white-haired cat-ear Hanekawa full-body outfits atlas. Remove only the fuzzy brown/gray/black backgrounds and diffuse halos between and around the six cutout characters. Make every empty area genuinely fully transparent alpha=0, with opaque character interiors and clean anti-aliased silhouette edges. Keep the original artwork, faces, hairstyles, outfits, accessories, expressions, scale and exact placement of all six characters. DO NOT redesign or redraw them or change expressions. Preserve the original landscape canvas and precise 3 COLUMNS by 2 ROWS layout, six equal 512x512 cells, same arrangement, every subject inside its current cell. Keep outlines and highlights, including dark hair and white hair. No shadow under cutouts, no backdrop, checkerboard, vignette, matte noise or red outline. No text or watermark. Production transparent PNG sticker atlas to be cropped into the six original stickers. This is only transparent-background cleanup of provided artwork, not new characters.",
+      "output": "design/variety/gift-body-night.png"
+    },
+    {
+      "key": "gift-head-day",
+      "input": "D:/yu2I/tmp/ChatGPT 圖片 2026年11月11日 下午02_43_09-6.png",
+      "prompt": "Use case: background-extraction. Edit target: supplied six expressive glasses-wearing Hanekawa head portraits atlas. Remove only the fuzzy brown/gray/black backgrounds and diffuse halos between and around the six cutout characters. Make every empty area genuinely fully transparent alpha=0, with opaque character interiors and clean anti-aliased silhouette edges. Keep the original artwork, faces, hairstyles, outfits, accessories, expressions, scale and exact placement of all six characters. DO NOT redesign or redraw them or change expressions. Preserve the original landscape canvas and precise 3 COLUMNS by 2 ROWS layout, six equal 512x512 cells, same arrangement, every subject inside its current cell. Keep outlines and highlights, including dark hair and white hair. No shadow under cutouts, no backdrop, checkerboard, vignette, matte noise or red outline. No text or watermark. Production transparent PNG sticker atlas to be cropped into the six original stickers. This is only transparent-background cleanup of provided artwork, not new characters.",
+      "output": "design/variety/gift-head-day.png"
+    },
+    {
+      "key": "gift-head-night",
+      "input": "D:/yu2I/tmp/ChatGPT 圖片 2026年11月11日 下午02_43_07-5.png",
+      "prompt": "Use case: background-extraction. Edit target: supplied six expressive white-haired cat-ear Hanekawa head portraits atlas. Remove only the fuzzy brown/gray/black backgrounds and diffuse halos between and around the six cutout characters. Make every empty area genuinely fully transparent alpha=0, with opaque character interiors and clean anti-aliased silhouette edges. Keep the original artwork, faces, hairstyles, outfits, accessories, expressions, scale and exact placement of all six characters. DO NOT redesign or redraw them or change expressions. Preserve the original landscape canvas and precise 3 COLUMNS by 2 ROWS layout, six equal 512x512 cells, same arrangement, every subject inside its current cell. Keep outlines and highlights, including dark hair and white hair. No shadow under cutouts, no backdrop, checkerboard, vignette, matte noise or red outline. No text or watermark. Production transparent PNG sticker atlas to be cropped into the six original stickers. This is only transparent-background cleanup of provided artwork, not new characters.",
+      "output": "design/variety/gift-head-night.png"
+    },
+    {
+      "key": "cats-six-poses",
+      "input": "new artwork",
+      "prompt": "Use case: stylized-concept. Asset type: a production transparent sticker sheet of SIX DIFFERENT CAT POSES for a Hanekawa Tsubasa / Kizumonogatari themed personal blog. Brand-new illustration, true transparent RGBA background. Landscape canvas, EXACTLY 3 COLUMNS and 2 ROWS of six equal square cells; no grid or separators. Each cell contains ONE complete cat, centered with generous 10% transparent margins, nothing crossing between cells. Original 2D anime cat illustrations with confident fine ink contours, cinematic warm edge light, natural feline proportions, soft flat painted shading, amber accents, charcoal black and warm ivory coats matching a cream / ink / vermilion webpage. Beautiful and expressive, slightly stylized, NOT pixel art, NOT 3D, NOT mascot people, NO chibi girl, NO cat ears on humans. Row 1 left: elegant black cat sitting upright, tail wrapped around paws, looking toward viewer, small amber eyes, tiny vermilion neck ribbon. Row 1 middle: warm ivory cat curled asleep in a round loaf, face tucked against tail, peaceful closed eyes. Row 1 right: black-and-cream tuxedo cat in a long natural forward stretch, front paws extended and rear raised, full tail visible. Row 2 left: ivory cat washing its face with one raised front paw, seated, gold eyes half closed. Row 2 middle: sleek black cat walking in side profile to the right, tail held up in a soft hook, one paw lifted. Row 2 right: soft cream and amber tabby lying on its side playfully with forepaws raised, relaxed happy expression. Six truly different silhouettes and gestures, no duplicate pose. No props, scenery, floor, shadow blob, decorative frame, vignette, painted background, letters, checkerboard or watermark. Every pixel outside the cats is fully transparent. Ensure all ears, tails and paws are fully inside their cells.",
+      "output": "design/variety/cats-six-poses.png"
+    },
+    {
+      "key": "favicon-transparent",
+      "input": "public/favicon-512.png (original copied to design/variety/favicon-original.png)",
+      "prompt": "Use case: background-extraction. Edit the provided existing square website icon, keeping its exact identity and composition: a dark purple sleeping cat wearing glasses on an open book, pale moon and pink cherry blossom branch, rounded dark-plum badge. Remove ONLY the pure black outer canvas visible outside the rounded badge in the four corners and narrow surrounding margin. Replace that outside area with genuine transparent alpha=0. Preserve the rounded dark-plum badge itself as opaque, all internal dark cat fur and outlines, cream moon, flowers, lettering-like sleep marks, book and colors. Do not remove black or purple details INSIDE the badge. No new illustration or redesign, no drop shadow, no new border or background. Clean antialiased badge silhouette, centered square transparent PNG suitable for an ICO conversion.",
+      "output": "design/variety/favicon-transparent.png"
+    }
+  ],
+  "runtimeDirectory": "public/images/hanekawa/collection",
+  "catalog": "src/data/artwork-assets.json",
+  "assembly": "node scripts/build-artwork-variety.mjs",
+  "footer": {
+    "home": [
+      "school",
+      "casual"
+    ],
+    "about": [
+      "kimono",
+      "summer"
+    ],
+    "posts": [
+      "formal"
+    ],
+    "archive": [
+      "martial"
+    ]
+  },
+  "expressions": [
+    "smile",
+    "shy",
+    "confident",
+    "focused",
+    "curious",
+    "cry"
+  ],
+  "cats": [
+    "sit",
+    "sleep",
+    "stretch",
+    "groom",
+    "walk",
+    "roll"
+  ],
+  "favicon": {
+    "files": [
+      "public/favicon.ico",
+      "public/favicon-192.png",
+      "public/favicon-512.png",
+      "public/apple-touch-icon.png"
+    ],
+    "icoSizes": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      128,
+      256
+    ],
+    "transparency": "Outer black canvas removed; the cat, book, moon and original dark plum badge are preserved.",
+    "cache": "Each icon link includes a content hash query."
+  },
+  "export": "Split source 3x2 sheets into independent cutouts, export alpha, trim empty margins, preserve intrinsic dimensions; object-fit:contain and background-size:contain keep cats proportional at every placement. Outfit crops include cell-boundary margins and remove disconnected neighboring fragments. Cutout catalog URLs include content hashes to refresh cached images.",
+  "validation": {
+    "build": "pnpm build passed (Astro and Pagefind)",
+    "astroCheck": "51 files; 0 errors, 0 warnings, 13 existing deprecated-z hints",
+    "browser": "16 route/theme/viewport cases passed; 32 assets load with alpha; footer counts, proportions, client navigation, reduced motion and pixel companion recall passed; no page errors or failed requests",
+    "favicon": "All seven ICO sizes have fully transparent corners (alpha=0)",
+    "visual": "Desktop light/dark and mobile screenshots reviewed; neighboring collage fragments removed and crossing shoes retained",
+    "repositoryVerify": "The pre-existing pnpm verify command cannot run because scripts/verify-build.mjs is absent; no claim of a passing repository verify run.",
+    "evidence": "logs/artwork-variety/review.json and logs/artwork-variety/*.png (local, ignored)"
+  }
+}

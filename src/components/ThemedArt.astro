@@ -1,0 +1,8 @@
+---
+interface Props { day?: string; night?: string; alt?: string; class?: string; width?: number; height?: number; eager?: boolean }
+const { day = "hanekawa-day-head", night = "hanekawa-night-head", alt = "", class: className = "", width = 384, height = 384, eager = false } = Astro.props;
+---
+<span class:list={["themed-art", className]} aria-hidden={alt ? undefined : "true"}>
+  <img class="theme-art--day" src={`/images/hanekawa/${day}.webp`} alt={alt} width={width} height={height} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : "auto"} />
+  <img class="theme-art--night" src={`/images/hanekawa/${night}.webp`} alt={alt ? "白发猫耳形态的羽川翼" : ""} width={width} height={height} loading={eager ? "eager" : "lazy"} decoding="async" />
+</span>

@@ -1,0 +1,191 @@
+{
+  "faviconVersion": "1038e298b259",
+  "assets": {
+    "body-day-formal": {
+      "src": "/images/hanekawa/collection/body-day-formal.webp?v=3b1281cb0d",
+      "width": 310,
+      "height": 616
+    },
+    "head-day-smile": {
+      "src": "/images/hanekawa/collection/head-day-smile.webp?v=052b509c1b",
+      "width": 280,
+      "height": 280
+    },
+    "body-day-school": {
+      "src": "/images/hanekawa/collection/body-day-school.webp?v=f79366000e",
+      "width": 225,
+      "height": 616
+    },
+    "head-day-shy": {
+      "src": "/images/hanekawa/collection/head-day-shy.webp?v=e59392d468",
+      "width": 280,
+      "height": 280
+    },
+    "body-day-summer": {
+      "src": "/images/hanekawa/collection/body-day-summer.webp?v=50441929fa",
+      "width": 338,
+      "height": 616
+    },
+    "head-day-confident": {
+      "src": "/images/hanekawa/collection/head-day-confident.webp?v=8abd56cd04",
+      "width": 280,
+      "height": 280
+    },
+    "body-day-martial": {
+      "src": "/images/hanekawa/collection/body-day-martial.webp?v=4897bac0f4",
+      "width": 352,
+      "height": 616
+    },
+    "head-day-focused": {
+      "src": "/images/hanekawa/collection/head-day-focused.webp?v=70de608653",
+      "width": 280,
+      "height": 280
+    },
+    "body-day-kimono": {
+      "src": "/images/hanekawa/collection/body-day-kimono.webp?v=e688cf19b1",
+      "width": 262,
+      "height": 616
+    },
+    "head-day-curious": {
+      "src": "/images/hanekawa/collection/head-day-curious.webp?v=8d6c0e8043",
+      "width": 280,
+      "height": 280
+    },
+    "body-day-casual": {
+      "src": "/images/hanekawa/collection/body-day-casual.webp?v=9803a008a3",
+      "width": 232,
+      "height": 616
+    },
+    "head-day-cry": {
+      "src": "/images/hanekawa/collection/head-day-cry.webp?v=2478500c68",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-formal": {
+      "src": "/images/hanekawa/collection/body-night-formal.webp?v=85da776830",
+      "width": 496,
+      "height": 584
+    },
+    "head-night-smile": {
+      "src": "/images/hanekawa/collection/head-night-smile.webp?v=d9be89583c",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-school": {
+      "src": "/images/hanekawa/collection/body-night-school.webp?v=c0f7d04f58",
+      "width": 315,
+      "height": 616
+    },
+    "head-night-shy": {
+      "src": "/images/hanekawa/collection/head-night-shy.webp?v=3ac4f31635",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-summer": {
+      "src": "/images/hanekawa/collection/body-night-summer.webp?v=2d7c08c4a5",
+      "width": 446,
+      "height": 616
+    },
+    "head-night-confident": {
+      "src": "/images/hanekawa/collection/head-night-confident.webp?v=d338958327",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-martial": {
+      "src": "/images/hanekawa/collection/body-night-martial.webp?v=f6719a34e3",
+      "width": 496,
+      "height": 518
+    },
+    "head-night-focused": {
+      "src": "/images/hanekawa/collection/head-night-focused.webp?v=6e4007be86",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-kimono": {
+      "src": "/images/hanekawa/collection/body-night-kimono.webp?v=10ed7b50f8",
+      "width": 387,
+      "height": 616
+    },
+    "head-night-curious": {
+      "src": "/images/hanekawa/collection/head-night-curious.webp?v=1eba63a8a9",
+      "width": 280,
+      "height": 280
+    },
+    "body-night-casual": {
+      "src": "/images/hanekawa/collection/body-night-casual.webp?v=c0ed67a1bb",
+      "width": 384,
+      "height": 616
+    },
+    "head-night-cry": {
+      "src": "/images/hanekawa/collection/head-night-cry.webp?v=18838552ae",
+      "width": 280,
+      "height": 280
+    },
+    "cat-sit": {
+      "src": "/images/hanekawa/collection/cat-sit.webp?v=0395cccd1f",
+      "width": 293,
+      "height": 616
+    },
+    "cat-sleep": {
+      "src": "/images/hanekawa/collection/cat-sleep.webp?v=dd774bf22b",
+      "width": 496,
+      "height": 411
+    },
+    "cat-stretch": {
+      "src": "/images/hanekawa/collection/cat-stretch.webp?v=44178d7b0e",
+      "width": 496,
+      "height": 514
+    },
+    "cat-groom": {
+      "src": "/images/hanekawa/collection/cat-groom.webp?v=5ae1aa3e33",
+      "width": 362,
+      "height": 616
+    },
+    "cat-walk": {
+      "src": "/images/hanekawa/collection/cat-walk.webp?v=be6c266fc5",
+      "width": 496,
+      "height": 455
+    },
+    "cat-roll": {
+      "src": "/images/hanekawa/collection/cat-roll.webp?v=fd09835753",
+      "width": 496,
+      "height": 381
+    },
+    "avatar-day": {
+      "src": "/images/hanekawa/collection/gift-avatar-day.webp",
+      "width": 192,
+      "height": 192,
+      "poster": "/images/hanekawa/collection/gift-avatar-day-poster.webp"
+    },
+    "avatar-night": {
+      "src": "/images/hanekawa/collection/gift-avatar-night.webp",
+      "width": 192,
+      "height": 192,
+      "poster": "/images/hanekawa/collection/gift-avatar-night-poster.webp"
+    }
+  },
+  "outfits": [
+    "formal",
+    "school",
+    "summer",
+    "martial",
+    "kimono",
+    "casual"
+  ],
+  "expressions": [
+    "smile",
+    "shy",
+    "confident",
+    "focused",
+    "curious",
+    "cry"
+  ],
+  "catPoses": [
+    "sit",
+    "sleep",
+    "stretch",
+    "groom",
+    "walk",
+    "roll"
+  ]
+}

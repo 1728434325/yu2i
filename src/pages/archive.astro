@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import RailCompanion from "../components/RailCompanion.astro";
 import { formatDate, postHref, sortPosts } from "../utils/content";
 
 const posts = sortPosts(await getCollection("posts"));
@@ -13,8 +14,11 @@ const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
 ---
 <BaseLayout title="归档 · 羽川翼" description="按时间排列的全部文章。">
   <main class="mx-auto max-w-[48rem] px-6 py-16">
-    <h1 class="text-3xl font-[650]">归档</h1>
-    <p class="mt-2 text-sm" style="color: var(--text-soft);">{posts.length} 篇 · {years.length} 个年份</p>
+    <header class="reading-heading reading-heading--rest">
+      <h1 class="text-3xl font-[650]">归档</h1>
+      <p class="mt-2 text-sm" style="color: var(--text-soft);">{posts.length} 篇 · {years.length} 个年份</p>
+      <RailCompanion pose="rest" class="page-reader" />
+    </header>
     {years.map((year) => (
       <section class="mt-12">
         <h2 class="text-xl font-semibold" style="color: var(--sakura-deep);">{year}</h2>

@@ -1,57 +1,10 @@
 ---
 import "../styles/chibi.css";
-/** Q 版形象：本地透明立绘 + 本地台词，无外部依赖。 */
+import ThemedArt from "./ThemedArt.astro";
 ---
-<div id="chibi" class="chibi" data-pagefind-ignore>
+<aside id="chibi" class="chibi" data-pagefind-ignore aria-label="羽川翼的小小问候">
   <div class="chibi__bubble" id="chibi-bubble" role="status" aria-live="polite" aria-hidden="true"></div>
-  <button class="chibi__figure" id="chibi-figure" type="button" aria-label="和羽川翼打招呼">
-    <img src="/images/chibi-mascot.webp" alt="羽川翼的 Q 版形象" width="512" height="551" loading="lazy" />
-  </button>
+  <button class="chibi__figure" id="chibi-figure" type="button" aria-label="和羽川翼打招呼"><ThemedArt day="chibi-mascot-day" night="chibi-mascot-night" width={512} height={554} eager /></button>
   <button class="chibi__close" id="chibi-close" type="button" aria-label="隐藏 Q 版形象">×</button>
-  <button class="chibi__open" id="chibi-open" type="button" aria-label="显示 Q 版形象">Q 版</button>
-</div>
-
-<script is:inline>
-  (function () {
-    var root = document.getElementById("chibi");
-    if (!root) return;
-    var bubble = document.getElementById("chibi-bubble");
-    var figure = document.getElementById("chibi-figure");
-    var lines = [
-      "你来啦。今天先看哪一篇？",
-      "修好了，别担心。",
-      "这次也是同一个原因，我记得很清楚。",
-      "看屏幕久了，记得看看远处呀。",
-      "备份做了吗？我只是随口一问。",
-      "慢慢来，比较快。",
-    ];
-    var last = -1;
-    var timer = 0;
-    function say() {
-      var i = Math.floor(Math.random() * lines.length);
-      if (i === last) i = (i + 1) % lines.length;
-      last = i;
-      bubble.textContent = lines[i];
-      bubble.classList.add("is-on");
-      bubble.setAttribute("aria-hidden", "false");
-      root.classList.add("is-talking");
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        bubble.classList.remove("is-on");
-        bubble.setAttribute("aria-hidden", "true");
-        root.classList.remove("is-talking");
-      }, 3200);
-    }
-    figure.addEventListener("click", say);
-    var KEY = "yu2i-chibi-hidden";
-    function setHidden(h) {
-      root.classList.toggle("is-hidden", h);
-      try { localStorage.setItem(KEY, h ? "1" : "0"); } catch (e) {}
-    }
-    try { if (localStorage.getItem(KEY) === "1") root.classList.add("is-hidden"); } catch (e) {}
-    document.getElementById("chibi-close").addEventListener("click", function () { setHidden(true); });
-    document.getElementById("chibi-open").addEventListener("click", function () { setHidden(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setHidden(true); });
-    setTimeout(say, 5000);
-  })();
-</script>
+  <button class="chibi__open" id="chibi-open" type="button" aria-label="显示 Q 版形象"><ThemedArt day="chibi-mascot-day" night="chibi-mascot-night" width={512} height={554} /></button>
+</aside>

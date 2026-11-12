@@ -1,0 +1,17 @@
+<span class="themed-art about-portrait about-avatar">
+  <picture class="theme-art--day">
+    <source media="(prefers-reduced-motion: reduce)" srcset="/images/hanekawa/about-avatar-day-poster.webp" />
+    <img src="/images/about-avatar.gif" alt="羽川翼的动态头像" width="240" height="240" loading="eager" decoding="async" />
+  </picture>
+  <picture class="theme-art--night">
+    <source media="(prefers-reduced-motion: reduce)" srcset="/images/hanekawa/about-avatar-night-poster.webp" />
+    <img src="/images/hanekawa/about-avatar-night.gif" alt="白发猫耳羽川翼的动态头像" width="240" height="240" loading="eager" decoding="async" />
+  </picture>
+</span>
+
+<style>
+  .about-avatar { display: inline-grid; width: 112px; height: 112px; flex: none; overflow: hidden; border: 1px solid var(--line); border-radius: 50%; background: var(--bg-alt); }
+  .about-avatar picture { grid-area: 1 / 1; width: 100%; height: 100%; overflow: hidden; }
+  .about-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 479px) { .about-avatar { width: 88px; height: 88px; } }
+</style>

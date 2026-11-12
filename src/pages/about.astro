@@ -1,6 +1,9 @@
 ---
 import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutAvatar from "../components/AboutAvatar.astro";
+import PixelControls from "../components/PixelControls.astro";
+import Wardrobe from "../components/Wardrobe.astro";
 
 const entry = await getEntry("pages", "about");
 if (!entry) throw new Error("missing content/pages/about.md");
@@ -9,21 +12,16 @@ const { Content } = await render(entry);
 <BaseLayout title="关于 · 羽川翼" description={entry.data.description}>
   <main class="mx-auto max-w-[48rem] px-6 py-16">
     <header class="mb-10 flex items-center gap-5">
-      <img
-        src="/images/about-avatar.gif"
-        alt="羽川翼的头像"
-        width="112"
-        height="112"
-        class="h-24 w-24 shrink-0 rounded-full border object-cover md:h-28 md:w-28"
-        style="border-color: var(--line);"
-      />
+      <AboutAvatar />
       <div>
         <h1 class="text-3xl font-[650]">{entry.data.title}</h1>
         <p class="mt-1 text-sm" style="color: var(--text-soft);">羽川翼 · 这台服务器的管理者</p>
       </div>
     </header>
+    <PixelControls />
     <div class="prose mt-8 max-w-none">
       <Content />
     </div>
+    <Wardrobe />
   </main>
 </BaseLayout>

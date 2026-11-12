@@ -1,368 +1,138 @@
 import { effectsConfig } from "../config/effects";
+import { mountMascot } from "./mascot";
+import { mountClickPaws } from "./click-paws";
 
-type Quality = "high" | "medium" | "low" | "off";
+const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+const fine = matchMedia("(hover: hover) and (pointer: fine)");
+let dispose: (() => void) | undefined;
 
-const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
-const coarseQuery = matchMedia("(pointer: coarse)");
-const fineQuery = matchMedia("(hover: hover) and (pointer: fine)");
+// Every captured DOM node and animation belongs to one page.
+function mount() {
+  dispose?.();
+  const controller = new AbortController();
+  const { signal } = controller;
+  let frame = 0;
+  const observers: IntersectionObserver[] = [];
+  dispose = () => {
+    controller.abort();
+    cancelAnimationFrame(frame);
+    observers.forEach((observer) => observer.disconnect());
+    document.documentElement.classList.remove("has-character-cursor");
+  };
+  mountMascot(signal);
+  const disabled = reduced.matches || effectsConfig.quality === "off" || new URLSearchParams(location.search).get("fx") === "off";
+  document.documentElement.classList.toggle("fx-off", disabled);
+  if (document.hidden) return;
+  if (effectsConfig.quality !== "off" && new URLSearchParams(location.search).get("fx") !== "off") mountClickPaws(signal, reduced.matches);
 
-function tier(): Quality {
-  if (effectsConfig.quality === "off") return "off";
-  if (motionQuery.matches) return "off";
-  if ((navigator as any).connection?.saveData) return "low";
-  const cores = navigator.hardwareConcurrency ?? 8;
-  const mem = (navigator as any).deviceMemory ?? 8;
-  if (coarseQuery.matches) return "low";
-  if (effectsConfig.quality === "auto") return cores <= 4 || mem <= 4 ? "low" : "high";
-  return effectsConfig.quality;
-}
-
-let q: Quality = tier();
-if (new URLSearchParams(location.search).get("fx") === "off") q = "off";
-const dpr = Math.min(devicePixelRatio || 1, q === "high" ? 1.5 : 1);
-
-let stopped = false;
-let pageCleanup: (() => void) | null = null;
-const pageRaf = new Set<number>();
-
-function rafPage(fn: FrameRequestCallback) {
-  const id = requestAnimationFrame((t) => {
-    pageRaf.delete(id);
-    fn(t);
-  });
-  pageRaf.add(id);
-  return id;
-}
-
-function sizeCanvas(c: HTMLCanvasElement) {
-  const w = innerWidth;
-  const h = innerHeight;
-  c.width = Math.floor(w * dpr);
-  c.height = Math.floor(h * dpr);
-  c.style.width = `${w}px`;
-  c.style.height = `${h}px`;
-  const ctx = c.getContext("2d");
-  if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return ctx;
-}
-
-/* ---------- 星空：全局常驻，轻量闪烁 ---------- */
-function startStars() {
   const canvas = document.getElementById("fx-stars") as HTMLCanvasElement | null;
-  if (!canvas || !effectsConfig.stars.enabled || q === "off") return;
-  const ctx = sizeCanvas(canvas);
-  if (!ctx) return;
-
-  const n = q === "high" ? effectsConfig.stars.count : Math.round(effectsConfig.stars.count / 2);
-  const stars = Array.from({ length: n }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
-    r: Math.random() * 1.2 + 0.4,
-    a: Math.random() * 0.6 + 0.15,
-    p: Math.random() * Math.PI * 2,
-    s: Math.random() * 0.9 + 0.4,
-  }));
-
-  let last = 0;
-  const frame = (t: number) => {
-    if (stopped || document.hidden) return;
-    if (t - last < 33) return requestAnimationFrame(frame);
-    last = t;
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    for (const st of stars) {
-      st.p += 0.0016 * st.s;
-      const a = st.a + Math.sin(st.p) * 0.25;
-      ctx.globalAlpha = Math.max(0.05, a);
-      ctx.fillStyle = "#f2ce8a";
-      ctx.beginPath();
-      ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
-      ctx.fill();
+  const leavesCanvas = document.getElementById("fx-sakura") as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext("2d");
+  const leavesCtx = leavesCanvas?.getContext("2d");
+  const low = !fine.matches || navigator.hardwareConcurrency <= 4 || effectsConfig.quality === "low";
+  const dpr = Math.min(devicePixelRatio || 1, low ? 1 : 1.5);
+  const size = () => {
+    for (const element of [canvas, leavesCanvas]) {
+      if (!element) continue;
+      element.width = Math.round(innerWidth * dpr); element.height = Math.round(innerHeight * dpr);
+      element.getContext("2d")?.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(frame);
   };
-  requestAnimationFrame(frame);
-
-  const onResize = () => {
-    sizeCanvas(canvas);
-  };
-  addEventListener("resize", onResize, { passive: true });
-}
-
-/* ---------- 樱花：全局常驻 ---------- */
-function startSakura() {
-  const canvas = document.getElementById("fx-sakura") as HTMLCanvasElement | null;
-  if (!canvas || !effectsConfig.sakura.enabled || q === "off") return;
-  const ctx = sizeCanvas(canvas);
-  if (!ctx) return;
-
-  const count = q === "high" ? effectsConfig.sakura.count : Math.round(effectsConfig.sakura.count / 2);
-  const petals = Array.from({ length: count }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight - innerHeight,
-    r: Math.random() * 5 + 3,
-    vy: (Math.random() * 0.6 + 0.35) * effectsConfig.sakura.speed,
-    vx: Math.random() * 0.4 - 0.2,
-    rot: Math.random() * Math.PI * 2,
-    spin: Math.random() * 0.02 - 0.01,
-    sway: Math.random() * Math.PI * 2,
-  }));
-
-  let last = 0;
-  const frame = (t: number) => {
-    if (stopped || document.hidden) return;
-    if (t - last < 33) return requestAnimationFrame(frame);
-    last = t;
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    const dark = document.documentElement.classList.contains("dark");
-    ctx.fillStyle = dark ? "rgba(247,183,208,0.55)" : "rgba(206,92,130,0.55)";
-    for (const p of petals) {
-      p.y += p.vy;
-      p.sway += 0.008;
-      p.x += p.vx + Math.sin(p.sway) * 0.5;
-      p.rot += p.spin;
-      if (p.y > innerHeight + 12) {
-        p.y = -12;
-        p.x = Math.random() * innerWidth;
+  size();
+  addEventListener("resize", size, { passive: true, signal });
+  const dust = Array.from({ length: low ? 36 : 100 }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, phase: Math.random() * 6.28, size: Math.random() * 1.2 + .3 }));
+  const leaves = Array.from({ length: low ? 5 : 12 }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, phase: Math.random() * 6.28, speed: Math.random() * .3 + .25, size: Math.random() * 2.5 + 1.2 }));
+  const cursor = document.getElementById("character-cursor");
+  const glow = document.getElementById("fx-glow");
+  if (fine.matches && !disabled && effectsConfig.cursor.enabled) {
+    document.addEventListener("pointermove", (event) => {
+      if (event.pointerType === "touch") return;
+      if (event.target instanceof Element && event.target.closest(".hero-title-line")) {
+        document.documentElement.classList.remove("has-character-cursor");
+        if (cursor) cursor.style.opacity = "0";
+        if (glow) glow.style.opacity = "0";
+        return;
       }
-      if (p.x < -12) p.x = innerWidth + 12;
-      if (p.x > innerWidth + 12) p.x = -12;
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
-      ctx.beginPath();
-      ctx.ellipse(0, 0, p.r, p.r * 0.55, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-    requestAnimationFrame(frame);
+      document.documentElement.classList.add("has-character-cursor");
+      if (cursor) { cursor.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0)`; cursor.style.opacity = "1"; }
+      if (glow && effectsConfig.cursor.glow) { glow.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0)`; glow.style.opacity = "1"; }
+    }, { passive: true, signal });
+    const leave = () => {
+      document.documentElement.classList.remove("has-character-cursor");
+      if (cursor) cursor.style.opacity = "0";
+      if (glow) glow.style.opacity = "0";
+    };
+    document.addEventListener("pointerleave", leave, { signal });
+    document.addEventListener("pointerdown", () => cursor?.classList.add("is-pressed"), { signal });
+    document.addEventListener("pointerup", () => cursor?.classList.remove("is-pressed"), { signal });
+  }
+
+  for (const element of document.querySelectorAll<HTMLElement>("[data-reveal]")) {
+    if (disabled || low || !effectsConfig.scroll.reveal || !("IntersectionObserver" in window)) { element.classList.add("is-in"); continue; }
+    element.classList.add("reveal-pending");
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) { element.classList.add("is-in"); element.classList.remove("reveal-pending"); observer.disconnect(); }
+    }, { threshold: .08 });
+    observer.observe(element); observers.push(observer);
+  }
+  const progress = document.getElementById("fx-progress");
+  const updateProgress = () => {
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    if (progress) progress.style.transform = `scaleX(${distance > 0 ? Math.min(1, Math.max(0, scrollY / distance)) : 0})`;
   };
-  requestAnimationFrame(frame);
-
-  const onResize = () => {
-    sizeCanvas(canvas);
-  };
-  addEventListener("resize", onResize, { passive: true });
-}
-
-/* ---------- 光标：光晕 + 轻拖尾（仅精确指针） ---------- */
-function startCursor() {
-  if (!effectsConfig.cursor.enabled || q === "off" || !fineQuery.matches) return;
-
-  if (effectsConfig.cursor.glow) {
-    const glow = document.getElementById("fx-glow");
-    if (glow) {
-      let gx = innerWidth / 2;
-      let gy = innerHeight / 2;
-      let tx = gx;
-      let ty = gy;
-      let active = false;
-      const move = (e: PointerEvent) => {
-        tx = e.clientX;
-        ty = e.clientY;
-        active = true;
-      };
-      const leave = () => {
-        active = false;
-        glow.style.opacity = "0";
-      };
-      addEventListener("pointermove", move, { passive: true });
-      document.addEventListener("pointerleave", leave);
-      const tick = () => {
-        if (stopped) return;
-        gx += (tx - gx) * 0.18;
-        gy += (ty - gy) * 0.18;
-        glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
-        if (active) glow.style.opacity = "1";
-        requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
+  addEventListener("scroll", updateProgress, { passive: true, signal });
+  updateProgress();
+  if (!disabled && fine.matches && effectsConfig.scroll.magnetic) {
+    for (const element of document.querySelectorAll<HTMLElement>("[data-magnetic]")) {
+      element.addEventListener("pointermove", (event) => {
+        const bounds = element.getBoundingClientRect();
+        const x = Math.max(-4, Math.min(4, (event.clientX - bounds.left - bounds.width / 2) * .12));
+        const y = Math.max(-4, Math.min(4, (event.clientY - bounds.top - bounds.height / 2) * .12));
+        element.style.transform = `translate(${x}px,${y}px)`;
+      }, { passive: true, signal });
+      element.addEventListener("pointerleave", () => { element.style.transform = ""; }, { signal });
     }
   }
 
-  if (effectsConfig.cursor.trail) {
-    const canvas = document.getElementById("fx-trail") as HTMLCanvasElement | null;
-    if (!canvas) return;
-    const ctx = sizeCanvas(canvas);
-    if (!ctx) return;
-    const points: { x: number; y: number; life: number }[] = [];
-    const max = q === "high" ? effectsConfig.cursor.maxTrail : 8;
-    const push = (e: PointerEvent) => {
-      points.push({ x: e.clientX, y: e.clientY, life: 1 });
-      if (points.length > max) points.shift();
-    };
-    addEventListener("pointermove", push, { passive: true });
-    const tick = () => {
-      if (stopped) return;
+  let previous = 0;
+  const draw = (time: number) => {
+    if (signal.aborted) return;
+    frame = requestAnimationFrame(draw);
+    if (document.hidden || time - previous < 33) return;
+    const step = previous ? Math.min((time - previous) / 33, 3) : 1;
+    previous = time;
+    const dark = document.documentElement.classList.contains("dark");
+    if (ctx && effectsConfig.stars.enabled) {
       ctx.clearRect(0, 0, innerWidth, innerHeight);
-      for (let i = 0; i < points.length; i++) {
-        const p = points[i];
-        p.life -= 0.045;
-        if (p.life <= 0) continue;
-        ctx.globalAlpha = p.life * 0.45;
-        ctx.fillStyle = "#f3a8c4";
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2.2 * p.life + 0.6, 0, Math.PI * 2);
-        ctx.fill();
+      ctx.fillStyle = dark ? "#e4b96c" : "#9d6633";
+      for (const mote of dust) {
+        mote.phase += .012 * step; mote.y -= .06 * step;
+        if (mote.y < 0) mote.y = innerHeight;
+        ctx.globalAlpha = .15 + (Math.sin(mote.phase) + 1) * .2;
+        ctx.beginPath(); ctx.arc(mote.x, mote.y, mote.size, 0, Math.PI * 2); ctx.fill();
       }
       ctx.globalAlpha = 1;
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-}
-
-/* ---------- 首页 3D（可选，动态 import） ---------- */
-function mountThree(): (() => void) | null {
-  const canvas = document.getElementById("fx-hero") as HTMLCanvasElement | null;
-  if (!canvas || !effectsConfig.three.enabled || q === "off" || coarseQuery.matches) return null;
-  const probe = document.createElement("canvas");
-  const gl = probe.getContext("webgl2") || probe.getContext("webgl");
-  if (!gl) {
-    canvas.classList.add("fx-hero--off");
-    return null;
-  }
-  let disposed = false;
-  let handle: { dispose: () => void } | null = null;
-  import("../effects/three/hero-scene")
-    .then((m) => {
-      if (disposed) return;
-      handle = m.mountHeroScene(canvas, {
-        stars: effectsConfig.three.stars,
-        planet: effectsConfig.three.planet,
-        ring: effectsConfig.three.ring,
-        maxFps: q === "high" ? 45 : 30,
-      });
-    })
-    .catch(() => canvas.classList.add("fx-hero--off"));
-  return () => {
-    disposed = true;
-    handle?.dispose();
-    handle = null;
-  };
-}
-
-/* ---------- 页面级：渐入、进度、磁吸 ---------- */
-function mountPage() {
-  pageCleanup?.();
-  pageRaf.forEach((id) => cancelAnimationFrame(id));
-  pageRaf.clear();
-
-  const cleanups: Array<() => void> = [];
-  const threeCleanup = mountThree();
-  if (threeCleanup) cleanups.push(threeCleanup);
-
-  if (effectsConfig.scroll.reveal && q !== "off") {
-    const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    if (targets.length && "IntersectionObserver" in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              (e.target as HTMLElement).classList.add("is-in");
-              io.unobserve(e.target);
-            }
-          }
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-      );
-      targets.forEach((el) => io.observe(el));
-      cleanups.push(() => io.disconnect());
-    } else {
-      targets.forEach((el) => el.classList.add("is-in"));
     }
-  }
-
-  if (effectsConfig.scroll.progress && q !== "off") {
-    const bar = document.getElementById("fx-progress");
-    if (bar) {
-      let ticking = false;
-      const update = () => {
-        ticking = false;
-        const max = document.documentElement.scrollHeight - innerHeight;
-        const ratio = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
-        bar.style.transform = `scaleX(${ratio})`;
-      };
-      const onScroll = () => {
-        if (!ticking) {
-          ticking = true;
-          rafPage(update);
-        }
-      };
-      addEventListener("scroll", onScroll, { passive: true });
-      update();
-      cleanups.push(() => removeEventListener("scroll", onScroll));
-    }
-  }
-
-  if (effectsConfig.scroll.magnetic && fineQuery.matches && q !== "off") {
-    const els = document.querySelectorAll<HTMLElement>("[data-magnetic]");
-    const handlers: Array<[HTMLElement, (e: PointerEvent) => void, () => void]> = [];
-    els.forEach((el) => {
-      const move = (e: PointerEvent) => {
-        const r = el.getBoundingClientRect();
-        const dx = (e.clientX - (r.left + r.width / 2)) * 0.25;
-        const dy = (e.clientY - (r.top + r.height / 2)) * 0.25;
-        el.style.transform = `translate(${Math.max(-8, Math.min(8, dx))}px, ${Math.max(-8, Math.min(8, dy))}px)`;
-      };
-      const leave = () => {
-        el.style.transform = "";
-      };
-      el.addEventListener("pointermove", move);
-      el.addEventListener("pointerleave", leave);
-      handlers.push([el, move, leave]);
-    });
-    cleanups.push(() => {
-      for (const [el, move, leave] of handlers) {
-        el.removeEventListener("pointermove", move);
-        el.removeEventListener("pointerleave", leave);
-        el.style.transform = "";
+    if (leavesCtx && effectsConfig.sakura.enabled) {
+      leavesCtx.clearRect(0, 0, innerWidth, innerHeight);
+      leavesCtx.fillStyle = dark ? "rgba(205,115,79,.45)" : "rgba(154,70,38,.25)";
+      for (const leaf of leaves) {
+        leaf.phase += .006 * step; leaf.y += leaf.speed * step;
+        leaf.x += Math.sin(leaf.phase) * .18 * step;
+        if (leaf.y > innerHeight + 6) { leaf.y = -6; leaf.x = Math.random() * innerWidth; }
+        leavesCtx.save(); leavesCtx.translate(leaf.x, leaf.y); leavesCtx.rotate(leaf.phase);
+        leavesCtx.beginPath(); leavesCtx.ellipse(0, 0, leaf.size, leaf.size * .35, 0, 0, Math.PI * 2); leavesCtx.fill(); leavesCtx.restore();
       }
-    });
-  }
-
-  pageCleanup = () => {
-    for (const fn of cleanups) fn();
-    pageRaf.forEach((id) => cancelAnimationFrame(id));
-    pageRaf.clear();
-  };
-}
-
-/* ---------- 启动：全局只初始化一次 ---------- */
-let booted = false;
-
-function boot() {
-  if (booted) return;
-  booted = true;
-  document.documentElement.classList.toggle("fx-off", q === "off");
-  if (q === "off") return;
-  startStars();
-  startSakura();
-  startCursor();
-  document.addEventListener("visibilitychange", () => {
-    stopped = document.hidden;
-    if (!document.hidden) {
-      stopped = false;
-      startStars();
-      startSakura();
     }
-  });
-  addEventListener("pagehide", () => {
-    stopped = true;
-  });
+  };
+  if (!disabled) frame = requestAnimationFrame(draw);
 }
-
-document.addEventListener("astro:page-load", () => {
-  boot();
-  mountPage();
-});
-
-document.addEventListener("astro:before-swap", () => {
-  pageCleanup?.();
-  pageCleanup = null;
-});
-
-// 首次加载时 astro:page-load 也会触发；这里兜底一次。
-if (document.readyState === "complete") boot();
-else addEventListener("load", boot, { once: true });
-mountPage();
+function stop() { dispose?.(); dispose = undefined; }
+document.addEventListener("astro:before-swap", stop);
+document.addEventListener("astro:page-load", mount);
+document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); else mount(); });
+addEventListener("pagehide", stop);
+addEventListener("pageshow", (event) => { if (event.persisted) mount(); });
+reduced.addEventListener("change", mount);
+fine.addEventListener("change", mount);
+mount();

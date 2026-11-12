@@ -1,19 +1,25 @@
 ---
-import CatFace from "./CatFace.astro";
+import StickerArt from "./StickerArt.astro";
+import { catArt } from "../data/artwork";
 ---
-<footer class="mt-24 border-t px-6 py-10 text-sm" style="border-color: var(--line); color: var(--text-soft);">
-  <div class="mx-auto flex max-w-[72rem] flex-wrap items-center justify-between gap-3">
-    <p class="flex items-center gap-2">
-      <CatFace size={20} class="footer-cat" />
-      <span>© 2026 羽川翼 · 纯静态，无后端</span>
-    </p>
-    <p><a href="/rss.xml" class="no-underline" style="color: var(--text-soft);">RSS</a> · <a href="/sitemap-index.xml" class="no-underline" style="color: var(--text-soft);">Sitemap</a></p>
+<footer class="site-footer">
+  <div class="footer-edge" aria-hidden="true"><StickerArt art={catArt("sleep", "groom")} class="footer-cat" name="footer-cat" /></div>
+  <div class="footer-bottom">
+    <div class="footer-meta">
+      <p class="footer-copyright">© 2026 羽川翼</p>
+      <p class="footer-note">纯静态，无后端</p>
+    </div>
+    <div class="footer-actions">
+      <nav class="footer-links" aria-label="站点链接">
+        <a href="/friends/">友链</a>
+        <a href="/about/#wardrobe">换装</a>
+        <a href="/rss.xml">RSS</a>
+        <a href="/sitemap-index.xml">Sitemap</a>
+      </nav>
+      <a class="back-to-top" href="#top" aria-label="返回顶部">
+        <span>返回顶部</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6" /></svg>
+      </a>
+    </div>
   </div>
 </footer>
-<style>
-  .footer-cat {
-    color: var(--sakura-deep);
-    opacity: 0.7;
-    flex: none;
-  }
-</style>

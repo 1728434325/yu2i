@@ -1,0 +1,51 @@
+{
+  "mode": "built-in image_gen",
+  "inputRole": "Reference character identity and anime ink style; new poses, not edits to the original outfits",
+  "outputs": [
+    {
+      "form": "day",
+      "input": "design/variety/gift-body-day.png",
+      "prompt": "Use case: stylized-concept. Asset: two transparent anime illustrations for characters naturally resting on website rules. Use the attached Hanekawa outfit sheet ONLY as character and fine anime ink-line reference; create NEW poses. One square sheet, exactly TWO equally tall horizontal rows, no dividers, no text. Upper row: Hanekawa Tsubasa, black-brown hair in twin small braids, thin oval glasses, warm brown eyes, fully dressed in coral collared blouse with black neck ribbon; close waist-up view, gently leaning forward on folded forearms, cheek supported on one hand, looking toward the viewer with a quiet amused smile. Both forearms rest horizontally on an INVISIBLE desk edge at the very bottom of her silhouette. Entire hands, head, hair and shoulders visible; no visible desk, line, chair or scenery. Lower row: the same modestly fully dressed Hanekawa in coral blouse and long charcoal pleated skirt, lying comfortably on her stomach in side three-quarter view, chin resting on folded hands facing left, legs gently tucked together behind her, curled braid ends; low, wide relaxed silhouette with her skirt fully covering her legs. She is resting along an INVISIBLE horizontal ledge underneath her silhouette. Gentle reading-break mood. Style: refined Kizumonogatari / Monogatari anime linework, simple warm cel shading, subtle amber rim light, beautiful face, natural anatomy, tasteful and nonsexual. Clean small-scale UI sticker contours, generous clear space, each complete pose fits within its own row with 8% margin, both independent and separated. True transparent RGBA everywhere outside characters, including between rows. No background, gradient, vignette, diffuse halo, ground shadow, checkerboard, books, furniture, badge, frame, sparkle, extra objects or watermark. Keep the two poses different; no standing figures. Output square 2-row atlas.",
+      "output": "design/reading/line-poses-day.png"
+    },
+    {
+      "form": "night",
+      "input": "design/variety/gift-body-night.png",
+      "prompt": "Use case: stylized-concept. Asset: two transparent anime illustrations for characters naturally resting on website rules. Use the attached white-haired Hanekawa outfit sheet ONLY as character and fine anime ink-line reference; create NEW poses. One square sheet, exactly TWO equally tall horizontal rows, no dividers, no text. Upper row: Black Hanekawa, soft white hair, white cat ears with pale pink interiors, warm golden eyes, fully dressed in a loose opaque cream long-sleeved pajama top with vermilion piping, no cleavage; close waist-up view, gently leaning forward on folded forearms, chin resting on her hands, looking at the viewer with a playful soft smile, one cat ear slightly tilted. Both forearms rest horizontally on an INVISIBLE desk edge at the very bottom of her silhouette. Entire hands, head, hair and shoulders visible; no visible desk, line, chair or scenery. Lower row: the same white-haired cat-eared character in an opaque cream full-length pajama set with vermilion piping, lying comfortably on her stomach in side three-quarter view, chin resting on folded hands facing left, long white tail curling loosely above her covered legs, low wide relaxed silhouette. She rests along an INVISIBLE horizontal ledge underneath her silhouette. Cozy catlike reading-break mood, fully clothed and nonsexual. Style: refined Kizumonogatari / Monogatari anime linework, confident ink contours, simple warm cel shading, subtle amber rim light, beautiful face, natural anatomy, tasteful. Clean small-scale UI sticker contours, generous clear space, each complete pose fits within its own row with 8% margin, both independent and separated. True transparent RGBA everywhere outside characters, including between rows. No background, gradient, vignette, diffuse halo, ground shadow, checkerboard, books, furniture, badge, frame, sparkle, extra objects or watermark. Keep the two poses different; no standing figures. Output square 2-row atlas.",
+      "output": "design/reading/line-poses-night.png"
+    }
+  ],
+  "runtimeDirectory": "public/images/hanekawa/reading/",
+  "catalog": "src/data/reading-art-assets.json",
+  "assembly": "node scripts/build-reading-art.mjs",
+  "export": "Extract two connected silhouette components from real alpha rather than a fixed grid; remove disconnected generation specks, retain anti-aliased outlines, trim transparent margins and preserve aspect ratios. Source pose pixels are preserved; exact prompts are embedded in PNG tEXt and retained beside WebPs in supported JSON provenance sidecars.",
+  "placements": {
+    "home": "Recent-section heading rule",
+    "posts": "Header baseline and article return-navigation rule",
+    "archive": "Archive header baseline",
+    "about": "Wardrobe heading rule and six paired day/night outfit panels"
+  },
+  "motion": {
+    "outfitSwitch": "420ms image-mask cut and 2px vermilion scanline",
+    "intervalMs": 8000,
+    "offscreen": "paused",
+    "backgroundTab": "paused",
+    "reducedMotion": "manual static selection",
+    "keyboard": "Tab and Enter; Left/Right and Home/End in outfit selection"
+  },
+  "validation": {
+    "build": "Astro and Pagefind passed",
+    "astroCheck": "58 files, 0 errors, 0 warnings, 13 existing deprecated-z hints",
+    "browserCases": 18,
+    "interactionAssertions": 21,
+    "browserErrors": 0,
+    "failedRequests": 0,
+    "finalCancelledRequests": 0,
+    "coverage": "Desktop 1440x1100 and mobile 390x844 across home/about/posts/archive in both themes; tablet 717x734 about in both themes. All12paired outfit images, real homepage wardrobe entry, keyboard, previous/next, actual8s autoplay/pause/offscreen intervals, theme/navigation persistence, reduced motion and roamer recall passed.",
+    "provenance": "6 rasters, 0 missing prompts; source PNGs embed exact prompt; WebPs have tool-supported JSON sidecars",
+    "detector": "[]",
+    "review": "ship; bounded independent review of21valid original screenshots,4contact sheets and source; no material fixes",
+    "evidence": "logs/reading-companions/review.json, browser.log, build.log, check.log, provenance.log, detector.json, finish-review.md",
+    "scope": "Local component/page and interaction verification; no production or whole-site E2E claim. Original chibi and roaming pixel companion preserved."
+  }
+}

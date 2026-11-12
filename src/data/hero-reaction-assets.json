@@ -1,0 +1,36 @@
+{
+  "day": {
+    "sprite": "/images/hanekawa/reaction/day-frames.webp?v=45d070294d",
+    "poster": "/images/hanekawa/reaction/day-poster.webp?v=45d070294d",
+    "width": 192,
+    "height": 192,
+    "frames": 6,
+    "delays": [
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "duration": 1080,
+    "source": "tmp/羽川翼六格 bonk 反擊表情動畫.gif",
+    "sha256": "8fbd1c4998caf1e387a261cf9c6706d3f2f78ff0ddbfe6070a4fae79c5353955"
+  },
+  "night": {
+    "sprite": "/images/hanekawa/reaction/night-frames.webp?v=72e067df40",
+    "poster": "/images/hanekawa/reaction/night-poster.webp?v=72e067df40",
+    "width": 192,
+    "height": 192,
+    "frames": 4,
+    "delays": [
+      360,
+      360,
+      360,
+      360
+    ],
+    "duration": 1440,
+    "source": "tmp/ChatGPT GIF 2026年11月11日 下午02_42_56 (0.5x)-1.gif",
+    "sha256": "3c243b946edfc171f2764a7fcd9ed291a6123d9b842e6b485ce595c21979148e"
+  }
+}

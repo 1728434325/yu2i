@@ -1,0 +1,43 @@
+{
+  "frameSize": 64,
+  "columns": 4,
+  "rows": [
+    "idle",
+    "walk-right",
+    "walk-left",
+    "walk-up",
+    "walk-down",
+    "wave",
+    "jump",
+    "read-or-groom",
+    "glasses-or-paw",
+    "stretch",
+    "sleep"
+  ],
+  "forms": [
+    {
+      "form": "day",
+      "file": "public/images/hanekawa/pixel-day-roaming.png",
+      "frames": 44,
+      "bytes": 60509,
+      "sha256": "67e5384aca3a8f4817602ed6174efe1654b971894485aed07288c486cf5dd4d1",
+      "sources": {
+        "base": "public/images/hanekawa/pixel-day-sheet.png",
+        "walk": "design/generated/pixel-day-walk-v2.png",
+        "actions": "design/generated/pixel-day-actions-v2.png"
+      }
+    },
+    {
+      "form": "night",
+      "file": "public/images/hanekawa/pixel-night-roaming.png",
+      "frames": 44,
+      "bytes": 59767,
+      "sha256": "169170ae7bb0002b8cfec2d82a56391f833664379558adcf5d08c417975badfa",
+      "sources": {
+        "base": "public/images/hanekawa/pixel-night-sheet.png",
+        "walk": "design/generated/pixel-night-walk-v2.png",
+        "actions": "design/generated/pixel-night-actions-v2.png"
+      }
+    }
+  ]
+}

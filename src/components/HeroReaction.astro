@@ -1,0 +1,13 @@
+---
+import reactions from "../data/hero-reaction-assets.json";
+const playback = (form: typeof reactions.day) => ({ sprite: form.sprite, width: form.width, height: form.height, frames: form.frames, delays: form.delays, duration: form.duration });
+---
+<span class="hero-reaction-wrap">
+  <button class="hero-reaction" type="button" data-hero-reaction data-playing="false" data-reaction-frame="0" data-reaction-day={JSON.stringify(playback(reactions.day))} data-reaction-night={JSON.stringify(playback(reactions.night))} aria-label="播放羽川翼的反击表情" title="点一下，看看羽川翼的反应">
+    <img class="hero-reaction-poster theme-art--day" src={reactions.day.poster} alt="" width={reactions.day.width} height={reactions.day.height} decoding="async" />
+    <img class="hero-reaction-poster theme-art--night" src={reactions.night.poster} alt="" width={reactions.night.width} height={reactions.night.height} decoding="async" />
+    <canvas class="hero-reaction-canvas" width={reactions.day.width} height={reactions.day.height} aria-hidden="true"></canvas>
+    <svg class="hero-reaction-play" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6Z" /></svg>
+  </button>
+  <span class="hero-reaction-feedback" role="status" aria-live="polite"></span>
+</span>

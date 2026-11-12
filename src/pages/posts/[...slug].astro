@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import RailCompanion from "../../components/RailCompanion.astro";
 import { formatDate } from "../../utils/content";
 
 export async function getStaticPaths() {
@@ -31,7 +32,7 @@ const toc = headings.filter((h) => h.depth <= 3);
           {post.data.tags.length > 0 && (
             <ul class="mt-5 flex flex-wrap gap-2">
               {post.data.tags.map((t) => (
-                <li class="rounded-full border px-2.5 py-0.5 text-xs" style="border-color: var(--line); color: var(--text-soft);">{t}</li>
+                <li class="film-tag" style="border-color: var(--line); color: var(--text-soft);">{t}</li>
               ))}
             </ul>
           )}
@@ -39,7 +40,8 @@ const toc = headings.filter((h) => h.depth <= 3);
         <div class="prose max-w-none" style="color: var(--text);">
           <Content />
         </div>
-        <nav class="mt-14 flex items-center justify-between border-t pt-6 text-sm" style="border-color: var(--line);">
+        <nav class="reading-backlinks flex items-center justify-between border-t pt-6 text-sm" style="border-color: var(--line);" aria-label="继续阅读">
+          <RailCompanion pose="lean" class="article-reader" />
           <a href="/posts/" class="no-underline" style="color: var(--text-soft);">← 全部文章</a>
           <a href="/archive/" class="no-underline" style="color: var(--text-soft);">归档 →</a>
         </nav>
@@ -51,7 +53,7 @@ const toc = headings.filter((h) => h.depth <= 3);
             <ul class="mt-3 space-y-1 text-sm">
               {toc.map((h) => (
                 <li>
-                  <a href={`#${h.slug}`} class="no-underline" style="color: var(--text-soft); padding-left: {(h.depth - 2) * 12 + "px"};">{h.text}</a>
+                  <a href={`#${h.slug}`} class="no-underline" style={`color: var(--text-soft); padding-left: ${(h.depth - 2) * 12}px;`}>{h.text}</a>
                 </li>
               ))}
             </ul>

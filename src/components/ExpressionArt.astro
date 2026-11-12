@@ -1,0 +1,7 @@
+---
+import StickerArt from "./StickerArt.astro";
+import { expressionArt, type Expression } from "../data/artwork";
+interface Props { expression?: Expression; class?: string; eager?: boolean }
+const { expression = "smile", class: className = "", eager = false } = Astro.props;
+---
+<StickerArt art={expressionArt(expression)} class={className} eager={eager} name={`expression-${expression}`} />

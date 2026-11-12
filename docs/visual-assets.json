@@ -1,0 +1,66 @@
+{
+  "created": "2026-11-11",
+  "generator": "Built-in image_gen; explicit model selection is not exposed by this tool",
+  "sourceDirectory": "design/generated; filenames match asset names with the .png extension",
+  "runtimeDirectory": "public/images/hanekawa; optimized WebP files preserve alpha",
+  "nightEdit": "Removed the glasses from the night-form full-body illustration with image_gen, preserving the character pose, clothing, cat and transparent background.",
+  "artDirection": "Kizumonogatari-inspired warm gold, vermilion, ink-black cel shadows; day Hanekawa and night Black Hanekawa",
+  "sources": [
+    "https://www.kizumonogatari-movie.com/character.html",
+    "https://kizumonogatari-usa.com/",
+    "https://docs.astro.build/en/guides/view-transitions/"
+  ],
+  "assets": [
+    {
+      "name": "hanekawa-day-head",
+      "file": "public/images/hanekawa/hanekawa-day-head.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: square custom cursor and small heading sticker. A single isolated chibi HEAD of Tsubasa Hanekawa: dark chocolate brown hair with a small fringe and two visible short braided ends, round thin-rimmed glasses, large warm reddish-brown eyes, a gentle knowing smile. Tiny salmon-orange collar below the head. Three-quarter face looking slightly toward viewer. Head takes 80 percent of square, generous transparent margin, memorable silhouette, fine elegant black linework. Do not draw body or hands."
+    },
+    {
+      "name": "hanekawa-night-head",
+      "file": "public/images/hanekawa/hanekawa-night-head.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: square custom cursor and small heading sticker, matched chibi head variant. A single isolated chibi HEAD of Black Hanekawa: snowy white hair, two expressive white cat ears with soft pink inner ears, warm golden-yellow cat eyes, playful closed-mouth smile, a few ink-black cel-shadow accents, no glasses. Tiny high-neck black collar at bottom. Three-quarter face looking slightly toward viewer, head takes 80 percent of square, generous transparent margin. Do not draw body or hands."
+    },
+    {
+      "name": "hanekawa-day",
+      "file": "public/images/hanekawa/hanekawa-day.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: tall character cutout for a personal blog hero and footer. Tsubasa Hanekawa, dark brown hair in two long braids, round thin-rimmed glasses, reddish-brown eyes, gentle intelligent expression. Fully buttoned salmon pink/orange school blouse, angular ochre collar and small black ribbon, charcoal pleated skirt. Full body, standing naturally at slight angle, a small black cat sitting by her shoes, one hand lightly holding a closed burgundy book, other hand relaxed. Cinematic warm golden side lighting and boldly defined cast-shadow planes on clothing. Elegant drawing faithful to the film's expressive face and distinctive linework. Entire head, braids, skirt and shoes visible with transparent margin; natural anatomy, no scenery, no pedestal."
+    },
+    {
+      "name": "hanekawa-night",
+      "file": "public/images/hanekawa/hanekawa-night.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: tall character cutout for the night theme of the same personal blog hero and footer. Black Hanekawa, snowy white long hair flowing into two low loose braids, white cat ears, golden cat eyes, self-assured gentle smile. Completely clothed in a dark charcoal long-sleeved sailor-collar blouse with a small vermilion ribbon and a knee-length charcoal pleated skirt, black tights and shoes. Full body standing naturally at slight angle, a small white cat sitting by her shoes, holding a closed dark red book. Cool ivory highlights with a slender amber rim light, graphic ink black cel-shadow planes. Entire head, ears, hair, skirt and shoes visible with transparent margin; natural anatomy, no scenery, no pedestal."
+    },
+    {
+      "name": "cat-frame",
+      "file": "public/images/hanekawa/cat-frame.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: isolated decorative rectangular border/frame for an article card, horizontal 3:2 composition. Entire INTERIOR and EXTERIOR transparent. Extremely fine vermilion and warm charcoal hand-inked rectangular framing lines. Small elegant ink-black cat sits on the lower-right edge, long tail curls along bottom edge; two tiny cat ears peep over upper-left corner. Thin warm ochre corner registration marks, one small red ribbon accent. Middle 85 percent empty and transparent, readable unobstructed card content space. Quiet cinematic anime production drawing, not baroque, no flowers, no gradients, no solid panel, no text, no character person."
+    },
+    {
+      "name": "footer-cats",
+      "file": "public/images/hanekawa/footer-cats.webp",
+      "transparent": true,
+      "prompt": "Professional transparent PNG website illustration asset. Art direction: Kizumonogatari film-inspired hand-drawn Japanese anime, warm amber rim light, vermilion-red accents, strong near-black ink shapes, angular cinematic cel shadows, restrained painted texture. Clean cutout silhouette, actual alpha transparency, no checkerboard, no background, no mockup, no lettering, no watermark, no white sticker outline. Fully clothed, nonsexual character illustration. Asset: horizontal footer/title decorative sticker, panoramic roughly 3:1. A graceful ink-black cat and an ivory-white cat, sitting nestled next to each other, with tails making a loose loop and a single tiny vermilion ribbon at the center. Restrained gold rim light, bold film-like shadow planes, intelligent expressive cat faces. Composition rests along the bottom baseline with lots of genuine alpha transparency above and around cats. Thin ink-line flourishes extending sideways, small falling ochre leaves. Elegant quiet cinematic anime drawing, no people, no scene, no background rectangle, no lettering."
+    },
+    {
+      "name": "chibi-mascot-night",
+      "file": "public/images/hanekawa/chibi-mascot-night.webp",
+      "source": "design/generated/chibi-mascot-night.png",
+      "reference": "public/images/chibi-mascot.webp",
+      "transparent": true,
+      "prompt": "Edit the supplied transparent chibi illustration into the NIGHT FORM of the SAME character. Preserve the original cute super-deformed drawing style EXACTLY: huge round head, very large soft anime eyes, tiny upper body, little open-mouth friendly smile, rosy cheeks, original pose, original face proportions, line thickness, soft flat cel colors, cropped bust composition, and approximately 512:551 portrait aspect ratio. Keep the exact original illustration's framing and silhouette scale. Transform her into Black Hanekawa: replace dark-brown hair with snowy white hair, add TWO small expressive white CAT EARS with warm pink inner ears, give her large amber-golden CAT EYES, REMOVE the round glasses completely, and change the existing modest collared blouse to dark charcoal with a tiny burgundy ribbon bow. Keep her visible side braid, make it white, tied with a small muted-gold ribbon. This should clearly be a matched recolor/form-change of the provided original chibi, not a new illustration style. No realistic adult proportions, no full body, no big hands or props, no background, no floor, no lettering, no checkerboard pattern, no white outline around the sticker. Maintain genuine transparent alpha around the character. All clothing remains fully covering exactly as in the source."
+    }
+  ],
+  "chibiMascot": {
+    "dayOriginal": "public/images/chibi-mascot.webp",
+    "dayRuntime": "public/images/hanekawa/chibi-mascot-day.webp",
+    "nightRuntime": "public/images/hanekawa/chibi-mascot-night.webp",
+    "desktop": "Original 16px left / 8px bottom placement; width clamp(130px, 14vw, 190px)",
+    "mobile": "Original compact 92px mascot, bottom right"
+  }
+}

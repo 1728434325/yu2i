@@ -1,22 +1,13 @@
 ---
-import PawIcon from "./PawIcon.astro";
-
-interface Props {
-  title: string;
-  href?: string;
-  linkText?: string;
-}
-const { title, href, linkText = "查看全部" } = Astro.props;
+import ExpressionArt from "./ExpressionArt.astro";
+import type { Expression } from "../data/artwork";
+import RailCompanion from "./RailCompanion.astro";
+import type { ReadingPose } from "../data/reading-art";
+interface Props { title: string; href?: string; linkText?: string; expression?: Expression; companion?: ReadingPose }
+const { title, href, linkText = "查看全部", expression = "smile", companion } = Astro.props;
 ---
-<div class="mb-6 flex items-end justify-between">
-  <h2 class="flex items-center gap-3 text-xl font-semibold">
-    <PawIcon size={18} class="paw shrink-0" />
-    {title}
-  </h2>
-  {href && <a href={href} class="text-sm no-underline" style="color: var(--text-soft);">{linkText} →</a>}
+<div class:list={["section-heading", { "section-heading--inhabited": companion }]}>
+  <h2><ExpressionArt class="heading-sticker" expression={expression} /><span>{title}</span></h2>
+  {companion && <RailCompanion pose={companion} class="section-reader" />}
+  {href && <a href={href} class="section-link">{linkText}<span aria-hidden="true"> ↗</span></a>}
 </div>
-<style>
-  .paw {
-    color: var(--sakura-deep);
-  }
-</style>

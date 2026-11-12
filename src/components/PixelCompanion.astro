@@ -1,0 +1,24 @@
+---
+import "../styles/pixel-companion.css";
+---
+<aside id="pixel-companion" class="pixel-roamer" transition:persist="pixel-roamer" aria-label="像素小羽川" data-pagefind-ignore data-action="walk" data-paused="false" data-hidden="false">
+  <canvas id="pixel-effects" class="pixel-effects" aria-hidden="true"></canvas>
+  <div id="pixel-actor" class="pixel-actor">
+    <button id="pixel-character" class="pixel-character" type="button" aria-label="像素羽川翼，可拖动，方向键移动，空格打招呼" aria-describedby="pixel-help">
+      <canvas id="pixel-canvas" width="64" height="64" aria-hidden="true"></canvas>
+    </button>
+    <div class="pixel-tools" aria-label="小羽川的控制">
+      <button type="button" data-pixel-pause aria-label="暂停小羽川" aria-pressed="false">
+        <svg class="pixel-icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5.5 3v10m5-10v10" /></svg>
+        <svg class="pixel-icon-play" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 3 7 5-7 5Z" /></svg>
+      </button>
+      <button type="button" data-pixel-hide aria-label="收起小羽川"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" /></svg></button>
+    </div>
+  </div>
+  <button class="pixel-recall" type="button" data-pixel-show>小羽川回来</button>
+  <span id="pixel-help" class="pixel-sr-only">拖动她可以放到屏幕任意位置。松手后会继续散步；点她挥手，方向键移动，空格打招呼，Escape 暂停。</span>
+</aside>
+
+<script>
+  import "../scripts/pixel-companion";
+</script>

@@ -1,35 +1,5 @@
 ---
-import PawIcon from "./PawIcon.astro";
+import StickerArt from "./StickerArt.astro";
+import { dividerCats } from "../data/artwork";
 ---
-<div class="paw-divider" aria-hidden="true">
-  <span class="paw-divider__line"></span>
-  <PawIcon size={14} class="paw-divider__paw" />
-  <PawIcon size={16} class="paw-divider__paw" />
-  <PawIcon size={14} class="paw-divider__paw" />
-  <span class="paw-divider__line"></span>
-</div>
-<style>
-  .paw-divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 auto;
-    max-width: 72rem;
-    padding: 0 24px;
-    color: var(--sakura-deep);
-    opacity: 0.55;
-  }
-  .paw-divider__line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
-  }
-  .paw-divider__paw {
-    flex: none;
-    opacity: 0.8;
-    transform: rotate(-8deg);
-  }
-  .paw-divider__paw:nth-child(3) {
-    transform: rotate(6deg) translateY(-1px);
-  }
-</style>
+<div class="film-divider" aria-hidden="true"><span class="film-divider-line"></span><StickerArt art={dividerCats(Astro.url.pathname)} class="divider-cat" name="divider-cat" /><span class="film-divider-line"></span></div>

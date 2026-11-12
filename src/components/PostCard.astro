@@ -7,7 +7,7 @@ interface Props {
 }
 const { post } = Astro.props;
 ---
-<article class="group rounded-[var(--r-lg)] border p-5 transition-transform duration-200 hover:-translate-y-0.5" style="border-color: var(--line); background: var(--surface-solid);">
+<article class="film-card post-card group p-6">
   <p class="text-xs" style="color: var(--text-soft);">{formatDate(post.data.published)}{post.data.category && ` · ${post.data.category}`}</p>
   <h2 class="mt-2 text-lg font-semibold leading-snug">
     <a href={postHref(post)} class="no-underline" style="color: var(--text);">{post.data.title}</a>
@@ -21,7 +21,7 @@ const { post } = Astro.props;
     post.data.tags.length > 0 && (
       <ul class="mt-4 flex flex-wrap gap-2">
         {post.data.tags.map((t) => (
-          <li class="rounded-full border px-2.5 py-0.5 text-xs" style="border-color: var(--line); color: var(--text-soft);">
+          <li class="film-tag">
             {t}
           </li>
         ))}

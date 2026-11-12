@@ -1,0 +1,13 @@
+---
+import type { PairedArt } from "../data/artwork";
+interface Props { art: PairedArt; class?: string; alt?: string; eager?: boolean; name?: string }
+const { art, class: className = "", alt = "", eager = false, name } = Astro.props;
+---
+<span class:list={["themed-art", "sticker-art", className]} aria-hidden={alt ? undefined : "true"} data-art={name}>
+  {[{ asset: art.day, className: "theme-art--day" }, { asset: art.night, className: "theme-art--night" }].map(({ asset, className }) => (
+    <picture class={className}>
+      {asset.poster && <source media="(prefers-reduced-motion: reduce)" srcset={asset.poster} />}
+      <img src={asset.src} alt={alt} width={asset.width} height={asset.height} loading={eager ? "eager" : "lazy"} decoding="async" />
+    </picture>
+  ))}
+</span>

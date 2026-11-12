@@ -1,0 +1,5 @@
+{
+  "source": "tmp/羽川翼六格 bonk 反擊表情動畫.gif",
+  "operation": "Decode supplied GIF frames without redrawing; export alpha frame strip and static first-frame poster",
+  "sha256": "8fbd1c4998caf1e387a261cf9c6706d3f2f78ff0ddbfe6070a4fae79c5353955"
+}

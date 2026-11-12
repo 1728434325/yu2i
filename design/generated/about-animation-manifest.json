@@ -1,0 +1,55 @@
+{
+  "dayGif": "public/images/about-avatar.gif",
+  "dayGifSha256": "08b9ac45067c54a0e358bd1f678009f8de5fd200f76e589b6eb46ce5d5db560b",
+  "nightGif": {
+    "file": "public/images/hanekawa/about-avatar-night.gif",
+    "frames": 16,
+    "width": 240,
+    "height": 240,
+    "loop": 0,
+    "delay": [
+      240,
+      120,
+      120,
+      160,
+      100,
+      100,
+      100,
+      160,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      160,
+      240
+    ]
+  },
+  "sprites": [
+    {
+      "form": "day",
+      "file": "public/images/hanekawa/pixel-day-sheet.png",
+      "frames": 16,
+      "frameSize": 64,
+      "rows": [
+        "idle",
+        "walk",
+        "wave",
+        "jump"
+      ]
+    },
+    {
+      "form": "night",
+      "file": "public/images/hanekawa/pixel-night-sheet.png",
+      "frames": 16,
+      "frameSize": 64,
+      "rows": [
+        "idle",
+        "walk",
+        "wave",
+        "jump"
+      ]
+    }
+  ]
+}

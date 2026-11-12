@@ -1,0 +1,55 @@
+---
+import StickerArt from "./StickerArt.astro";
+import RailCompanion from "./RailCompanion.astro";
+import { outfitArt, type Outfit } from "../data/artwork";
+const outfits: { id: Outfit; title: string; note: string }[] = [
+  { id: "school", title: "校服", note: "带上书本，回到熟悉的日常。" },
+  { id: "casual", title: "私服", note: "外套与背包，今天慢慢走。" },
+  { id: "kimono", title: "和服", note: "花纹、衣袖，还有一柄伞。" },
+  { id: "summer", title: "夏装", note: "草帽里的风，留给长一点的夏天。" },
+  { id: "formal", title: "礼服", note: "把这一刻，穿得稍微郑重一点。" },
+  { id: "martial", title: "练习服", note: "换个姿势，精神一点。" },
+];
+---
+<section id="wardrobe" class="wardrobe" aria-labelledby="wardrobe-title" data-wardrobe data-current-outfit="school" data-autoplay="true" data-ready="false">
+  <header class="wardrobe-heading">
+    <h2 id="wardrobe-title">羽川的衣橱</h2>
+    <RailCompanion pose="lean" class="wardrobe-reader" />
+  </header>
+  <p class="wardrobe-intro">今天穿什么？挑一套，也可以等她自己换。切换日夜，会遇见另一面的她。</p>
+  <div class="wardrobe-content">
+    <div id="wardrobe-stage" class="wardrobe-stage" role="img" aria-label="羽川翼，校服">
+      {outfits.map((outfit, index) => (
+        <div class="wardrobe-figure" data-outfit-panel={outfit.id} data-active={index === 0 ? "true" : "false"} aria-hidden="true">
+          <StickerArt art={outfitArt(outfit.id)} name={`wardrobe-${outfit.id}`} />
+        </div>
+      ))}
+      <span class="wardrobe-shutter" aria-hidden="true"></span>
+      <span class="wardrobe-stage-rule" aria-hidden="true"></span>
+    </div>
+    <div class="wardrobe-settings">
+      <div class="wardrobe-caption">
+        <h3 data-outfit-title>校服</h3>
+        <span class="wardrobe-count" aria-hidden="true"><span data-outfit-number>01</span> / 06</span>
+      </div>
+      <p class="wardrobe-form"><span class="day-label">羽川翼 · 白天</span><span class="night-label">黑羽川 · 夜晚</span></p>
+      <p class="wardrobe-note" data-outfit-note>{outfits[0].note}</p>
+      <div class="wardrobe-options" role="group" aria-label="选择衣装">
+        {outfits.map((outfit, index) => (
+          <button type="button" class="wardrobe-option" data-outfit={outfit.id} data-title={outfit.title} data-note={outfit.note} aria-pressed={index === 0 ? "true" : "false"} aria-controls="wardrobe-stage">{outfit.title}</button>
+        ))}
+      </div>
+      <div class="wardrobe-playback">
+        <button type="button" class="wardrobe-arrow" data-wardrobe-prev aria-label="上一套衣装"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg></button>
+        <button type="button" class="wardrobe-auto" data-wardrobe-auto aria-pressed="true">
+          <svg class="wardrobe-pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12M16 6v12" /></svg>
+          <svg class="wardrobe-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg>
+          <span data-wardrobe-auto-label>暂停换装</span>
+        </button>
+        <button type="button" class="wardrobe-arrow" data-wardrobe-next aria-label="下一套衣装"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg></button>
+      </div>
+      <p class="wardrobe-feedback" role="status" aria-live="polite" data-wardrobe-feedback></p>
+      <noscript><p>启用 JavaScript 后可以选择衣装；当前展示校服，日夜形态仍会跟随主题。</p></noscript>
+    </div>
+  </div>
+</section>

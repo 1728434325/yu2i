@@ -1,0 +1,24 @@
+{
+  "assets": {
+    "day-lean": {
+      "src": "/images/hanekawa/reading/day-lean.webp?v=7851ae58bb",
+      "width": 422,
+      "height": 486
+    },
+    "day-rest": {
+      "src": "/images/hanekawa/reading/day-rest.webp?v=ddc3a82c52",
+      "width": 768,
+      "height": 310
+    },
+    "night-lean": {
+      "src": "/images/hanekawa/reading/night-lean.webp?v=ddaab7a09f",
+      "width": 422,
+      "height": 486
+    },
+    "night-rest": {
+      "src": "/images/hanekawa/reading/night-rest.webp?v=c039fcde7d",
+      "width": 768,
+      "height": 280
+    }
+  }
+}

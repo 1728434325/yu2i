@@ -1,0 +1,70 @@
+{
+  "mode": "built-in image_gen",
+  "modelSelection": "The built-in tool does not expose a model selector.",
+  "assets": [
+    {
+      "key": "pixel-day-walk-v2",
+      "refs": [
+        "D:/yu2I/design/generated/pixel-day-frames.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production game animation sprite atlas, genuinely transparent RGBA background. Reference image is only for Hanekawa Tsubasa identity, pixel palette, outfit and chibi proportions; make NEW distinct animation poses. Exactly 4 columns and 4 rows of equal square cells, no gaps or grid lines, no labels, no text, no watermark, no scenery, no shadows or particles outside characters. 16 sprites. Each cell contains ONE complete small full-body character with all hair and feet inside its own cell and consistent scale. True crisp low-resolution 64x64 game pixel art per cell, hard-edged pixel clusters, about 24 colors, no anti-aliasing. Character about 46 pixels tall inside a 64px cell, feet on same baseline at y=58, generous transparent margins, centered at x=32. High consistency of shape and clothing across the 16 frames. Daytime Hanekawa: dark brown hair, round glasses, small braid with yellow tie, modest dusty pink blouse, black bow, pleated dark skirt, dark stockings and brown shoes, cheerful thoughtful expression. This is a FOUR DIRECTION WALK atlas. CRITICAL: genuine side and back views, NOT front-facing characters sliding sideways. Row 1 (top): all FOUR sprites WALKING RIGHT, face and nose pointing screen-right, body in 3/4 right side profile, hair mass and braid trail toward screen-left; four different leg-contact/passing poses and subtle synchronized trailing hair swing. Row 2: all FOUR sprites WALKING LEFT, face and nose screen-left, body 3/4 left side profile, hair mass and braid trail toward screen-right, four matching walk phases. These should clearly turn the entire character, never keep front-facing bangs or hair silhouette. Row 3: all FOUR sprites walking AWAY/UP, full BACK of head and outfit with no eyes or face, braid visible from behind, four foot phases. Row 4: all FOUR sprites walking TOWARD viewer/DOWN, FRONT view with glasses and eyes, alternating stepping foot and arms. Face direction must be unambiguous in each row. Every row is a seamless 4-frame loop. Keep the same character and avoid doll-like head-only pivots.",
+      "source": "design/generated/pixel-day-walk-v2.png"
+    },
+    {
+      "key": "pixel-day-actions-v2",
+      "refs": [
+        "D:/yu2I/design/generated/pixel-day-frames.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production game animation sprite atlas, genuinely transparent RGBA background. Reference image is only for Hanekawa Tsubasa identity, pixel palette, outfit and chibi proportions; make NEW distinct animation poses. Exactly 4 columns and 4 rows of equal square cells, no gaps or grid lines, no labels, no text, no watermark, no scenery, no shadows or particles outside characters. 16 sprites. Each cell contains ONE complete small full-body character with all hair and feet inside its own cell and consistent scale. True crisp low-resolution 64x64 game pixel art per cell, hard-edged pixel clusters, about 24 colors, no anti-aliasing. Character about 46 pixels tall inside a 64px cell, feet on same baseline at y=58, generous transparent margins, centered at x=32. High consistency of shape and clothing across the 16 frames. Daytime Hanekawa: dark brown hair, round glasses, small braid with yellow tie, modest dusty pink blouse, black bow, pleated dark skirt, dark stockings and brown shoes, cheerful thoughtful expression. This is a NEW GESTURES animation atlas, four consecutive frames in each row. All face viewer 3/4 front. Row 1 top: reading a small open crimson-bound book, lower gaze, turn a page, settle back reading; book and hands remain connected with body. Row 2: push round glasses up with one hand, thoughtful blink, little smile, lower hand (hand touches glasses). Row 3: stretch arms upward, lean a little, relaxed smile, arms settle, with actual changes to torso and hair. Row 4 bottom: sit down with knees together, sleepy yawn covering mouth, close eyes and head tilts, peacefully doze. In row 4 all four are seated with lower body at baseline, head lower than standing rows. Clearly different hand/arm/eye silhouettes per frame, no repeated identical frame. Each row forms a coherent 4-frame looping action. No extra sparkle or effect pixels; only character and connected book.",
+      "source": "design/generated/pixel-day-actions-v2.png"
+    },
+    {
+      "key": "pixel-night-walk-v2",
+      "refs": [
+        "D:/yu2I/design/generated/pixel-day-walk-v2.png",
+        "D:/yu2I/design/generated/pixel-night-frames.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is a complete 4x4 pixel animation sheet. Keep its EXACT 4 equal columns and 4 equal rows, every pose, per-cell center and feet baseline, frame sequence, pixel-art resolution and transparent background. Supporting Image 2 gives the NIGHT version of the same character's appearance. Change only the DAY character to this consistent NIGHT Black Hanekawa counterpart: white/silver hair, white cat ears with pink centers, golden eyes, NO glasses, dark charcoal modest blouse, burgundy bow, pleated dark skirt, dark stockings and shoes, same chibi proportions and braid silhouette as Image 2. Actual transparent alpha, NO background, floating marks, glow, particles, red outlines or color noise, no labels, no text, no extra tail. Hard-edged true 64x64 game pixel-art clusters for each cell. All characters fully inside own cell with generous transparent margin. Keep hair flowing behind the head in the direction appropriate to the body's actual pose. This is FOUR-DIRECTION WALK. Row 1 all FOUR face and WALK RIGHT: nose points RIGHT, hair and braid trail LEFT. Row 2 all FOUR face and WALK LEFT: nose points LEFT, hair and braid trail RIGHT. Do not retain the same hair direction between these rows! Row 3 all FOUR full BACK view walking away, no face or eyes visible. Row 4 all FOUR FRONT view walking toward viewer. Each row 4 different contact/passing leg poses in a seamless loop. The entire head, ear silhouette, bangs, hair mass, arms and body rotate coherently. Preserve the original side and rear camera angle of every row exactly; never replace side views with front views.",
+      "source": "design/generated/pixel-night-walk-v2.png"
+    },
+    {
+      "key": "pixel-night-actions-v2",
+      "refs": [
+        "D:/yu2I/design/generated/pixel-day-actions-v2.png",
+        "D:/yu2I/design/generated/pixel-night-frames.png"
+      ],
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is a complete 4x4 pixel animation sheet. Keep its EXACT 4 equal columns and 4 equal rows, every pose, per-cell center and feet baseline, frame sequence, pixel-art resolution and transparent background. Supporting Image 2 gives the NIGHT version of the same character's appearance. Change only the DAY character to this consistent NIGHT Black Hanekawa counterpart: white/silver hair, white cat ears with pink centers, golden eyes, NO glasses, dark charcoal modest blouse, burgundy bow, pleated dark skirt, dark stockings and shoes, same chibi proportions and braid silhouette as Image 2. Actual transparent alpha, NO background, floating marks, glow, particles, red outlines or color noise, no labels, no text, no extra tail. Hard-edged true 64x64 game pixel-art clusters for each cell. All characters fully inside own cell with generous transparent margin. Keep hair flowing behind the head in the direction appropriate to the body's actual pose. Change the row 1 action from reading a book into CAT-LIKE GROOMING: remove book; hand raised to cheek, rub face, lower paw-hand, blink contentedly, all parts connected to body. Change row 2 action from pushing glasses into a playful PAW SWIPE: no glasses at all, hand rises beside face, swats forward, curls back in, settles. Row 3 keep four stretch poses but with a catlike relaxed expression and ears bending slightly. Row 4 keep all four seated sleepy yawn and doze poses, hands on knees and eyes closing. No action particles in this sheet, only the character. Four visibly distinct chronological frames per row.",
+      "source": "design/generated/pixel-night-actions-v2.png"
+    }
+  ],
+  "matteCorrection": {
+    "source": "design/generated/pixel-night-walk-v2-matte-source.png",
+    "target": "design/generated/pixel-night-walk-v2.png",
+    "prompt": "Use case: background-extraction. Edit target is the supplied 4x4 Black Hanekawa pixel WALK sprite sheet. Remove ONLY the pale white/gray background, drop shadows, haze and matte noise completely and replace them with EXACT fully transparent alpha=0 empty pixels. Keep all 16 characters exactly unchanged: positions, poses, white hair, dark pixel outlines, clothing, colors, 4x4 grid and image size. Do NOT erase white hair or cat ears; retain opaque character interiors and crisp outlines. Every pixel outside each connected character silhouette must be fully transparent, including all four corners, gaps between sprites and areas under feet. NO shadow, NO checkerboard drawn in, NO red pixels, NO new art. Actual RGBA transparent game atlas ready to use over a black webpage. Do not redraw character shapes."
+  },
+  "runtime": [
+    "public/images/hanekawa/pixel-day-roaming.png",
+    "public/images/hanekawa/pixel-night-roaming.png"
+  ],
+  "previews": [
+    "design/previews/pixel-day-directions.gif",
+    "design/previews/pixel-night-directions.gif"
+  ],
+  "assembly": "node scripts/build-roaming-sprites.mjs",
+  "export": "Nearest-neighbor 64px cells; binary alpha; largest connected silhouette; shared scale per input sheet and common baseline. All four walk directions are separately drawn; no canvas or CSS mirroring.",
+  "research": [
+    {
+      "url": "https://www.monogatari-series.com/nekomonogatarikuro/chara/index.html",
+      "supports": "Tsubasa is the exemplary academically outstanding class representative; book and glasses gestures are character-inspired interpretations."
+    },
+    {
+      "url": "https://www.monogatari-series.com/2ndseason/sp/story/nekoshiro5.html",
+      "supports": "Black Hanekawa is described as Tsubasa's other personality and oddity."
+    },
+    {
+      "url": "https://mangapedia.com/猫物語（黒）-auchpx632",
+      "supports": "Secondary encyclopedia describing the stress / sawarineko origin and contact energy drain. Inward particles are a small website interpretation, not a claim about a literal canonical VFX color."
+    }
+  ],
+  "effects": "Day: book page flecks, glasses glint. Night: fading paw tracks, a short three-stroke claw mark and inward motes evoking energy drain. Sleep and landing effects are original interaction feedback. No tiger flames or Shinobu's vampiric weapons assigned to Hanekawa."
+}

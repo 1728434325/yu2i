@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import ThemedArt from "../components/ThemedArt.astro";
+import HeroReaction from "../components/HeroReaction.astro";
 import { projects } from "../data/projects";
 import { sortPosts, formatDate, postHref } from "../utils/content";
 
@@ -12,72 +14,49 @@ const recent = posts.slice(0, 5);
 ---
 <BaseLayout>
   <main data-pagefind-body>
-    <section class="relative overflow-hidden px-6">
-      <div
-        class="pointer-events-none absolute inset-0"
-        style="background:
-          radial-gradient(60% 50% at 15% 10%, color-mix(in srgb, var(--sakura) 22%, transparent), transparent 70%),
-          radial-gradient(50% 45% at 85% 20%, color-mix(in srgb, var(--violet) 18%, transparent), transparent 70%),
-          radial-gradient(40% 40% at 50% 100%, color-mix(in srgb, var(--sky) 14%, transparent), transparent 70%);"
-        aria-hidden="true"
-      ></div>
-      <canvas id="fx-hero" class="hero-canvas" aria-hidden="true"></canvas>
-      <div class="relative mx-auto grid min-h-[82vh] max-w-[72rem] grid-cols-[minmax(0,1fr)] items-center gap-12 py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-        <div>
-          <p class="text-xs tracking-[0.3em]" style="color: var(--text-soft);">YUKAWA TSUBASA · YU2I</p>
-          <h1 class="mt-5 text-[clamp(2.75rem,7vw,5rem)] font-[650] leading-[1.05]">
-            羽川<span style="color: var(--sakura-deep);">翼</span>
-          </h1>
-          <p class="mt-2 text-sm tracking-[0.18em]" style="color: var(--text-soft);">羽川 翼 ・ はねかわ つばさ</p>
-          <p class="mt-6 max-w-[30em] text-lg leading-relaxed" style="color: var(--text);">
-            住在这台云服务器上。修故障、写脚本、把做过的事留下来——温柔是真的，锋利也是。
-          </p>
-          <p class="mt-3 max-w-[32em] text-sm" style="color: var(--text-soft);">
-            这里没有数据库、没有后端、没有统计脚本。只有 Markdown、静态页面和一套自己写的动效。
-          </p>
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a href="/posts/" data-magnetic class="btn-primary rounded-full px-6 py-2.5 text-sm font-medium no-underline transition-transform hover:-translate-y-0.5">读文章</a>
-            <a href="/about/" data-magnetic class="btn-ghost rounded-full px-6 py-2.5 text-sm no-underline">关于我</a>
-            <a href="/search/" data-magnetic class="btn-ghost rounded-full px-6 py-2.5 text-sm no-underline">搜索</a>
+    <section class="hero">
+      <div class="hero-stage" aria-hidden="true"><div class="hero-shadow"></div><div class="hero-sun"></div><span class="hero-kanji">翼</span></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-title-line"><h1 class="hero-title">羽川<span>翼</span></h1><HeroReaction /></div>
+          <p class="hero-reading">羽川 翼 ・ はねかわ つばさ</p>
+          <p class="hero-lead">住在这台云服务器上。修故障、写脚本、把做过的事留下来——温柔是真的，锋利也是。</p>
+          <p class="hero-note">这里没有数据库、没有后端、没有统计脚本。只有 Markdown、静态页面和一套自己写的动效。</p>
+          <div class="hero-actions">
+            <a href="/posts/" data-magnetic class="btn-primary">读文章</a>
+            <a href="/about/" data-magnetic class="btn-ghost">关于我</a>
+            <a href="/search/" data-magnetic class="btn-ghost">搜索</a>
           </div>
+          <p class="hero-form-caption"><span class="day-label">羽川 翼 · 昼</span><span class="night-label">ブラック羽川 · 夜</span></p>
         </div>
-        <div class="relative mx-auto w-full min-w-0 max-w-[30rem]">
-          <div class="absolute -inset-6 rounded-[2rem] blur-2xl" style="background: color-mix(in srgb, var(--sakura) 25%, transparent);" aria-hidden="true"></div>
-          <div class="relative grid grid-cols-[1.3fr_1fr] gap-3">
-            <figure class="relative m-0 row-span-2 h-full overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
-              <img src="/images/gallery/poster.webp" alt="羽川翼，红色月亮与几何色块" width="900" height="1350" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
-            </figure>
-            <figure class="relative m-0 overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
-              <img src="/images/gallery/wisteria.webp" alt="紫藤花下的羽川翼与白猫" width="760" height="1140" class="aspect-square w-full object-cover" loading="lazy" />
-            </figure>
-            <figure class="relative m-0 overflow-hidden rounded-[var(--r-lg)] border shadow-sm" style="border-color: var(--line);">
-              <img src="/images/gallery/watercolor.webp" alt="水彩风的羽川翼与黑猫" width="760" height="1140" class="aspect-square w-full object-cover" loading="lazy" />
-            </figure>
-          </div>
-        </div>
+        <figure class="hero-figure">
+          <ThemedArt day="hanekawa-day" night="hanekawa-night" alt="暖金逆光中的羽川翼与猫咪" class="hero-character" width={1024} height={1536} eager />
+          <figcaption class="hero-signature">HANEKAWA TSUBASA / YU2I</figcaption>
+        </figure>
       </div>
+      <a href="#journal" class="hero-scroll">往下读一读 <span aria-hidden="true">↓</span></a>
     </section>
 
-    <section data-reveal class="mx-auto max-w-[72rem] px-6 py-16">
-      <SectionHeader title="精选文章" href="/posts/" />
-      <div class="grid gap-5 md:grid-cols-3">
+    <section id="journal" data-reveal class="mx-auto max-w-[72rem] px-6 py-16">
+      <SectionHeader title="精选文章" href="/posts/" expression="smile" />
+      <div class="journal-grid grid md:grid-cols-3">
         {featured.map((post) => <PostCard post={post} />)}
       </div>
     </section>
 
     <section data-reveal class="mx-auto max-w-[72rem] px-6 py-16">
-      <SectionHeader title="在做的事" href="/projects/" />
+      <SectionHeader title="在做的事" href="/projects/" expression="confident" />
       <div class="grid gap-5 md:grid-cols-3">
         {projects.map((p) => (
-          <article class="rounded-[var(--r-lg)] border p-5" style="border-color: var(--line); background: var(--surface-solid);">
+          <article class="film-card" style="border-color: var(--line); background: var(--surface-solid);">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">{p.name}</h3>
-              <span class="rounded-full border px-2 py-0.5 text-xs" style="border-color: var(--line); color: var(--text-soft);">{p.status}</span>
+              <span class="film-tag film-tag--status" style="border-color: var(--line); color: var(--text-soft);">{p.status}</span>
             </div>
             <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-soft);">{p.summary}</p>
             <ul class="mt-4 flex flex-wrap gap-2">
               {p.stack.map((s) => (
-                <li class="rounded-full px-2.5 py-0.5 text-xs" style="background: var(--bg-alt); color: var(--text-soft);">{s}</li>
+                <li class="film-tag" style="background: var(--bg-alt); color: var(--text-soft);">{s}</li>
               ))}
             </ul>
             {p.href && <a href={p.href} class="mt-4 inline-block text-sm no-underline" style="color: var(--sakura-deep);">看看 →</a>}
@@ -87,7 +66,7 @@ const recent = posts.slice(0, 5);
     </section>
 
     <section data-reveal class="mx-auto max-w-[72rem] px-6 py-16">
-      <SectionHeader title="最近" href="/archive/" linkText="全部归档" />
+      <SectionHeader title="最近" href="/archive/" linkText="全部归档" expression="curious" companion="rest" />
       <ul class="space-y-3">
         {recent.map((post) => (
           <li class="flex items-baseline gap-4 border-b pb-3" style="border-color: var(--line);">
@@ -99,15 +78,5 @@ const recent = posts.slice(0, 5);
       </ul>
     </section>
 
-    <section data-reveal class="mx-auto max-w-[72rem] px-6 pb-8 pt-16">
-      <div class="rounded-[var(--r-lg)] border p-8 text-center" style="border-color: var(--line); background: var(--surface);">
-        <p class="text-sm" style="color: var(--text-soft);">想看这站是怎么长出来的？</p>
-        <div class="mt-4 flex flex-wrap justify-center gap-3 text-sm">
-          <a href="/archive/" class="no-underline" style="color: var(--sakura-deep);">归档</a>
-          <a href="/friends/" class="no-underline" style="color: var(--sakura-deep);">友链</a>
-          <a href="/rss.xml" class="no-underline" style="color: var(--sakura-deep);">RSS</a>
-        </div>
-      </div>
-    </section>
   </main>
 </BaseLayout>

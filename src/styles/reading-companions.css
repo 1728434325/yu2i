@@ -1,0 +1,102 @@
+.rail-companion { pointer-events: none; transform-origin: center bottom; animation: reading-breath 9s ease-in-out infinite; animation-play-state: paused; }
+.rail-companion[data-in-view="true"] { animation-play-state: running; }
+.rail-companion img { object-position: center bottom; }
+@keyframes reading-breath { 0%, 60%, 100% { transform: scaleY(1); } 35% { transform: scaleY(1.014); } }
+
+.section-heading--inhabited { align-items: flex-end; gap: 16px; min-height: 112px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section-reader { width: 200px; height: 100px; margin: 0 auto -13px; }
+.section-heading--inhabited .section-link { margin-bottom: 6px; }
+.reading-heading { position: relative; min-height: 135px; padding: 0 210px 22px 0; border-bottom: 1px solid var(--line); }
+.page-reader { position: absolute; right: 12px; bottom: -1px; width: 180px; height: 138px; }
+.reading-heading--rest .page-reader { width: 226px; height: 116px; right: 0; }
+.reading-heading--rest { padding-right: 240px; }
+.reading-backlinks { position: relative; margin-top: 122px; }
+.article-reader { position: absolute; left: 50%; bottom: calc(100% - 1px); width: 132px; height: 102px; transform: translateX(-50%); animation: none; }
+
+.footer-edge { position: relative; height: 1px; margin-bottom: 20px; background: var(--line); }
+.footer-cat { position: absolute; right: 12px; bottom: -1px; width: 58px; height: 43px; pointer-events: none; }
+.footer-cat img { object-position: center bottom; }
+
+.wardrobe { position: relative; margin-top: 86px; scroll-margin-top: 105px; }
+.wardrobe-heading { position: relative; display: flex; align-items: flex-end; min-height: 112px; padding: 0 175px 14px 0; border-bottom: 1px solid var(--line); }
+.wardrobe-heading h2 { font-family: "Hanekawa Mincho", "Noto Serif SC", SimSun, serif; font-size: 28px; line-height: 1.4; }
+.wardrobe-reader { position: absolute; right: 2px; bottom: -1px; width: 155px; height: 125px; }
+.wardrobe-intro { max-width: 44ch; margin-top: 18px; font-size: 13px; color: var(--text-soft); line-height: 1.9; }
+.wardrobe-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 1fr); align-items: center; gap: 42px; margin-top: 24px; }
+.wardrobe-stage { position: relative; isolation: isolate; height: 358px; overflow: hidden; }
+.wardrobe-figure { position: absolute; inset: 12px 6px 17px; opacity: 0; pointer-events: none; }
+.wardrobe-figure[data-active="true"] { opacity: 1; }
+.wardrobe-figure > .sticker-art { width: 100%; height: 100%; }
+.wardrobe-figure img { object-position: center bottom; }
+.wardrobe-stage-rule { position: absolute; left: 9%; right: 9%; bottom: 17px; z-index: -1; border-bottom: 1px solid var(--line); }
+.wardrobe-stage-rule::before, .wardrobe-stage-rule::after { content: ""; position: absolute; bottom: -4px; width: 1px; height: 8px; background: var(--line); }
+.wardrobe-stage-rule::before { left: 0; }
+.wardrobe-stage-rule::after { right: 0; }
+.wardrobe-shutter { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+.wardrobe-shutter::after { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: var(--accent); }
+.wardrobe-stage.is-changing .wardrobe-shutter { animation: wardrobe-scan 420ms cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes wardrobe-scan { 0% { opacity: 0; transform: translateY(4%); } 12% { opacity: .8; } 100% { opacity: 0; transform: translateY(96%); } }
+.wardrobe-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.wardrobe-caption h3 { font-family: "Hanekawa Mincho", "Noto Serif SC", SimSun, serif; font-size: 32px; line-height: 1.4; }
+.wardrobe-count { color: var(--text-soft); font-size: 11px; font-variant-numeric: tabular-nums; }
+.wardrobe-count > span { color: var(--accent); font-size: 18px; }
+.wardrobe-form { margin-top: 7px; color: var(--accent); font-size: 11px; }
+.wardrobe-note { min-height: 42px; margin-top: 17px; color: var(--text-soft); font-size: 12px; line-height: 1.9; }
+.wardrobe-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
+.wardrobe-option { position: relative; min-height: 42px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 2px; color: var(--text-soft); background: transparent; font: inherit; font-size: 12px; transition: color 120ms, background-color 120ms, border-color 120ms; }
+.wardrobe-option:hover { color: var(--accent); border-color: var(--accent); }
+.wardrobe-option[aria-pressed="true"] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.wardrobe-option[aria-pressed="true"]::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 5px; height: 5px; background: var(--accent); transform: translateX(-50%) rotate(45deg); }
+.wardrobe-playback { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+.wardrobe-playback button { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 9px; border: 1px solid transparent; color: var(--text-soft); background: transparent; font-size: 12px; }
+.wardrobe-playback button:hover { color: var(--accent); border-color: var(--line); }
+.wardrobe-playback svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.wardrobe-auto { gap: 7px; }
+.wardrobe-play-icon { display: none; }
+.wardrobe[data-autoplay="false"] .wardrobe-pause-icon { display: none; }
+.wardrobe[data-autoplay="false"] .wardrobe-play-icon { display: block; }
+.wardrobe-playback button:disabled { color: var(--text-soft); opacity: .65; border-color: transparent; cursor: default; }
+.wardrobe-feedback { min-height: 22px; margin-top: 7px; color: var(--accent); font-size: 11px; }
+.wardrobe noscript { color: var(--text-soft); font-size: 12px; }
+
+@media (max-width: 639px) {
+  .section-heading--inhabited { min-height: 91px; gap: 7px; padding-bottom: 10px; }
+  .section-reader { width: 120px; height: 76px; margin-bottom: -11px; }
+  .section-heading--inhabited h2 { gap: 7px; font-size: 22px; }
+  .section-heading--inhabited .heading-sticker { width: 31px; height: 35px; }
+  .section-heading--inhabited .section-link { font-size: 10px; }
+  .reading-heading { min-height: 116px; padding-right: 136px; padding-bottom: 20px; }
+  .page-reader { right: 0; width: 124px; height: 109px; }
+  .reading-heading--rest { padding-right: 166px; }
+  .reading-heading--rest .page-reader { width: 156px; height: 91px; }
+  .reading-backlinks { margin-top: 108px; }
+  .article-reader { width: 114px; height: 89px; }
+  .footer-cat { right: 14px; width: 48px; height: 36px; }
+  .wardrobe { margin-top: 68px; }
+  .wardrobe-heading { min-height: 96px; padding-right: 126px; padding-bottom: 13px; }
+  .wardrobe-heading h2 { font-size: 25px; }
+  .wardrobe-reader { width: 118px; height: 102px; }
+  .wardrobe-intro { font-size: 12px; }
+  .wardrobe-content { grid-template-columns: minmax(0, 1fr); gap: 13px; margin-top: 20px; }
+  .wardrobe-stage { width: min(100%, 320px); height: 322px; margin-inline: auto; }
+  .wardrobe-settings { width: 100%; max-width: 360px; margin-inline: auto; }
+  .wardrobe-caption h3 { font-size: 28px; }
+  .wardrobe-note { min-height: 0; margin-top: 12px; }
+  .wardrobe-options { margin-top: 18px; gap: 9px; }
+  .wardrobe-option { min-height: 44px; }
+  .wardrobe-playback { margin-top: 13px; }
+}
+@media (max-width: 359px) {
+  .section-reader { width: 93px; }
+  .section-heading--inhabited .section-link { font-size: 9px; }
+  .reading-heading--rest { padding-right: 135px; }
+  .reading-heading--rest .page-reader { width: 129px; }
+  .wardrobe-heading { padding-right: 106px; }
+  .wardrobe-heading h2 { font-size: 23px; }
+  .wardrobe-reader { width: 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail-companion { animation: none; }
+  .wardrobe-stage.is-changing .wardrobe-shutter { animation: none; }
+  .wardrobe-option { transition-duration: 0s; }
+}

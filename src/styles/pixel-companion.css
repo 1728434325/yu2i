@@ -1,0 +1,38 @@
+.pixel-roamer { --pixel-sheet: url("/images/hanekawa/pixel-day-roaming.png"); position: fixed; inset: 0; z-index: 60; overflow: clip; pointer-events: none; user-select: none; }
+html.dark .pixel-roamer { --pixel-sheet: url("/images/hanekawa/pixel-night-roaming.png"); }
+.pixel-effects { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; image-rendering: pixelated; }
+.pixel-actor { position: absolute; left: 0; top: 0; width: 128px; height: 128px; transform: translate3d(calc(100vw - 170px), calc(100dvh - 180px), 0); }
+.pixel-character { display: block; width: 128px; height: 128px; padding: 0; border: 0; background: transparent var(--pixel-sheet) 0 0 / 512px 1408px no-repeat; image-rendering: pixelated; pointer-events: auto; touch-action: none; cursor: grab; -webkit-user-select: none; -webkit-touch-callout: none; }
+.pixel-character[data-ready="true"] { background-image: none; }
+.pixel-character canvas { display: block; width: 128px; height: 128px; image-rendering: pixelated; }
+.pixel-character:focus-visible { outline: 1px dashed var(--focus); outline-offset: -6px; border-radius: 12px; }
+.pixel-roamer[data-dragging="true"] .pixel-character { cursor: grabbing; }
+.pixel-tools { position: absolute; bottom: calc(100% - 7px); left: 28px; display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-solid); opacity: 0; pointer-events: none; transition: opacity .15s ease-out; }
+.pixel-tools button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 5px; color: var(--text-soft); background: transparent; touch-action: manipulation; }
+.pixel-tools button:hover { background: var(--bg-alt); color: var(--accent); }
+.pixel-actor:hover .pixel-tools, .pixel-actor:focus-within .pixel-tools, .pixel-roamer[data-tools="true"] .pixel-tools { opacity: 1; pointer-events: auto; }
+.pixel-roamer[data-near-top="true"] .pixel-tools { top: calc(100% - 7px); bottom: auto; }
+.pixel-icon-play, .pixel-roamer[data-paused="true"] .pixel-icon-pause { display: none; }
+.pixel-roamer[data-paused="true"] .pixel-icon-play { display: block; }
+.pixel-recall { display: none; position: absolute; right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 40px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-solid); color: var(--text-soft); font-size: 12px; pointer-events: auto; }
+.pixel-roamer[data-hidden="true"] .pixel-actor, .pixel-roamer[data-hidden="true"] .pixel-effects { display: none; }
+.pixel-roamer[data-hidden="true"] .pixel-recall { display: block; }
+.pixel-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.pixel-controls-section { margin-bottom: 40px; padding-block: 4px 24px; border-bottom: 1px solid var(--line); }
+.pixel-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 15px; }
+.pixel-heading h2 { font-family: "Hanekawa Mincho", "Noto Serif SC", SimSun, serif; font-size: 20px; font-weight: 700; }
+.pixel-heading p { color: var(--text-soft); font-size: 12px; }
+.pixel-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pixel-action { min-height: 40px; padding: 6px 34px 6px 11px; font-size: 12px; font-weight: 500; touch-action: manipulation; }
+.pixel-action::after { right: 5px; bottom: 6px; width: 24px; height: 25px; background-size: contain; }
+.pixel-action[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background-color: var(--bg-alt); }
+.pixel-text-control { min-height: 40px; padding: 6px 2px; border: 0; background: transparent; color: var(--text-soft); font-size: 12px; text-decoration: underline; text-underline-offset: 4px; touch-action: manipulation; }
+.pixel-text-control:hover { color: var(--accent); }
+.pixel-hint { margin-top: 12px; color: var(--text-soft); font-size: 11px; line-height: 1.8; }
+@media (max-width: 479px) {
+  .pixel-heading h2 { font-size: 18px; }
+  .pixel-controls { gap: 7px; }
+  .pixel-action { padding-left: 9px; padding-right: 30px; font-size: 11px; }
+  .pixel-action::after { width: 22px; height: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .pixel-tools { transition: none; } }

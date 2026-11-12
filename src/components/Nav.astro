@@ -1,42 +1,18 @@
 ---
-const links = [
-  { href: "/", label: "首页" },
-  { href: "/posts/", label: "文章" },
-  { href: "/archive/", label: "归档" },
-  { href: "/about/", label: "关于" },
-];
+import ExpressionArt from "./ExpressionArt.astro";
+const links = [{ href: "/", label: "首页" }, { href: "/posts/", label: "文章" }, { href: "/archive/", label: "归档" }, { href: "/about/", label: "关于" }];
 const path = Astro.url.pathname;
 ---
-<header class="sticky top-0 z-30 border-b" style="border-color: var(--line); background: var(--surface); backdrop-filter: blur(12px);">
-  <nav class="mx-auto flex h-16 max-w-[72rem] items-center gap-6 px-6" aria-label="主导航">
-    <a href="/" class="text-[15px] font-semibold no-underline" style="color: var(--text);">yu2i<span style="color: var(--sakura-deep);">.</span></a>
-    <ul class="flex flex-1 items-center gap-1 text-sm">
-      {links.map((l) => (
-        <li>
-          <a
-            href={l.href}
-            class="rounded-full px-3 py-1.5 no-underline transition-colors"
-            style={path === l.href || (l.href !== "/" && path.startsWith(l.href))
-              ? "color: var(--sakura-deep); background: var(--bg-alt);"
-              : "color: var(--text-soft);"}
-            aria-current={path === l.href ? "page" : undefined}
-          >{l.label}</a>
-        </li>
-      ))}
+<header class="site-header">
+  <nav class="site-nav" aria-label="主导航">
+    <a href="/" class="site-brand" aria-label="yu2i 首页"><ExpressionArt expression="confident" class="nav-portrait" eager /><span>yu2i<span class="brand-dot">.</span></span></a>
+    <ul class="nav-links">
+      {links.map((link) => (<li><a href={link.href} class:list={["nav-link", { "is-current": path === link.href || (link.href !== "/" && path.startsWith(link.href)) }]} aria-current={path === link.href ? "page" : undefined}>{link.label}</a></li>))}
     </ul>
-    <button
-      id="theme-toggle"
-      type="button"
-      class="h-9 w-9 rounded-full border text-sm"
-      style="border-color: var(--line); color: var(--text-soft); background: var(--surface);"
-      aria-label="切换昼夜主题"
-    >◐</button>
+    <button id="theme-toggle" type="button" class="theme-toggle" aria-label="切换到夜间形态" aria-pressed="false" title="切换羽川翼的形态">
+      <svg class="theme-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+      <svg class="theme-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/></svg>
+      <span class="theme-name" aria-hidden="true"><span class="day-label">昼</span><span class="night-label">夜</span></span>
+    </button>
   </nav>
 </header>
-
-<script is:inline>
-  document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    const dark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("yu2i-theme", dark ? "dark" : "light");
-  });
-</script>

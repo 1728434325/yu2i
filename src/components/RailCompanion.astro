@@ -1,0 +1,7 @@
+---
+import StickerArt from "./StickerArt.astro";
+import { readingArt, type ReadingPose } from "../data/reading-art";
+interface Props { pose?: ReadingPose; class?: string }
+const { pose = "lean", class: className = "" } = Astro.props;
+---
+<StickerArt art={readingArt(pose)} class={`rail-companion rail-companion--${pose} ${className}`} name={`rail-${pose}`} />
